@@ -1,4 +1,7 @@
 ---
+import "../styles/global.css";
+import Navbar from "../components/Navbar.jsx";
+
 interface Props {
   title: string;
   description?: string;
@@ -22,6 +25,7 @@ const {
     <title>{title}</title>
   </head>
   <body>
+    <Navbar client:load />
     <slot />
   </body>
 </html>

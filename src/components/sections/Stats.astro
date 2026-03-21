@@ -1,0 +1,219 @@
+---
+import CountUp from "../effects/CountUp.jsx";
+---
+
+<section class="stats-section" aria-label="Estatísticas da Monitoria">
+  <div class="container">
+    <div class="header-grid">
+      <div class="text-content">
+        <span class="tag">Nosso Impacto</span>
+        <h2>
+          Mais do que código, construímos uma <strong>comunidade</strong>.
+        </h2>
+      </div>
+      <div class="action-content">
+        <a href="#equipe" class="outline-link">
+          Conheça a Equipe
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M5 12h14M12 5l7 7-7 7"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="number">
+          <CountUp client:visible to={10} duration={2} />+
+        </div>
+        <p>Oficinas realizadas</p>
+      </div>
+
+      <div class="stat-item">
+        <div class="number">
+          <CountUp client:visible to={300} duration={2.5} />+
+        </div>
+        <p>Alunos inscritos</p>
+      </div>
+
+      <div class="stat-item">
+        <div class="number">
+          <CountUp client:visible to={20} duration={2} />+
+        </div>
+        <p>Colaboradores</p>
+      </div>
+
+      <div class="stat-item">
+        <div class="number">
+          <CountUp client:visible to={6} duration={1.5} />
+        </div>
+        <p>Anos de história</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .stats-section {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    padding: 100px 2rem 50px 2rem;
+    position: relative;
+    z-index: 10;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .header-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 2rem;
+    align-items: flex-end;
+    margin-bottom: 4rem;
+  }
+
+  .text-content {
+    max-width: 800px;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 6px 14px;
+    background: rgba(210, 168, 255, 0.1);
+    color: var(--purple-neon);
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(210, 168, 255, 0.2);
+  }
+
+  h2 {
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    line-height: 1.3;
+    font-weight: 400;
+    margin: 0;
+    color: var(--text-secondary);
+  }
+
+  h2 strong {
+    color: var(--purple-neon);
+    font-weight: 600;
+  }
+
+  .outline-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--text-main);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    width: fit-content;
+    margin-left: auto;
+    transition: all 0.3s ease;
+    font-weight: 500;
+  }
+
+  .outline-link:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--purple-neon);
+    color: var(--purple-neon);
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 4rem;
+  }
+
+  .stat-item {
+    padding: 0 1.5rem;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .stat-item:last-child {
+    border-right: none;
+  }
+
+  .number {
+    font-size: clamp(3rem, 5vw, 4rem);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    letter-spacing: -2px;
+    line-height: 1;
+    color: var(--text-main);
+    display: flex;
+    align-items: baseline;
+  }
+
+  .stat-item p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    margin: 0;
+    font-weight: 400;
+  }
+
+  /* --- RESPONSIVIDADE MOBILE --- */
+  @media (max-width: 900px) {
+    .header-grid {
+      grid-template-columns: 1fr;
+      text-align: left;
+      gap: 2rem;
+    }
+
+    .outline-link {
+      margin-left: 0;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .stats-section {
+      padding: 60px 1.5rem 40px 1.5rem;
+    }
+
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3.5rem 1rem;
+      padding-top: 3rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .stat-item {
+      border: none !important;
+      padding: 0 0.5rem;
+      align-items: flex-start;
+    }
+
+    .stat-item p {
+      font-size: 0.95rem;
+      line-height: 1.2;
+    }
+
+    .number {
+      font-size: 2.8rem;
+      margin-bottom: 0.2rem;
+    }
+  }
+</style>

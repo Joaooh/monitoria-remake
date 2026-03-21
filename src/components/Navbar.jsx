@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import logoCeub from "../assets/logo-ceub.png";
 
 const tabs = ["Início", "Ver oficinas", "Pitaco", "Equipe"];
 
@@ -12,11 +11,7 @@ export default function FlawlessPillNavbar() {
     <>
       <style>
         {`
-          /* Oculta logo e espaçador no mobile */
           @media (max-width: 768px) {
-            .logo-container-mobile {
-              display: none !important;
-            }
             .header-container-mobile {
               padding: 10px 5px !important;
             }
@@ -38,21 +33,13 @@ export default function FlawlessPillNavbar() {
         `}
       </style>
 
-      <div style={styles.logoContainer} className="logo-container-mobile">
-        <a href="/" style={styles.logoLink} aria-label="Página inicial do site">
-          <img src={logoCeub.src} alt="Logo CEUB" style={styles.logoImage} />
-        </a>
-      </div>
-
       <div style={styles.headerContainer} className="header-container-mobile">
         <div style={styles.navWrapper} className="nav-scroll-mobile">
-          {/* aria-label contextualiza a navegação para leitores de tela */}
           <nav
             aria-label="Navegação principal"
             style={styles.nav}
             onMouseLeave={() => setHoveredTab(null)}
           >
-            {/* BACKGROUNDS: Separados dos botões para evitar bloqueio de cliques */}
             <div style={styles.backgroundsContainer} aria-hidden="true">
               <div style={styles.navBgOuter}></div>
               <div style={styles.navBgInner}></div>
@@ -71,7 +58,6 @@ export default function FlawlessPillNavbar() {
               </AnimatePresence>
             </div>
 
-            {/* BOTÕES INTERATIVOS: Z-index elevado para capturar eventos de mouse/teclado */}
             <ul role="list" style={styles.buttonsContainer}>
               {tabs.map((tab) => {
                 const isActive = activeTab === tab;
@@ -80,11 +66,9 @@ export default function FlawlessPillNavbar() {
                 return (
                   <li key={tab} style={{ display: "flex" }}>
                     <button
-                      // aria-current indica a página atual para leitores de tela
                       aria-current={isActive ? "page" : undefined}
                       onClick={() => setActiveTab(tab)}
                       onMouseEnter={() => setHoveredTab(tab)}
-                      // onFocus/onBlur garantem que a navegação por tecla TAB exiba o hover
                       onFocus={() => setHoveredTab(tab)}
                       onBlur={() => setHoveredTab(null)}
                       style={styles.tab}
@@ -93,13 +77,14 @@ export default function FlawlessPillNavbar() {
                       <span
                         style={{
                           ...styles.text,
-                          color: isActive ? "#ffffff" : "#dcb8eb",
+                          color: isActive
+                            ? "var(--text-main)"
+                            : "var(--text-muted)",
                         }}
                       >
                         {tab}
                       </span>
 
-                      {/* Pílula de Hover: Passa sempre por trás da ativa (zIndex: 1) */}
                       {isHovered && (
                         <motion.div
                           layoutId="hover-pill-anim"
@@ -112,7 +97,6 @@ export default function FlawlessPillNavbar() {
                         />
                       )}
 
-                      {/* Pílula Ativa: Fica em destaque (zIndex: 2) */}
                       {isActive && (
                         <motion.div
                           layoutId="active-pill"
@@ -137,15 +121,6 @@ export default function FlawlessPillNavbar() {
 }
 
 const styles = {
-  // Container exclusivo da logo do CEUB (absolute = rola com a página)
-  logoContainer: {
-    position: "absolute",
-    top: "20px",
-    left: "40px",
-    zIndex: 1010,
-    pointerEvents: "auto",
-  },
-
   headerContainer: {
     display: "flex",
     alignItems: "center",
@@ -154,24 +129,8 @@ const styles = {
     position: "fixed",
     top: 0,
     left: 0,
-    zIndex: 1000,
-    padding: "20px 0",
-    pointerEvents: "none",
-  },
-
-  logoLink: {
-    display: "flex",
-    alignItems: "center",
-    width: "95px", // Alterar o tamanho da logo aqui
-  },
-  logoImage: {
-    width: "100%",
-    height: "auto",
-    objectFit: "contain",
-  },
-
-  spacer: {
-    width: "95px", // Deve ser igual à largura da logoLink
+    zIndex: 9999,
+    padding: "36px 0",
     pointerEvents: "none",
   },
 
@@ -194,17 +153,19 @@ const styles = {
     borderRadius: "999px",
     pointerEvents: "none",
   },
+
   navBgOuter: {
     position: "absolute",
     inset: 0,
     borderRadius: "999px",
     background:
       "linear-gradient(to bottom, rgba(40, 15, 60, 0.75), rgba(20, 5, 30, 0.85))",
-    backdropFilter: "blur(12px)", // Efeito Glassmorphism
+    backdropFilter: "blur(12px)",
     WebkitBackdropFilter: "blur(12px)",
     boxShadow:
       "0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1)",
   },
+
   navBgInner: {
     position: "absolute",
     inset: "2px",
@@ -220,7 +181,7 @@ const styles = {
     gap: "7px",
     margin: 0,
     padding: 0,
-    listStyle: "none", // Limpa os estilos padrão da tag <ul>
+    listStyle: "none",
   },
   tab: {
     position: "relative",
@@ -229,7 +190,7 @@ const styles = {
     border: "none",
     background: "transparent",
     fontSize: "16px",
-    fontWeight: "500",
+    fontWeight: "600",
     outline: "none",
     whiteSpace: "nowrap",
     display: "flex",
@@ -238,19 +199,19 @@ const styles = {
   },
   text: {
     position: "relative",
-    zIndex: 5, // Mantém o texto sobrepondo as pílulas animadas
+    zIndex: 5,
     transition: "color 0.3s ease",
     pointerEvents: "none",
     textShadow: "0 1px 2px rgba(0,0,0,0.3)",
   },
 
-  // EFEITOS E CORES DAS PÍLULAS ANIMADAS
   activePill: {
     position: "absolute",
     inset: 0,
     zIndex: 2,
     borderRadius: "999px",
-    background: "linear-gradient(to bottom, #8640be, #662c92)",
+    background:
+      "linear-gradient(to bottom, var(--purple-light), var(--purple-primary))",
     boxShadow:
       "0 2px 4px rgba(0,0,0,0.4), inset 0 2px 2px rgba(255,255,255,0.4)",
     pointerEvents: "none",
