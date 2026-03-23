@@ -1,0 +1,46 @@
+---
+import Layout from "../layouts/Layout.astro";
+import OficinasHero from "../components/oficinas/OficinasHero.astro";
+import Calendario from "../components/oficinas/Calendario.astro";
+import Footer from "../components/common/Footer.astro";
+---
+
+<Layout
+  title="Oficinas | Monitoria TI - CEUB"
+  description="Confira o calendário e as oficinas disponíveis na Monitoria de TI do CEUB."
+>
+  <main class="oficinas-page">
+    <OficinasHero />
+
+    <div class="theme-light-section">
+      <Calendario />
+    </div>
+  </main>
+
+  <div class="theme-light-section">
+    <Footer />
+  </div>
+</Layout>
+
+<style is:global>
+  .oficinas-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  .theme-light-section {
+    background-color: #fdfdfd !important;
+    color: #1a1a24 !important;
+    flex-grow: 1;
+  }
+
+  .theme-light-section h1,
+  .theme-light-section h2,
+  .theme-light-section h3,
+  .theme-light-section h4,
+  .theme-light-section h5,
+  .theme-light-section h6 {
+    color: #0d041a;
+  }
+</style>

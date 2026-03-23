@@ -1,16 +1,21 @@
 ---
+import { ClientRouter } from "astro:transitions";
 import "../styles/global.css";
-import Navbar from "../components/Navbar.jsx";
+import Navbar from "../components/common/Navbar.jsx";
 
 interface Props {
   title: string;
   description?: string;
+  bodyClass?: string;
 }
 
 const {
   title,
   description = "Site oficial da Monitoria de TI do CEUB. Incentivamos pessoas, projetos e ideias.",
+  bodyClass = "",
 } = Astro.props;
+
+const currentPath = Astro.url.pathname;
 ---
 
 <!doctype html>
@@ -23,9 +28,10 @@ const {
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/favicon.png" />
     <title>{title}</title>
+    <ClientRouter />
   </head>
-  <body>
-    <Navbar client:load />
+  <body class={bodyClass}>
+    <Navbar client:load transition:persist="navbar" currentPath={currentPath} />
     <slot />
   </body>
 </html>
@@ -50,7 +56,11 @@ const {
     -webkit-font-smoothing: antialiased;
   }
 
-  /* Classe utilitária para esconder visualmente, mas manter para leitores de tela */
+  body.theme-light {
+    background-color: #fdfdfd !important;
+    color: #1a1a24;
+  }
+
   .sr-only {
     position: absolute;
     width: 1px;

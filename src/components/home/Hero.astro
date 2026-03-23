@@ -3,12 +3,14 @@ import FiberBackground from "../effects/Fiber.jsx";
 import TextType from "../effects/Typewriter.jsx";
 
 import { Image } from "astro:assets";
-import magoImg from "../../assets/mago/mago-hero.png";
-import logoCeub from "../../assets/logo-ceub.png";
+import magoImg from "../../assets/mago/mago-padrao.png";
+import logoCeub from "../../assets/logo-ceub-light.png";
 ---
 
 <section class="hero" aria-label="Seção de boas-vindas">
   <FiberBackground client:idle />
+
+  <div class="hero-fade" aria-hidden="true"></div>
 
   <div class="hero-content">
     <div class="hero-logo-container">
@@ -48,11 +50,10 @@ import logoCeub from "../../assets/logo-ceub.png";
         </div>
       </div>
 
-      {/* Camada de Imagem Mago */}
       <div class="image-section" aria-hidden="true">
         <Image
           src={magoImg}
-          alt="Mago da monitoria em estilo cartoon"
+          alt="Mago da monitoria com cajado brilhante em estilo cartoon"
           class="mago-img"
           loading="eager"
           decoding="async"
@@ -68,6 +69,18 @@ import logoCeub from "../../assets/logo-ceub.png";
     height: 100vh;
     width: 100vw;
     overflow: hidden;
+    background-color: var(--bg-dark);
+  }
+
+  .hero-fade {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 35vh;
+    background: linear-gradient(to bottom, transparent 0%, var(--bg-dark) 100%);
+    z-index: 1;
+    pointer-events: none;
   }
 
   .hero-content {
@@ -90,7 +103,7 @@ import logoCeub from "../../assets/logo-ceub.png";
   }
 
   .hero-logo {
-    width: 110px;
+    width: 105px;
     height: auto;
     object-fit: contain;
     filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
@@ -177,9 +190,9 @@ import logoCeub from "../../assets/logo-ceub.png";
 
   .image-section {
     position: absolute;
-    right: -23rem;
-    bottom: -4rem;
-    height: 98vh;
+    right: -10rem;
+    bottom: 0rem;
+    height: 90vh;
     z-index: 5;
     pointer-events: none;
   }
@@ -241,7 +254,7 @@ import logoCeub from "../../assets/logo-ceub.png";
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-52%, -78%);
+      transform: translate(-50%, -62%);
       width: 105vw;
       height: 60vh;
       z-index: 1;

@@ -1,11 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const tabs = ["Início", "Ver oficinas", "Pitaco", "Equipe"];
+const navItems = [
+  { name: "Início", path: "/" },
+  { name: "Ver oficinas", path: "/oficinas" },
+  { name: "Pitaco", path: "/pitaco" },
+  { name: "Equipe", path: "/equipe" },
+];
 
-export default function FlawlessPillNavbar() {
-  const [activeTab, setActiveTab] = useState(tabs[0]);
+export default function FlawlessPillNavbar({ currentPath = "/" }) {
+  const [activeTab, setActiveTab] = useState("Início");
   const [hoveredTab, setHoveredTab] = useState(null);
+
+  useEffect(() => {
+    const normalizedPath =
+      currentPath.endsWith("/") && currentPath.length > 1
+        ? currentPath.slice(0, -1)
+        : currentPath;
+
+    const currentItem = navItems.find((item) => item.path === normalizedPath);
+    if (currentItem) {
+      setActiveTab(currentItem.name);
+    } else {
+      setActiveTab("Início");
+    }
+  }, [currentPath]);
 
   return (
     <>
@@ -29,6 +48,10 @@ export default function FlawlessPillNavbar() {
              .nav-scroll-mobile::-webkit-scrollbar {
                display: none;
              }
+          }
+          .nav-link {
+            text-decoration: none;
+            color: inherit;
           }
         `}
       </style>
@@ -59,20 +82,20 @@ export default function FlawlessPillNavbar() {
             </div>
 
             <ul role="list" style={styles.buttonsContainer}>
-              {tabs.map((tab) => {
-                const isActive = activeTab === tab;
-                const isHovered = hoveredTab === tab;
+              {navItems.map((item) => {
+                const isActive = activeTab === item.name;
+                const isHovered = hoveredTab === item.name;
 
                 return (
-                  <li key={tab} style={{ display: "flex" }}>
-                    <button
+                  <li key={item.name} style={{ display: "flex" }}>
+                    <a
+                      href={item.path}
                       aria-current={isActive ? "page" : undefined}
-                      onClick={() => setActiveTab(tab)}
-                      onMouseEnter={() => setHoveredTab(tab)}
-                      onFocus={() => setHoveredTab(tab)}
+                      onMouseEnter={() => setHoveredTab(item.name)}
+                      onFocus={() => setHoveredTab(item.name)}
                       onBlur={() => setHoveredTab(null)}
                       style={styles.tab}
-                      className="tab-mobile"
+                      className="tab-mobile nav-link"
                     >
                       <span
                         style={{
@@ -82,7 +105,7 @@ export default function FlawlessPillNavbar() {
                             : "var(--text-muted)",
                         }}
                       >
-                        {tab}
+                        {item.name}
                       </span>
 
                       {isHovered && (
@@ -108,7 +131,7 @@ export default function FlawlessPillNavbar() {
                           style={styles.activePill}
                         />
                       )}
-                    </button>
+                    </a>
                   </li>
                 );
               })}

@@ -64,7 +64,8 @@ void main() {
                            sin(20.0 * (tex.x + tex.y - 0.1 * tOffset)));
 
   vec4 col = vec4(uColor, 1.0) * vec4(pattern) - rnd / 15.0 * uNoiseIntensity;
-  col.a = 1.0;
+  float fade = smoothstep(0.0, 0.25, vUv.y); 
+  col.a = fade;
   gl_FragColor = col;
 }
 `;
@@ -89,6 +90,7 @@ const SilkPlane = forwardRef(function SilkPlane({ uniforms }, ref) {
         uniforms={uniforms}
         vertexShader={vertexShader}
         fragmentShader={fragmentShader}
+        transparent={true}
       />
     </mesh>
   );

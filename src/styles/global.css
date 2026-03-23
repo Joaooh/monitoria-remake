@@ -58,3 +58,58 @@ body {
   white-space: nowrap;
   border-width: 0;
 }
+
+.buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.2;
+  text-decoration: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+  border: none;
+  min-width: 140px;
+  font-family: inherit;
+}
+
+.btn:focus-visible {
+  outline: 3px solid var(--purple-neon);
+  outline-offset: 2px;
+}
+
+.btn.primary {
+  background-color: var(--purple-neon);
+  color: #1a1a1a;
+}
+
+.btn.primary:hover {
+  background-color: var(--purple-hover);
+}
+
+.btn.secondary {
+  background-color: transparent;
+  color: var(--text-main);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.btn.secondary:hover {
+  border-color: var(--text-main);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 768px) {
+  .btn {
+    padding: 0.9rem 1.45rem;
+    font-size: 0.9rem;
+  }
+}

@@ -1,0 +1,201 @@
+---
+import { Image } from "astro:assets";
+import magoWorking from "../../assets/mago/mago-working-sem-fundo.png";
+import logoCeubLight from "../../assets/logo-ceub-light.png";
+import FiberBackground from "../effects/Fiber.jsx";
+---
+
+<section class="oficinas-hero">
+  <div class="fiber-container">
+    <FiberBackground client:load />
+    <div class="dark-overlay"></div>
+  </div>
+
+  <div class="container">
+    <div class="hero-logo-container">
+      <Image
+        src={logoCeubLight}
+        alt="Logo do CEUB"
+        class="hero-logo"
+        loading="eager"
+      />
+    </div>
+
+    <div class="hero-content">
+      <div class="text-column">
+        <h2 class="pre-title">Central de</h2>
+        <h1 class="title">Oficinas</h1>
+        <p class="subtitle">Confira nosso calendário e garanta sua vaga!</p>
+      </div>
+
+      <div class="image-column">
+        <Image
+          src={magoWorking}
+          alt="Mago da monitoria trabalhando"
+          class="mago-img"
+          loading="eager"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .oficinas-hero {
+    position: relative;
+    padding: 60px 2rem 0 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    overflow: hidden;
+    background-color: var(--bg-dark, #0d041a);
+    min-height: 40vh;
+    border-bottom: 4px solid #7a1a8f;
+  }
+
+  .fiber-container {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .dark-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(13, 4, 26, 0.4);
+  }
+
+  .container {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-logo-container {
+    position: absolute;
+    top: -26px;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+  }
+
+  .hero-logo {
+    width: 100px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+  }
+
+  .hero-content {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 140px;
+  }
+
+  .text-column {
+    flex: 0 0 45%;
+    padding-bottom: 50px;
+  }
+
+  .pre-title {
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    font-weight: 400;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.9);
+    letter-spacing: -0.5px;
+    line-height: 1;
+  }
+
+  .title {
+    font-size: clamp(4.5rem, 8vw, 7rem);
+    font-weight: 800;
+    margin: 0 0 1rem 0;
+    color: #ffffff;
+    letter-spacing: -2px;
+    line-height: 1;
+    margin-left: -4px;
+  }
+
+  .subtitle {
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .image-column {
+    flex: 0 0 55%;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: -5px;
+  }
+
+  .mago-img {
+    max-width: 100%;
+    height: auto;
+    width: 650px;
+    transform: scaleX(-1);
+    filter: drop-shadow(0 -5px 25px rgba(0, 0, 0, 0.4));
+  }
+
+  /* --- RESPONSIVIDADE MOBILE --- */
+  @media (max-width: 992px) {
+    .hero-logo {
+      display: none;
+    }
+
+    .oficinas-hero {
+      padding-top: 40px;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .container {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    .hero-content {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-top: 60px;
+    }
+
+    .text-column {
+      flex: 1;
+      padding-bottom: 20px;
+      padding-top: 0;
+      align-items: center;
+    }
+
+    .logo-ceub {
+      margin-left: 0;
+      margin-bottom: 25px;
+      width: 90px;
+    }
+
+    .title {
+      margin-left: 0;
+    }
+
+    .image-column {
+      flex: 1;
+      justify-content: center;
+      margin-bottom: -2px;
+      width: 100vw;
+    }
+
+    .mago-img {
+      width: 100%;
+      max-width: none;
+      height: auto;
+      object-fit: cover;
+      object-position: center bottom;
+    }
+  }
+</style>

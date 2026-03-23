@@ -1,0 +1,701 @@
+<div class="calendario-page-wrapper">
+  <div id="area-exportacao">
+    <div id="cabecalho">
+      <div class="logo-cabecalho logo-esquerda">
+        <img src="/logo-ceub-dark.png" alt="Logo do CEUB" />
+      </div>
+
+      <div class="titulos-cabecalho">
+        <div class="wrapper-titulo-central">
+          <h1>CALENDÁRIO DE OFICINAS</h1>
+          <h2>Ciência da Computação & Ciência de Dados • 2026.1</h2>
+        </div>
+      </div>
+
+      <div class="logo-cabecalho logo-direita">
+        <img src="/mago-cabeca.png" alt="Logo mago da monitoria" />
+      </div>
+    </div>
+
+    <div id="calendario-container" class="linha-grid"></div>
+    <div id="legenda-container" class="linha-grid legenda-grid"></div>
+  </div>
+
+  <div class="controles">
+    <button onclick="exportarParaImagem()" class="btn btn-exportar">
+      Baixar calendário como imagem
+    </button>
+  </div>
+</div>
+
+<script
+  is:inline
+  src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
+></script>
+
+<script is:inline>
+  window.dadosCalendario = {
+    ciclos: [
+      {
+        id: "ciclo-0",
+        nome: "Ciclo 0 (02/03 a 13/03)",
+        dataInicio: "2026-03-02",
+        dataFim: "2026-03-13",
+        corBase: "#b3e5fc",
+        corBorda: "#0288d1",
+        // prettier-ignore
+        oficinas: [
+          { nome: "Fundamentos da Computação", dias: "Seg, Qua e Sex", hora: "11h às 13h", formato: "Presencial" },
+          { nome: "Fundamentos da Computação", dias: "Seg, Qua e Sex", hora: "17h às 19h", formato: "Presencial" },
+          { nome: "Fundamentos para Ciência de Dados", dias: "Seg, Ter e Qui", hora: "17h às 19h", formato: "Online" },
+        ],
+      },
+      {
+        id: "ciclo-1",
+        nome: "Ciclo 1 (16/03 a 27/03)",
+        dataInicio: "2026-03-16",
+        dataFim: "2026-03-27",
+        corBase: "#c8e6c9",
+        corBorda: "#388e3c",
+        // prettier-ignore
+        oficinas: [
+          { nome: "Criação de Modelos de Personagens 3D", dias: "Seg, Qua e Sex", hora: "11h às 13h", formato: "Presencial" },
+          { nome: "Oficina de HTML/CSS", dias: "Qua e Sex", hora: "11h às 13h", formato: "Presencial" },
+          { nome: "Oficina de Java", dias: "Seg, Ter e Qui", hora: "11h às 13h", formato: "Presencial" },
+          { nome: "Oficina de Java", dias: "Seg, Qua e Sex", hora: "17h às 19h", formato: "Presencial" },
+          { nome: "Oficina de Linux", dias: "Ter e Qui", hora: "17h às 19h", formato: "Presencial" },
+          { nome: "Ciência de Dados - Ferramentas e Frameworks", dias: "Seg, Ter e Qui", hora: "17h às 19h", formato: "Online" },
+        ],
+      },
+      {
+        id: "ciclo-2",
+        nome: "Ciclo 2 (06/04 a 30/04)",
+        dataInicio: "2026-04-06",
+        dataFim: "2026-04-30",
+        corBase: "#ffe0b2",
+        corBorda: "#f57c00",
+        // prettier-ignore
+        oficinas: [
+          { nome: "Criação de Modelos de Personagens 3D" },
+          { nome: "Ciência de Dados - Machine Learning" },
+          { nome: "A confirmar" },
+          { nome: "A confirmar" },
+          { nome: "A confirmar" },
+        ],
+      },
+      {
+        id: "ciclo-3",
+        nome: "Ciclo 3 (11/05 a 05/06)",
+        dataInicio: "2026-05-11",
+        dataFim: "2026-06-05",
+        corBase: "#e1bee7",
+        corBorda: "#7b1fa2",
+        // prettier-ignore
+        oficinas: [
+          { nome: "Criação de Modelos de Personagens 3D" },
+          { nome: "Ciência de Dados - Introdução a Deep Learning" },
+          { nome: "A confirmar" },
+          { nome: "A confirmar" },
+          { nome: "A confirmar" },
+        ],
+      },
+    ],
+  };
+
+  // prettier-ignore
+  const mesesParaGerar = [
+    { mes: 2, ano: 2026, nome: "Março" },
+    { mes: 3, ano: 2026, nome: "Abril" },
+    { mes: 4, ano: 2026, nome: "Maio" },
+    { mes: 5, ano: 2026, nome: "Junho" },
+  ];
+
+  function getCicloDoDia(ano, mes, dia, diaDaSemana) {
+    if (diaDaSemana === 0 || diaDaSemana === 6) return null;
+    const dataAtual = new Date(ano, mes, dia);
+    for (const ciclo of window.dadosCalendario.ciclos) {
+      const [iAno, iMes, iDia] = ciclo.dataInicio.split("-").map(Number);
+      const [fAno, fMes, fDia] = ciclo.dataFim.split("-").map(Number);
+      const dataInicio = new Date(iAno, iMes - 1, iDia);
+      const dataFim = new Date(fAno, fMes - 1, fDia);
+      if (dataAtual >= dataInicio && dataAtual <= dataFim) return ciclo;
+    }
+    return null;
+  }
+
+  function renderizarCalendario() {
+    const containerCalendario = document.getElementById("calendario-container");
+    const containerLegenda = document.getElementById("legenda-container");
+
+    if (!containerCalendario || !containerLegenda) return;
+
+    containerCalendario.innerHTML = "";
+    containerLegenda.innerHTML = "";
+
+    mesesParaGerar.forEach((config) => {
+      const divMes = document.createElement("div");
+      divMes.className = "mes";
+
+      let html = `<div class="mes-titulo">${config.nome}</div>`;
+      html += `<div class="grid-dias">
+              <div class="cabecalho-dia">D</div><div class="cabecalho-dia">S</div>
+              <div class="cabecalho-dia">T</div><div class="cabecalho-dia">Q</div>
+              <div class="cabecalho-dia">Q</div><div class="cabecalho-dia">S</div>
+              <div class="cabecalho-dia">S</div>`;
+
+      const primeiroDiaSemana = new Date(config.ano, config.mes, 1).getDay();
+      const totalDias = new Date(config.ano, config.mes + 1, 0).getDate();
+
+      for (let i = 0; i < primeiroDiaSemana; i++)
+        html += `<div class="dia vazio"></div>`;
+
+      for (let dia = 1; dia <= totalDias; dia++) {
+        const diaDaSemana = new Date(config.ano, config.mes, dia).getDay();
+        const ciclo = getCicloDoDia(config.ano, config.mes, dia, diaDaSemana);
+
+        if (ciclo) {
+          html += `<div class="dia com-ciclo" data-tooltip="${ciclo.nome.split(" (")[0]}" style="background-color: ${ciclo.corBase}; font-weight: bold; color: #000;">${dia}</div>`;
+        } else {
+          html += `<div class="dia">${dia}</div>`;
+        }
+      }
+
+      html += `</div>`;
+      divMes.innerHTML = html;
+      containerCalendario.appendChild(divMes);
+    });
+
+    let htmlLegenda = "";
+
+    window.dadosCalendario.ciclos.forEach((ciclo) => {
+      htmlLegenda += `
+      <div class="bloco-ciclo" style="border-top-color: ${ciclo.corBorda};" onclick="toggleAccordion(event, this)">
+        <h3 class="accordion-header" style="color: ${ciclo.corBorda}">
+          <span>${ciclo.nome}</span>
+          <span class="accordion-icon">▼</span>
+        </h3>
+        <div class="lista-oficinas">
+          ${ciclo.oficinas
+            .map((oficina) => {
+              const badgeDia = oficina.dias
+                ? `<span class="badge" style="background-color: #e0e0e0; color: #444; border: 1px solid #ccc;">📅 ${oficina.dias}</span>`
+                : "";
+              const badgeHora = oficina.hora
+                ? `<span class="badge" style="background-color: #eeeeee; color: #555; border: 1px solid #ddd;">⏰ ${oficina.hora}</span>`
+                : "";
+
+              let estiloFormato = "";
+              if (oficina.formato === "Presencial") {
+                estiloFormato =
+                  "background-color: #e3f2fd; color: #1565c0; border: 1px solid #bbdefb; font-weight: bold;";
+              } else if (oficina.formato === "Online") {
+                estiloFormato =
+                  "background-color: #e8f5e9; color: #2e7d32; border: 1px solid #c8e6c9; font-weight: bold;";
+              }
+
+              const badgeFormato = oficina.formato
+                ? `<span class="badge" style="${estiloFormato}">${oficina.formato}</span>`
+                : "";
+
+              const infoFaltante =
+                !oficina.dias && !oficina.hora
+                  ? `<span class="badge" style="background-color: #fff3e0; color: #e65100; border: 1px dashed #ffb74d; font-style: italic;">A definir</span>`
+                  : "";
+
+              return `
+              <div class="oficina-card">
+                <span class="oficina-nome">${oficina.nome}</span>
+                <div class="oficina-detalhes">
+                  ${badgeDia} ${badgeHora} ${badgeFormato} ${infoFaltante}
+                </div>
+              </div>
+            `;
+            })
+            .join("")}
+        </div>
+      </div>
+    `;
+    });
+    containerLegenda.innerHTML = htmlLegenda;
+  }
+
+  document.addEventListener("astro:page-load", renderizarCalendario);
+
+  window.toggleAccordion = function (event, elemento) {
+    if (window.innerWidth <= 768) {
+      if (event.target.closest(".oficina-card")) return;
+
+      const lista = elemento.querySelector(".lista-oficinas");
+      const icone = elemento.querySelector(".accordion-icon");
+
+      if (lista.classList.contains("aberto")) {
+        lista.classList.remove("aberto");
+        icone.textContent = "▼";
+      } else {
+        lista.classList.add("aberto");
+        icone.textContent = "▲";
+      }
+    }
+  };
+
+  window.exportarParaImagem = async function () {
+    const elemento = document.getElementById("area-exportacao");
+    const cabecalho = document.getElementById("cabecalho");
+    const logos = cabecalho.querySelectorAll(".logo-cabecalho");
+    const titulos = cabecalho.querySelector(".titulos-cabecalho");
+    const wrapperCentral = cabecalho.querySelector(".wrapper-titulo-central");
+    const h1 = cabecalho.querySelector("h1");
+    const h2 = cabecalho.querySelector("h2");
+    const botaoExportar = document.querySelector(".btn-exportar");
+
+    const posicaoScroll = window.scrollY;
+
+    // Salva os estilos ANTES de aplicar qualquer classe
+    const estiloOriginalCabecalho = cabecalho.getAttribute("style") || "";
+    const estiloOriginalWrapper = wrapperCentral.getAttribute("style") || "";
+    const estiloOriginalH1 = h1.getAttribute("style") || "";
+    const estiloOriginalH2 = h2.getAttribute("style") || "";
+    const estiloOriginalLogoEsq =
+      logos.length >= 2 ? logos[0].getAttribute("style") || "" : "";
+    const estiloOriginalLogoDir =
+      logos.length >= 2 ? logos[1].getAttribute("style") || "" : "";
+
+    // Função de restauração isolada para garantir escopo limpo
+    const restaurarDOM = () => {
+      elemento.classList.remove("forcar-desktop");
+      cabecalho.setAttribute("style", estiloOriginalCabecalho);
+      titulos.removeAttribute("style");
+      wrapperCentral.setAttribute("style", estiloOriginalWrapper);
+      h1.setAttribute("style", estiloOriginalH1);
+      h2.setAttribute("style", estiloOriginalH2);
+
+      if (logos.length >= 2) {
+        logos[0].setAttribute("style", estiloOriginalLogoEsq);
+        logos[1].setAttribute("style", estiloOriginalLogoDir);
+      }
+
+      botaoExportar.disabled = false;
+      botaoExportar.textContent = "Baixar calendário como imagem";
+    };
+
+    try {
+      botaoExportar.disabled = true;
+      botaoExportar.textContent = "Gerando imagem...";
+
+      // Aplica a classe desktop
+      elemento.classList.add("forcar-desktop");
+
+      // Força os estilos inline para a exportação
+      cabecalho.style.cssText =
+        "display: block; position: relative; height: 120px;";
+      titulos.style.cssText =
+        "position: absolute; width: 100%; left: 0; top: 45%; transform: translateY(-50%); margin: 0;";
+      wrapperCentral.style.cssText =
+        "display: block; width: 100%; text-align: center;";
+      h1.style.cssText =
+        "width: 100%; text-align: center; display: block; margin: 0 auto 5px auto;";
+      h2.style.cssText =
+        "width: 100%; text-align: center; display: block; margin: 0 auto;";
+
+      if (logos.length >= 2) {
+        logos[0].style.cssText =
+          "position: absolute; left: 0; top: 45%; transform: translateY(-50%);";
+        logos[1].style.cssText =
+          "position: absolute; right: 0; top: 45%; transform: translateY(-50%);";
+      }
+
+      // Timeout para o navegador renderizar as mudanças visuais antes da foto
+      await new Promise((resolve) => setTimeout(resolve, 500));
+
+      if (typeof html2canvas === "undefined") {
+        throw new Error("html2canvas não carregou");
+      }
+
+      // Executa a captura
+      const canvas = await html2canvas(elemento, {
+        scale: window.devicePixelRatio > 1 ? window.devicePixelRatio : 2,
+        useCORS: true,
+        backgroundColor: "#ffffff",
+        logging: false,
+      });
+
+      // Transforma em imagem e baixa
+      const dataUrl = canvas.toDataURL("image/png");
+      const link = document.createElement("a");
+      link.download = "calendario-monitorias-2026.png";
+      link.href = dataUrl;
+
+      // Simula clique no mobile
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } catch (err) {
+      console.error("Erro durante a exportação do calendário:", err);
+      alert("Houve um erro ao gerar a imagem. Tente novamente.");
+    } finally {
+      restaurarDOM();
+      window.scrollTo({
+        top: posicaoScroll,
+        left: 0,
+        behavior: "instant",
+      });
+    }
+  };
+</script>
+
+<style is:global>
+  .calendario-page-wrapper {
+    padding-bottom: 80px;
+  }
+
+  .controles {
+    margin: 15px 0;
+    text-align: center;
+  }
+
+  .btn-exportar {
+    background-color: #7a1a8f;
+    color: #ffffff;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition:
+      background-color 0.2s,
+      transform 0.1s;
+    box-shadow: 0 4px 6px rgba(122, 26, 143, 0.2);
+  }
+
+  .btn-exportar:hover {
+    background-color: #5c146b;
+  }
+
+  .btn-exportar:active {
+    transform: scale(0.98);
+  }
+
+  #area-exportacao {
+    background: #fff;
+    padding: 30px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 50px auto 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  }
+
+  .linha-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+  }
+
+  .mes {
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .mes-titulo {
+    background-color: #7a1a8f;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    padding: 8px 0;
+    text-transform: uppercase;
+    font-size: 0.85em;
+    letter-spacing: 1px;
+  }
+  .grid-dias {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    background: #fff;
+  }
+  .cabecalho-dia {
+    font-weight: bold;
+    color: #666;
+    padding: 6px 0;
+    font-size: 0.7em;
+    border-bottom: 1px solid #eee;
+    background: #fafafa;
+  }
+  .dia {
+    padding: 6px 0;
+    min-height: 35px;
+    font-size: 0.8em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #555;
+    transition: filter 0.2s;
+  }
+  .dia.vazio {
+    border: none;
+  }
+
+  .dia.com-ciclo {
+    position: relative;
+    cursor: pointer;
+  }
+  .dia.com-ciclo:hover {
+    filter: brightness(0.95);
+  }
+  .dia.com-ciclo::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #222;
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition:
+      opacity 0.2s,
+      bottom 0.2s;
+    z-index: 10;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  .dia.com-ciclo:hover::after {
+    opacity: 1;
+    bottom: 100%;
+  }
+
+  .legenda-grid {
+    border-top: 2px dashed #eee;
+    padding-top: 20px;
+    margin-top: 20px;
+  }
+  .bloco-ciclo {
+    background: #f9f9f9;
+    border-top: 4px solid #ccc;
+    padding: 12px;
+    border-radius: 6px;
+    border-left: 1px solid #eee;
+    border-right: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    transition: background-color 0.2s;
+  }
+  .bloco-ciclo h3 {
+    margin-bottom: 10px;
+    font-size: 0.95em;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 6px;
+  }
+
+  .lista-oficinas {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .oficina-card {
+    background: #fafafa;
+    border: 1px solid #eee;
+    padding: 8px;
+    border-radius: 4px;
+  }
+  .oficina-nome {
+    font-weight: bold;
+    color: #333;
+    display: block;
+    margin-bottom: 4px;
+    font-size: 0.75em;
+  }
+  .oficina-detalhes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    align-items: center;
+    font-size: 0.65em;
+  }
+
+  .badge {
+    padding: 2px 4px;
+    border-radius: 3px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 2px;
+    margin-bottom: 2px;
+  }
+
+  #cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 30px;
+    border-bottom: 2px solid #e0e0e0;
+  }
+
+  .titulos-cabecalho {
+    text-align: center;
+    flex: 1;
+  }
+
+  .wrapper-titulo-central {
+    display: inline-block;
+    text-align: center;
+  }
+
+  .titulos-cabecalho h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+    text-align: center;
+    width: 100%;
+  }
+  .titulos-cabecalho h2 {
+    font-size: 1rem;
+    color: #7a1a8f !important;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: center;
+    width: 100%;
+  }
+  .logo-cabecalho {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .logo-cabecalho img,
+  .logo-cabecalho svg {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  .forcar-desktop {
+    width: 1200px !important;
+    max-width: none !important;
+    padding: 15px 30px !important;
+  }
+  .forcar-desktop .linha-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+
+  .forcar-desktop .accordion-icon {
+    display: none !important;
+  }
+  .forcar-desktop .lista-oficinas {
+    display: flex !important;
+    max-height: none !important;
+    opacity: 1 !important;
+    overflow: visible !important;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    border-top: none !important;
+  }
+
+  .accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: default;
+  }
+  .accordion-icon {
+    display: none;
+    font-size: 0.8em;
+    transition: transform 0.2s;
+  }
+
+  /* --- RESPONSIVIDADE MOBILE --- */
+  @media (max-width: 1024px) {
+    .linha-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .titulos-cabecalho h1 {
+      font-size: 1.6rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    #area-exportacao {
+      padding: 15px;
+    }
+    .linha-grid {
+      grid-template-columns: 1fr;
+    }
+
+    #cabecalho {
+      display: block;
+      position: relative;
+      padding-top: 75px;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+    }
+
+    .logo-cabecalho {
+      position: absolute;
+      top: 0;
+      width: 60px;
+      height: 60px;
+    }
+
+    .logo-esquerda {
+      left: 0;
+    }
+
+    .logo-direita {
+      right: 0;
+    }
+
+    .titulos-cabecalho {
+      width: 100%;
+      margin-top: 0;
+      display: block;
+    }
+    .titulos-cabecalho h1 {
+      font-size: 1.4rem;
+    }
+    .titulos-cabecalho h2 {
+      font-size: 0.85rem;
+    }
+
+    .bloco-ciclo {
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .bloco-ciclo:active {
+      background: #f0f0f0;
+    }
+
+    .accordion-header {
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+    .accordion-icon {
+      display: block;
+    }
+
+    .lista-oficinas {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      margin-top: 0;
+      padding-top: 0;
+      border-top: 1px solid transparent;
+      transition:
+        max-height 0.4s ease,
+        opacity 0.3s ease,
+        margin-top 0.3s ease,
+        padding-top 0.3s ease;
+    }
+    .lista-oficinas.aberto {
+      max-height: 600px;
+      opacity: 1;
+      margin-top: 15px;
+      padding-top: 10px;
+      border-top-color: #e0e0e0;
+    }
+  }
+</style>

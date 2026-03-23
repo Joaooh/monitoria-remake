@@ -8,24 +8,27 @@ import imgApoio from "../../assets/mago/mago-working.png";
 const iniciativas = [
   {
     title: "Oficinas",
-    description:
-      "Descubra o que ensinamos em nossas oficinas práticas e desenvolva novas habilidades.",
+    description: "Descubra o que ensinamos em nossas oficinas práticas.",
     image: imgOficinas,
     alt: "Mago dando aula em um quadro verde",
+    link: "/oficinas",
+    isExternal: false,
   },
   {
     title: "Projetos",
-    description:
-      "Conheça as ideias e soluções tecnológicas que construímos em conjunto.",
+    description: "Conheça as ideias que construímos em conjunto.",
     image: imgProjetos,
-    alt: "Mago se acidentando/trabalhando em projetos",
+    alt: "Mago se acidentando",
+    link: "/pitaco",
+    isExternal: false,
   },
   {
     title: "Apoio Acadêmico",
-    description:
-      "Saiba como nossa equipe pode te ajudar a superar os desafios das disciplinas.",
+    description: "Saiba como podemos te ajudar a superar suas dificuldades.",
     image: imgApoio,
     alt: "Mago trabalhando focado em uma mesa de escritório",
+    link: "https://linktr.ee/monitoriaticeub",
+    isExternal: true,
   },
 ];
 ---
@@ -60,6 +63,29 @@ const iniciativas = [
             <div class="card-content">
               <h3>{item.title}</h3>
               <p>{item.description}</p>
+
+              <a
+                href={item.link}
+                target={item.isExternal ? "_blank" : undefined}
+                rel={item.isExternal ? "noopener noreferrer" : undefined}
+                class="saiba-mais-btn"
+              >
+                Saiba mais
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <line x1="7" y1="17" x2="17" y2="7" />
+                  <polyline points="7 7 17 7 17 17" />
+                </svg>
+              </a>
             </div>
           </article>
         ))
@@ -179,6 +205,33 @@ const iniciativas = [
     color: var(--text-muted);
     line-height: 1.6;
     margin: 0;
+    margin-bottom: 2rem;
+  }
+
+  .saiba-mais-btn {
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.1rem;
+    color: #d2a8ff;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none !important;
+    width: fit-content;
+    transition: color 0.3s ease;
+    letter-spacing: 0.5px;
+  }
+
+  .saiba-mais-btn svg {
+    transition: transform 0.3s ease;
+  }
+
+  .saiba-mais-btn:hover {
+    color: #ffffff;
+  }
+
+  .saiba-mais-btn:hover svg {
+    transform: translate(3px, -3px);
   }
 
   /* --- RESPONSIVIDADE MOBILE --- */
