@@ -1,5 +1,7 @@
 ---
-import CountUp from "../effects/CountUp.jsx";
+import CountUp from "@components/effects/CountUp.jsx";
+import SobreNos from "./Sobre.astro";
+import { statsData } from "@data/stats.js";
 ---
 
 <section class="stats-section" aria-label="Estatísticas da Monitoria">
@@ -30,34 +32,24 @@ import CountUp from "../effects/CountUp.jsx";
       </div>
     </div>
 
+    <SobreNos />
+
     <div class="stats-grid">
-      <div class="stat-item">
-        <div class="number">
-          <CountUp client:visible to={10} duration={2} />+
-        </div>
-        <p>Oficinas realizadas</p>
-      </div>
-
-      <div class="stat-item">
-        <div class="number">
-          <CountUp client:visible to={300} duration={2.5} />+
-        </div>
-        <p>Alunos inscritos</p>
-      </div>
-
-      <div class="stat-item">
-        <div class="number">
-          <CountUp client:visible to={20} duration={2} />+
-        </div>
-        <p>Colaboradores</p>
-      </div>
-
-      <div class="stat-item">
-        <div class="number">
-          <CountUp client:visible to={6} duration={1.5} />
-        </div>
-        <p>Anos de história</p>
-      </div>
+      {
+        statsData.map((stat) => (
+          <div class="stat-item">
+            <div class="number">
+              <CountUp
+                client:visible
+                to={stat.numero}
+                duration={stat.duracao}
+              />
+              {stat.sufixo}
+            </div>
+            <p>{stat.legenda}</p>
+          </div>
+        ))
+      }
     </div>
   </div>
 </section>

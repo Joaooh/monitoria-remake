@@ -1,3 +1,7 @@
+---
+import { dadosCalendario, mesesParaGerar } from "@data/calendario.js";
+---
+
 <div class="calendario-page-wrapper">
   <div id="area-exportacao">
     <div id="cabecalho">
@@ -28,92 +32,21 @@
   </div>
 </div>
 
+<script is:inline define:vars={{ dadosCalendario, mesesParaGerar }}>
+  window._DADOS_CALENDARIO = dadosCalendario;
+  window._MESES_CALENDARIO = mesesParaGerar;
+</script>
+
 <script
   is:inline
   src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
 ></script>
 
 <script is:inline>
-  window.dadosCalendario = {
-    ciclos: [
-      {
-        id: "ciclo-0",
-        nome: "Ciclo 0 (02/03 a 13/03)",
-        dataInicio: "2026-03-02",
-        dataFim: "2026-03-13",
-        corBase: "#b3e5fc",
-        corBorda: "#0288d1",
-        // prettier-ignore
-        oficinas: [
-          { nome: "Fundamentos da Computação", dias: "Seg, Qua e Sex", hora: "11h às 13h", formato: "Presencial" },
-          { nome: "Fundamentos da Computação", dias: "Seg, Qua e Sex", hora: "17h às 19h", formato: "Presencial" },
-          { nome: "Fundamentos para Ciência de Dados", dias: "Seg, Ter e Qui", hora: "17h às 19h", formato: "Online" },
-        ],
-      },
-      {
-        id: "ciclo-1",
-        nome: "Ciclo 1 (16/03 a 27/03)",
-        dataInicio: "2026-03-16",
-        dataFim: "2026-03-27",
-        corBase: "#c8e6c9",
-        corBorda: "#388e3c",
-        // prettier-ignore
-        oficinas: [
-          { nome: "Criação de Modelos de Personagens 3D", dias: "Seg, Qua e Sex", hora: "11h às 13h", formato: "Presencial" },
-          { nome: "Oficina de HTML/CSS", dias: "Qua e Sex", hora: "11h às 13h", formato: "Presencial" },
-          { nome: "Oficina de Java", dias: "Seg, Ter e Qui", hora: "11h às 13h", formato: "Presencial" },
-          { nome: "Oficina de Java", dias: "Seg, Qua e Sex", hora: "17h às 19h", formato: "Presencial" },
-          { nome: "Oficina de Linux", dias: "Ter e Qui", hora: "17h às 19h", formato: "Presencial" },
-          { nome: "Ciência de Dados - Ferramentas e Frameworks", dias: "Seg, Ter e Qui", hora: "17h às 19h", formato: "Online" },
-        ],
-      },
-      {
-        id: "ciclo-2",
-        nome: "Ciclo 2 (06/04 a 30/04)",
-        dataInicio: "2026-04-06",
-        dataFim: "2026-04-30",
-        corBase: "#ffe0b2",
-        corBorda: "#f57c00",
-        // prettier-ignore
-        oficinas: [
-          { nome: "Criação de Modelos de Personagens 3D" },
-          { nome: "Ciência de Dados - Machine Learning" },
-          { nome: "A confirmar" },
-          { nome: "A confirmar" },
-          { nome: "A confirmar" },
-        ],
-      },
-      {
-        id: "ciclo-3",
-        nome: "Ciclo 3 (11/05 a 05/06)",
-        dataInicio: "2026-05-11",
-        dataFim: "2026-06-05",
-        corBase: "#e1bee7",
-        corBorda: "#7b1fa2",
-        // prettier-ignore
-        oficinas: [
-          { nome: "Criação de Modelos de Personagens 3D" },
-          { nome: "Ciência de Dados - Introdução a Deep Learning" },
-          { nome: "A confirmar" },
-          { nome: "A confirmar" },
-          { nome: "A confirmar" },
-        ],
-      },
-    ],
-  };
-
-  // prettier-ignore
-  const mesesParaGerar = [
-    { mes: 2, ano: 2026, nome: "Março" },
-    { mes: 3, ano: 2026, nome: "Abril" },
-    { mes: 4, ano: 2026, nome: "Maio" },
-    { mes: 5, ano: 2026, nome: "Junho" },
-  ];
-
   function getCicloDoDia(ano, mes, dia, diaDaSemana) {
     if (diaDaSemana === 0 || diaDaSemana === 6) return null;
     const dataAtual = new Date(ano, mes, dia);
-    for (const ciclo of window.dadosCalendario.ciclos) {
+    for (const ciclo of window._DADOS_CALENDARIO.ciclos) {
       const [iAno, iMes, iDia] = ciclo.dataInicio.split("-").map(Number);
       const [fAno, fMes, fDia] = ciclo.dataFim.split("-").map(Number);
       const dataInicio = new Date(iAno, iMes - 1, iDia);
@@ -132,7 +65,7 @@
     containerCalendario.innerHTML = "";
     containerLegenda.innerHTML = "";
 
-    mesesParaGerar.forEach((config) => {
+    window._MESES_CALENDARIO.forEach((config) => {
       const divMes = document.createElement("div");
       divMes.className = "mes";
 
@@ -167,7 +100,7 @@
 
     let htmlLegenda = "";
 
-    window.dadosCalendario.ciclos.forEach((ciclo) => {
+    window._DADOS_CALENDARIO.ciclos.forEach((ciclo) => {
       htmlLegenda += `
       <div class="bloco-ciclo" style="border-top-color: ${ciclo.corBorda};" onclick="toggleAccordion(event, this)">
         <h3 class="accordion-header" style="color: ${ciclo.corBorda}">
@@ -247,10 +180,7 @@
     const h1 = cabecalho.querySelector("h1");
     const h2 = cabecalho.querySelector("h2");
     const botaoExportar = document.querySelector(".btn-exportar");
-
     const posicaoScroll = window.scrollY;
-
-    // Salva os estilos ANTES de aplicar qualquer classe
     const estiloOriginalCabecalho = cabecalho.getAttribute("style") || "";
     const estiloOriginalWrapper = wrapperCentral.getAttribute("style") || "";
     const estiloOriginalH1 = h1.getAttribute("style") || "";
@@ -260,7 +190,6 @@
     const estiloOriginalLogoDir =
       logos.length >= 2 ? logos[1].getAttribute("style") || "" : "";
 
-    // Função de restauração isolada para garantir escopo limpo
     const restaurarDOM = () => {
       elemento.classList.remove("forcar-desktop");
       cabecalho.setAttribute("style", estiloOriginalCabecalho);
@@ -282,10 +211,8 @@
       botaoExportar.disabled = true;
       botaoExportar.textContent = "Gerando imagem...";
 
-      // Aplica a classe desktop
       elemento.classList.add("forcar-desktop");
 
-      // Força os estilos inline para a exportação
       cabecalho.style.cssText =
         "display: block; position: relative; height: 120px;";
       titulos.style.cssText =
@@ -304,14 +231,12 @@
           "position: absolute; right: 0; top: 45%; transform: translateY(-50%);";
       }
 
-      // Timeout para o navegador renderizar as mudanças visuais antes da foto
       await new Promise((resolve) => setTimeout(resolve, 500));
 
       if (typeof html2canvas === "undefined") {
         throw new Error("html2canvas não carregou");
       }
 
-      // Executa a captura
       const canvas = await html2canvas(elemento, {
         scale: window.devicePixelRatio > 1 ? window.devicePixelRatio : 2,
         useCORS: true,
@@ -319,13 +244,11 @@
         logging: false,
       });
 
-      // Transforma em imagem e baixa
       const dataUrl = canvas.toDataURL("image/png");
       const link = document.createElement("a");
       link.download = "calendario-monitorias-2026.png";
       link.href = dataUrl;
 
-      // Simula clique no mobile
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);

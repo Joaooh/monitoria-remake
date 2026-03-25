@@ -1,0 +1,120 @@
+---
+import { Image } from "astro:assets";
+import imgMagoDuvida from "@assets/mago/mago-com-duvida.png";
+---
+
+<div class="sobre-nos-wrapper">
+  <div class="sobre-nos-content">
+    <div class="text-column">
+      <h3 id="sobre-titulo">Sobre a Monitoria de TI</h3>
+      <p>
+        Somos uma comunidade universitária focada no crescimento mútuo e no
+        fortalecimento do setor tecnológico. Unimos monitores e alunos em um
+        ecossistema que integra o saber acadêmico à prática de mercado,
+        transformando desafios em aprendizado colaborativo e inovação técnica.
+      </p>
+      <p>
+        Nossa missão é promover um estudo produtivo e equilibrado, oferecendo
+        oficinas de base, projetos de alto impacto e apoio acadêmico
+        estratégico. Através dessa troca, expandimos os horizontes dos
+        estudantes, visando o desempenho de excelência e a construção de
+        trajetórias profissionais de sucesso.
+      </p>
+    </div>
+
+    <div class="image-column" aria-hidden="true">
+      <Image
+        src={imgMagoDuvida}
+        alt="Mago da monitoria do CEUB com dúvida"
+        class="mago-duvida-img"
+        quality="max"
+      />
+    </div>
+  </div>
+</div>
+
+<style>
+  .sobre-nos-wrapper {
+    width: 100%;
+    margin: 2.5rem 0;
+  }
+
+  .sobre-nos-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+  }
+
+  .text-column {
+    flex: 0 0 60%;
+    max-width: 650px;
+    text-align: left;
+  }
+
+  h3 {
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    color: var(--text-main);
+    font-weight: 700;
+    letter-spacing: -1px;
+    margin-bottom: 1.5rem;
+    margin-left: -2px;
+  }
+
+  p {
+    color: var(--text-muted);
+    font-size: 1.15rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+
+  .image-column {
+    flex: 0 0 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .mago-duvida-img {
+    width: 100%;
+    max-width: 480px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.5));
+  }
+
+  /* --- RESPONSIVIDADE MOBILE --- */
+  @media (max-width: 900px) {
+    .sobre-nos-wrapper {
+      margin: 2rem 0;
+    }
+    .sobre-nos-content {
+      flex-direction: column;
+      text-align: center;
+      gap: 1rem;
+    }
+
+    .text-column {
+      flex: 1;
+      max-width: 100%;
+      text-align: center;
+    }
+
+    h3 {
+      margin-left: 0;
+    }
+
+    .image-column {
+      flex: 1;
+      width: 100%;
+    }
+
+    .mago-duvida-img {
+      max-width: 300px;
+    }
+  }
+</style>
