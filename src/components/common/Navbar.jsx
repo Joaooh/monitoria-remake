@@ -9,21 +9,30 @@ const navItems = [
 ];
 
 export default function FlawlessPillNavbar({ currentPath = "/" }) {
-  const [activeTab, setActiveTab] = useState("Início");
+  const getActiveTabFromPath = (path) => {
+    const normalizedPath =
+      path.endsWith("/") && path.length > 1 ? path.slice(0, -1) : path;
+
+    const currentItem = navItems.find((item) => {
+      if (item.path === "/") {
+        return normalizedPath === "/";
+      }
+      return (
+        normalizedPath === item.path ||
+        normalizedPath.startsWith(item.path + "/")
+      );
+    });
+
+    return currentItem ? currentItem.name : "Início";
+  };
+
+  const [activeTab, setActiveTab] = useState(() =>
+    getActiveTabFromPath(currentPath),
+  );
   const [hoveredTab, setHoveredTab] = useState(null);
 
   useEffect(() => {
-    const normalizedPath =
-      currentPath.endsWith("/") && currentPath.length > 1
-        ? currentPath.slice(0, -1)
-        : currentPath;
-
-    const currentItem = navItems.find((item) => item.path === normalizedPath);
-    if (currentItem) {
-      setActiveTab(currentItem.name);
-    } else {
-      setActiveTab("Início");
-    }
+    setActiveTab(getActiveTabFromPath(currentPath));
   }, [currentPath]);
 
   return (

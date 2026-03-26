@@ -1,0 +1,169 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/common/Navbar.jsx";
+import Footer from "../components/common/Footer.astro";
+import MonitorCard from "../components/equipe/MonitorCard.astro";
+import { equipeData } from "../data/equipe.js";
+
+const ordenarPorNome = (a: { nome: string }, b: { nome: string }) => {
+  return a.nome.localeCompare(b.nome, "pt-BR");
+};
+
+const monitoresAtivos = equipeData.filter((m) => m.ativo).sort(ordenarPorNome);
+const exMembros = equipeData.filter((m) => !m.ativo).sort(ordenarPorNome);
+---
+
+<Layout title="Equipe | Monitoria de TI - CEUB">
+  <Navbar currentPath={Astro.url.pathname} client:load />
+
+  <main class="equipe-page">
+    <section class="hero-equipe">
+      <div class="hero-content">
+        <h1>Equipe de Monitores</h1>
+      </div>
+    </section>
+
+    <div class="container main-content">
+      <section class="team-section">
+        <div class="section-header">
+          <h2>Conheça nossa equipe</h2>
+          <div class="divider"></div>
+        </div>
+
+        <div class="monitores-grid">
+          {
+            monitoresAtivos.map((monitor, index) => (
+              <MonitorCard
+                nome={monitor.nome}
+                descricao={monitor.descricao}
+                foto={monitor.foto}
+                loading={index < 8 ? "eager" : "lazy"}
+              />
+            ))
+          }
+        </div>
+      </section>
+
+      {
+        exMembros.length > 0 && (
+          <section class="team-section ex-membros-section">
+            <div class="section-header">
+              <h2>Ex-Membros da Monitoria</h2>
+              <div class="divider" />
+            </div>
+
+            <div class="monitores-grid">
+              {exMembros.map((monitor) => (
+                <MonitorCard
+                  nome={monitor.nome}
+                  descricao={monitor.descricao}
+                  foto={monitor.foto}
+                  isExMembro={true}
+                />
+              ))}
+            </div>
+          </section>
+        )
+      }
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .equipe-page {
+    background-color: #fafafe;
+    min-height: 100vh;
+  }
+
+  .hero-equipe {
+    background: linear-gradient(135deg, #4a148c, #662c92);
+    padding: 180px 2rem 80px 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-equipe h1 {
+    color: #ffffff;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 800;
+    letter-spacing: -1px;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 2;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .main-content {
+    margin-top: -40px;
+    position: relative;
+    z-index: 10;
+    padding-bottom: 100px;
+  }
+
+  .team-section {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 4rem 2rem;
+    box-shadow: 0 10px 40px rgba(102, 44, 146, 0.05);
+    margin-bottom: 4rem;
+  }
+
+  .ex-membros-section {
+    background: transparent;
+    box-shadow: none;
+    padding: 2rem 0;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .section-header h2 {
+    font-size: clamp(1.8rem, 3vw, 2.2rem);
+    color: #333333;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+  }
+
+  .divider {
+    width: 60px;
+    height: 3px;
+    background-color: #662c92;
+    border-radius: 2px;
+  }
+
+  .monitores-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 2rem;
+  }
+
+  /* --- RESPONSIVIDADE MOBILE --- */
+  @media (max-width: 768px) {
+    .hero-equipe {
+      padding: 140px 1.5rem 60px 1.5rem;
+    }
+    .team-section {
+      padding: 2.5rem 1.5rem;
+    }
+    .container {
+      padding: 0 1rem;
+    }
+    .main-content {
+      margin-top: -20px;
+    }
+  }
+</style>

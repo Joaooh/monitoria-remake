@@ -1,0 +1,387 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/common/Navbar.jsx";
+import Footer from "../../components/common/Footer.astro";
+import { Image } from "astro:assets";
+import { oficinasDetalhes } from "../../data/oficinas-detalhes.js";
+import MonitorCard from "../../components/equipe/MonitorCard.astro";
+
+export async function getStaticPaths() {
+  return oficinasDetalhes.map((oficina) => ({
+    params: { slug: oficina.slug },
+    props: { oficina },
+  }));
+}
+
+const { oficina } = Astro.props;
+---
+
+<Layout title={`${oficina.titulo} | Monitoria de TI - CEUB`}>
+  <Navbar currentPath={Astro.url.pathname} client:load />
+
+  <main class="oficina-page">
+    <div class="hero-banner"></div>
+
+    <div class="container main-content">
+      <a href="/oficinas" class="btn-voltar">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        Voltar para Oficinas
+      </a>
+
+      <section class="oficina-header">
+        <div class="image-wrapper">
+          <Image
+            src={oficina.imagem}
+            alt={oficina.alt}
+            class="oficina-img"
+            quality="max"
+            loading="eager"
+            fetchpriority="high"
+          />
+        </div>
+
+        <div class="header-info">
+          <h1>{oficina.titulo}</h1>
+
+          <div class="meta-info">
+            <span class="campus-tag">{oficina.campus}</span>
+            <div class="horario-info">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><rect x="3" y="4" width="18" height="18" rx="2" ry="2"
+                ></rect><line x1="16" y1="2" x2="16" y2="6"></line><line
+                  x1="8"
+                  y1="2"
+                  x2="8"
+                  y2="6"></line><line x1="3" y1="10" x2="21" y2="10"
+                ></line></svg
+              >
+              <span>{oficina.horarios}</span>
+            </div>
+          </div>
+
+          <div class="action-buttons">
+            {
+              oficina.botoes.map((btn) => (
+                <a
+                  href={btn.link}
+                  class={`btn ${btn.tipo === "primary" ? "btn-primary" : "btn-secondary"}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {btn.texto}
+                </a>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+
+      <section class="sobre-section">
+        <h2>Sobre a Oficina</h2>
+        <div class="sobre-content">
+          {
+            oficina.sobre.map((secao) => (
+              <div class="sobre-bloco">
+                {secao.titulo && <h3>{secao.titulo}</h3>}
+                <div class="sobre-text" set:html={secao.texto} />
+              </div>
+            ))
+          }
+        </div>
+      </section>
+
+      <section class="monitores-section">
+        <h2>Monitores Responsáveis</h2>
+        <div class="monitores-grid">
+          {
+            oficina.monitores.map((monitor) => {
+              if (!monitor) return null;
+
+              return (
+                <MonitorCard
+                  nome={monitor.nome}
+                  descricao={monitor.descricao}
+                  foto={monitor.foto}
+                />
+              );
+            })
+          }
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .oficina-page {
+    background-color: #f5f5f5;
+    min-height: 100vh;
+    padding-bottom: 80px;
+  }
+
+  .hero-banner {
+    background-color: #662c92;
+    height: 25vh;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+
+  .btn-voltar {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    transition:
+      transform 0.2s ease,
+      opacity 0.2s ease;
+  }
+
+  .btn-voltar:hover {
+    transform: translateX(-5px);
+    opacity: 0.8;
+  }
+
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .main-content {
+    position: relative;
+    z-index: 2;
+    padding-top: 15vh;
+  }
+
+  .oficina-header {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 2rem;
+    display: flex;
+    gap: 3rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    margin-bottom: 4rem;
+    align-items: center;
+  }
+
+  .image-wrapper {
+    flex: 0 0 45%;
+    aspect-ratio: 16 / 9;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #ddd1ff;
+  }
+
+  .oficina-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .header-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .header-info h1 {
+    font-size: clamp(1.8rem, 3vw, 2.2rem);
+    color: #3b004d;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+
+  .meta-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .campus-tag {
+    align-self: flex-start;
+    padding: 6px 14px;
+    background: rgba(122, 26, 143, 0.1);
+    color: #7a1a8f;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .horario-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #555;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  .horario-info svg {
+    color: #e81c61;
+  }
+
+  .action-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: auto;
+  }
+
+  .btn {
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+  }
+
+  .btn-primary {
+    background: #e81c61;
+    color: #ffffff;
+    box-shadow: 0 4px 10px rgba(232, 28, 97, 0.2);
+  }
+
+  .btn-primary:hover {
+    background: #c2154f;
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary {
+    background: #ffffff;
+    color: #e81c61;
+    border: 2px solid #e81c61;
+  }
+
+  .btn-secondary:hover {
+    background: #fff0f4;
+  }
+
+  .sobre-section {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    margin-bottom: 4rem;
+  }
+
+  h2 {
+    color: #3b004d;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid rgba(122, 26, 143, 0.1);
+  }
+
+  .sobre-bloco {
+    margin-bottom: 2rem;
+  }
+
+  .sobre-bloco:last-child {
+    margin-bottom: 0;
+  }
+
+  .sobre-bloco h3 {
+    color: #3b004d;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+    margin-top: 1.5rem;
+  }
+
+  .sobre-text {
+    color: #444 !important;
+    line-height: 1.8;
+    font-size: 1.05rem;
+  }
+
+  .sobre-bloco p {
+    color: #555;
+    line-height: 1.8;
+    font-size: 1.05rem;
+  }
+
+  .sobre-text ul {
+    margin: 1rem 0 1.5rem 1.5rem;
+    list-style-type: disc !important;
+  }
+
+  .sobre-text li {
+    color: #444 !important;
+    margin-bottom: 0.5rem;
+  }
+
+  .sobre-text strong {
+    color: #222 !important;
+    font-weight: 700;
+  }
+
+  .monitores-section {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  }
+
+  .monitores-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  /* --- RESPONSIVIDADE MOBILE --- */
+  @media (max-width: 800px) {
+    .oficina-header {
+      flex-direction: column;
+      padding: 1.5rem;
+      gap: 1.5rem;
+    }
+
+    .image-wrapper {
+      width: 100%;
+    }
+
+    .sobre-section,
+    .monitores-section {
+      padding: 2rem 1.5rem;
+    }
+  }
+</style>
