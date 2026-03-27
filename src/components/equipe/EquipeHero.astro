@@ -2,7 +2,7 @@
 import { Image } from "astro:assets";
 import logoCeubLight from "@assets/logo-ceub-light.png";
 import FiberBackground from "@components/effects/Fiber.jsx";
-import magoRelogio from "@assets/mago/mago-relogio.png";
+import magoSpell from "@assets/mago/mago-spell.png";
 
 interface Props {
   titulo: string;
@@ -13,7 +13,7 @@ interface Props {
 const { titulo, preTexto, subTexto } = Astro.props;
 ---
 
-<section class="oficina-interna-hero">
+<section class="equipe-hero">
   <div class="fiber-container">
     <FiberBackground client:load />
     <div class="dark-overlay"></div>
@@ -37,28 +37,30 @@ const { titulo, preTexto, subTexto } = Astro.props;
       </div>
 
       <div class="image-column">
-        <Image
-          src={magoRelogio}
-          alt="Mago da monitoria apontando para um relógio"
-          class="mago-vertical-img"
-          loading="eager"
-          fetchpriority="high"
-        />
+        <div class="image-wrapper-glow">
+          <Image
+            src={magoSpell}
+            alt="Mago da monitoria conjurando um feitiço de luz"
+            class="mago-spell-img"
+            loading="eager"
+            fetchpriority="high"
+          />
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <style>
-  .oficina-interna-hero {
+  .equipe-hero {
     position: relative;
-    padding: 60px 2rem 0 2rem;
+    padding: 20px 2rem 0 2rem;
     display: flex;
     justify-content: center;
     align-items: flex-end;
     overflow: hidden;
     background-color: var(--bg-dark, #0d041a);
-    min-height: 40vh;
+    min-height: 30vh;
     border-bottom: 4px solid #7a1a8f;
   }
 
@@ -84,8 +86,9 @@ const { titulo, preTexto, subTexto } = Astro.props;
 
   .hero-logo-container {
     position: absolute;
-    top: -26px;
+    top: 14px;
     left: 0;
+    width: 100%;
     z-index: 10;
   }
 
@@ -101,52 +104,77 @@ const { titulo, preTexto, subTexto } = Astro.props;
     align-items: flex-end;
     justify-content: space-between;
     width: 100%;
-    margin-top: 40px;
+    margin-top: 51px;
+    gap: 2rem;
   }
 
   .text-column {
-    flex: 0 0 55%;
+    flex: 0 0 50%;
     padding-bottom: 50px;
   }
 
   .pre-title {
-    font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
     font-weight: 400;
     margin: 0;
-    color: rgba(255, 255, 255, 0.8);
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.9);
+    letter-spacing: -0.5px;
+    line-height: 1;
   }
 
   .title {
-    font-size: clamp(3rem, 6vw, 5rem);
+    font-size: clamp(4.5rem, 8vw, 7rem);
     font-weight: 800;
-    margin: 0.5rem 0 1.5rem 0;
+    margin: 0 0 1rem 0;
     color: #ffffff;
-    letter-spacing: -1.5px;
-    line-height: 1.1;
+    letter-spacing: -2px;
+    line-height: 1;
+    margin-left: -4px;
   }
 
   .subtitle {
-    font-size: clamp(1rem, 1.5vw, 1.1rem);
-    color: rgba(255, 255, 255, 0.9);
-    line-height: 1.6;
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.5;
     margin: 0;
   }
 
   .image-column {
-    flex: 0 0 45%;
+    flex: 0 0 50%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     margin-bottom: -4px;
   }
 
-  .mago-vertical-img {
-    width: auto;
-    max-height: 380px;
+  .image-wrapper-glow {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .image-wrapper-glow::before {
+    content: "";
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    background: radial-gradient(
+      circle,
+      rgba(122, 26, 143, 0.3) 0%,
+      rgba(13, 4, 26, 0) 70%
+    );
+    z-index: -1;
+    border-radius: 50%;
+  }
+
+  .mago-spell-img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
     object-fit: contain;
-    object-position: bottom center;
-    filter: drop-shadow(0 -5px 25px rgba(0, 0, 0, 0.4));
+    transform: scaleX(-1);
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+    margin-left: -10px;
   }
 
   /* --- RESPONSIVIDADE MOBILE --- */
@@ -155,21 +183,31 @@ const { titulo, preTexto, subTexto } = Astro.props;
       display: none;
     }
 
-    .oficina-interna-hero {
-      padding-top: 80px;
-      padding-bottom: 0;
+    .equipe-hero {
+      padding-top: 40px;
+      padding-left: 0;
+      padding-right: 0;
+      min-height: auto;
+    }
+
+    .container {
+      padding-left: 1rem;
+      padding-right: 1rem;
     }
 
     .hero-content {
       flex-direction: column;
       align-items: center;
       text-align: center;
-      margin-top: 20px;
+      margin-top: 60px;
+      gap: 1rem;
     }
 
     .text-column {
       flex: 1;
-      padding-bottom: 20px;
+      padding-bottom: 10px;
+      padding-top: 0;
+      align-items: center;
     }
 
     .title {
@@ -178,12 +216,18 @@ const { titulo, preTexto, subTexto } = Astro.props;
 
     .image-column {
       flex: 1;
-      width: 100%;
+      justify-content: center;
       margin-bottom: -4px;
+      width: 100vw;
     }
 
-    .mago-vertical-img {
-      max-height: 280px;
+    .mago-spell-img {
+      width: 100%;
+      max-width: 200px;
+      height: auto;
+      object-fit: contain;
+      object-position: center bottom;
+      margin-left: 0;
     }
   }
 </style>

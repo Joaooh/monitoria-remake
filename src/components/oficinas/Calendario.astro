@@ -87,7 +87,10 @@ import { dadosCalendario, mesesParaGerar } from "@data/calendario.js";
         const ciclo = getCicloDoDia(config.ano, config.mes, dia, diaDaSemana);
 
         if (ciclo) {
-          html += `<div class="dia com-ciclo" data-tooltip="${ciclo.nome.split(" (")[0]}" style="background-color: ${ciclo.corBase}; font-weight: bold; color: #000;">${dia}</div>`;
+          const idFormatado = ciclo.nome
+            .toLowerCase()
+            .replace(/[^a-z0-9]/g, "-");
+          html += `<div class="dia com-ciclo" data-tooltip="${ciclo.nome.split(" (")[0]}" style="background-color: ${ciclo.corBase}; font-weight: bold; color: #000;" onclick="abrirCiclo('${idFormatado}')">${dia}</div>`;
         } else {
           html += `<div class="dia">${dia}</div>`;
         }
@@ -101,12 +104,15 @@ import { dadosCalendario, mesesParaGerar } from "@data/calendario.js";
     let htmlLegenda = "";
 
     window._DADOS_CALENDARIO.ciclos.forEach((ciclo) => {
+      const idFormatado = ciclo.nome.toLowerCase().replace(/[^a-z0-9]/g, "-");
+
       htmlLegenda += `
-      <div class="bloco-ciclo" style="border-top-color: ${ciclo.corBorda};" onclick="toggleAccordion(event, this)">
+      <div id="ciclo-${idFormatado}" class="bloco-ciclo" style="border-top-color: ${ciclo.corBorda};" onclick="toggleAccordion(event, this)">
         <h3 class="accordion-header" style="color: ${ciclo.corBorda}">
           <span>${ciclo.nome}</span>
           <span class="accordion-icon">▼</span>
         </h3>
+
         <div class="lista-oficinas">
           ${ciclo.oficinas
             .map((oficina) => {
@@ -167,6 +173,37 @@ import { dadosCalendario, mesesParaGerar } from "@data/calendario.js";
       } else {
         lista.classList.add("aberto");
         icone.textContent = "▲";
+      }
+    }
+  };
+
+  window.abrirCiclo = function (idOriginal) {
+    const blocoId = `ciclo-${idOriginal}`;
+    const elementoBloco = document.getElementById(blocoId);
+
+    if (elementoBloco) {
+      const offsetTop =
+        elementoBloco.getBoundingClientRect().top + window.scrollY - 100;
+
+      window.scrollTo({
+        top: offsetTop,
+        behavior: "smooth",
+      });
+
+      elementoBloco.style.transition = "box-shadow 0.3s";
+      elementoBloco.style.boxShadow = "0 0 15px rgba(122, 26, 143, 0.4)";
+      setTimeout(() => {
+        elementoBloco.style.boxShadow = "none";
+      }, 1500);
+
+      if (window.innerWidth <= 768) {
+        const lista = elementoBloco.querySelector(".lista-oficinas");
+        const icone = elementoBloco.querySelector(".accordion-icon");
+
+        if (!lista.classList.contains("aberto")) {
+          lista.classList.add("aberto");
+          icone.textContent = "▲";
+        }
       }
     }
   };
