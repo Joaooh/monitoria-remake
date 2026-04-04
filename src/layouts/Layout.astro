@@ -24,9 +24,10 @@ const currentPath = Astro.url.pathname;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#662c92" />
+    <meta name="theme-color" content="var(--purple-primary)" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/favicon.png" />
+    <link rel="preload" href="/fonts/NotoSans-Variable.woff2" as="font" type="font/woff2" crossorigin />
     <title>{title}</title>
     <ClientRouter />
   </head>

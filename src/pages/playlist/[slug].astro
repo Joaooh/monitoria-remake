@@ -1,0 +1,559 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Footer from "../../components/common/Footer.astro";
+import PlaylistViewer from "../../components/oficinas/PlaylistViewer.jsx";
+import { playlistsData } from "../../data/playlists.js";
+import { Image } from "astro:assets";
+import logoCeubLight from "../../assets/logo-ceub-light.png";
+
+// Função para formatar duração ISO do YT
+function formatDurationToMinSec(isoDuration: string) {
+  if (!isoDuration) return "";
+  const match = isoDuration.match(/PT(\d+H)?(\d+M)?(\d+S)?/);
+  if (!match) return "";
+
+  const hours = parseInt(match[1]) || 0;
+  const minutes = parseInt(match[2]) || 0;
+  const seconds = parseInt(match[3]) || 0;
+
+  let result = "";
+  if (hours > 0) result += `${hours}h`;
+  if (minutes > 0 || hours > 0) result += `${minutes}min`;
+  if (seconds > 0) result += `${seconds}s`;
+  return result;
+}
+
+function formatDate(isoDate: string) {
+  const date = new Date(isoDate);
+  return date.toLocaleDateString("pt-BR", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+}
+
+export async function getStaticPaths() {
+  return playlistsData.map((playlist) => {
+    return {
+      params: { slug: playlist.slug },
+      props: { playlist },
+    };
+  });
+}
+
+const { playlist } = Astro.props;
+const apiKey = import.meta.env.YOUTUBE_API_KEY;
+
+// Busca os dados dos vídeos no YouTube
+const videosEnriquecidos = await Promise.all(
+  playlist.videos.map(async (vid: any, index) => {
+    // Se for um vídeo hospedado fora do Youtube (ex: Streamyard)
+    if (vid.url || typeof vid.available === "boolean") {
+      return {
+        id: index + 1,
+        title: vid.title || "Em Breve",
+        date: vid.date || "",
+        duration: vid.duration || "",
+        description: vid.description || "Esta aula será disponibilizada em breve",
+        url: vid.url || "",
+        tags: vid.tags || [],
+        available: vid.available !== undefined ? vid.available : true,
+      };
+    }
+
+    if (!vid.id_youtube) {
+      return {
+        id: index + 1,
+        title: vid.title || "Em Breve",
+        date: "",
+        duration: "",
+        description:
+          vid.description || "Esta aula será disponibilizada em breve",
+        url: "",
+        tags: [],
+        available: false,
+      };
+    }
+
+    let dateStr = "Data não informada";
+    let durationStr = "Duração não informada";
+
+    if (apiKey && vid.id_youtube) {
+      try {
+        const url = `https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails&id=${vid.id_youtube}&key=${apiKey}`;
+        const res = await fetch(url);
+        const data = await res.json();
+
+        if (data.items && data.items.length > 0) {
+          const item = data.items[0];
+          dateStr = formatDate(item.snippet.publishedAt);
+          durationStr = formatDurationToMinSec(item.contentDetails.duration);
+        }
+      } catch (error) {
+        console.error(
+          `Erro ao buscar dados do YouTube (ID: ${vid.id_youtube}):`,
+          error,
+        );
+      }
+    }
+
+    return {
+      id: index + 1,
+      title: vid.title,
+      date: dateStr,
+      duration: durationStr,
+      description: vid.description,
+      url: `https://www.youtube.com/embed/${vid.id_youtube}`,
+      tags: vid.tags,
+      available: true,
+    };
+  }),
+);
+---
+
+<Layout title={`Aulas - ${playlist.titulo} | Monitoria de TI - CEUB`}>
+  <div class="playlist-page">
+    <header class="playlist-header-top">
+      <div class="header-content">
+        <div class="header-logo-section">
+          <a href="/" class="logo-link">
+            <Image
+              src={logoCeubLight}
+              alt="Logo do CEUB"
+              class="header-logo"
+              loading="eager"
+            />
+          </a>
+          <div class="header-text">
+            <h1 class="header-title">Aulas Gravadas</h1>
+            <p class="header-subtitle">{playlist.titulo}</p>
+          </div>
+        </div>
+        <div class="header-buttons">
+          <a
+            href={playlist.classroomUrl}
+            class="classroom-btn"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              ><path
+                d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"
+              ></path></svg
+            >
+            <span>Classroom</span>
+          </a>
+          <a
+            href={`/oficinas/${playlist.slug}`}
+            class="classroom-btn btn-voltar"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"><path d="m15 18-6-6 6-6"></path></svg
+            >
+            <span>Voltar</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <div class="container">
+        <PlaylistViewer client:load videos={videosEnriquecidos} />
+      </div>
+    </main>
+  </div>
+
+  <Footer />
+</Layout>
+
+<style is:global>
+  .playlist-page {
+    background-color: var(--bg-page-light);
+    min-height: 100vh;
+    padding-bottom: 60px;
+    font-family: var(--font-body);
+  }
+
+  .playlist-header-top {
+    background-color: var(--bg-dark);
+    border-bottom: 4px solid var(--purple-light);
+    padding: 1.5rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .playlist-header-top .header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .header-logo-section {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .header-logo {
+    height: 40px;
+    width: auto;
+  }
+
+  .playlist-header-top .header-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+    letter-spacing: -0.5px;
+  }
+
+  .playlist-header-top .header-subtitle {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 0.2rem;
+    margin-bottom: 0;
+    font-weight: 500;
+  }
+
+  .header-buttons {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .classroom-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--purple-primary);
+    color: var(--text-main);
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .classroom-btn:hover {
+    background: var(--purple-light);
+    transform: translateY(-2px);
+  }
+
+  .btn-voltar {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .btn-voltar:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .playlist-page .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .playlist-page .main-content {
+    padding: 3rem 0;
+  }
+
+  .content-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .video-player-section {
+    background: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(102, 44, 146, 0.05);
+    border: 1px solid var(--border-light);
+  }
+
+  .video-player-container {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .video-player-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .coming-soon-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-dark);
+    padding: 2rem;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .coming-soon-image {
+    max-width: 160px;
+    width: 100%;
+    height: auto;
+    margin-bottom: 1.5rem;
+    animation: floatPlaylist 3s ease-in-out infinite;
+  }
+
+  @keyframes floatPlaylist {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-15px);
+    }
+  }
+
+  .coming-soon-text {
+    color: var(--text-main);
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+  }
+
+  .coming-soon-subtitle {
+    color: var(--text-muted);
+    font-size: 1rem;
+  }
+
+  .video-info {
+    padding: 2rem;
+  }
+
+  .video-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--bg-dark);
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+
+  .video-meta {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    font-weight: 500;
+  }
+
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .meta-icon {
+    color: var(--purple-primary);
+  }
+
+  .video-description {
+    color: var(--text-light);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .video-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .playlist-page .tag {
+    background: rgba(102, 44, 146, 0.08);
+    color: var(--purple-primary);
+    padding: 0.4rem 0.8rem;
+    border: 1px solid var(--purple-neon);
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .playlist-sidebar {
+    background: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(102, 44, 146, 0.05);
+    border: 1px solid var(--border-light);
+    position: sticky;
+    top: 100px;
+  }
+
+  .playlist-header {
+    background: var(--purple-primary);
+    padding: 1.2rem 1.5rem;
+    color: var(--text-main);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.1rem;
+  }
+
+  .playlist-count {
+    margin-left: auto;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+  }
+
+  .playlist-items {
+    max-height: 600px;
+    overflow-y: auto;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .playlist-item {
+    padding: 1rem;
+    background: var(--bg-page-light);
+    border: 1px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    position: relative;
+  }
+
+  .playlist-item:hover {
+    background: rgba(102, 44, 146, 0.05);
+    border-color: rgba(102, 44, 146, 0.1);
+  }
+
+  .playlist-item.active {
+    background: #ffffff;
+    border-color: var(--purple-primary);
+    box-shadow: 0 4px 12px rgba(102, 44, 146, 0.08);
+  }
+
+  .playlist-item-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: rgba(102, 44, 146, 0.1);
+    border-radius: 50%;
+    color: var(--purple-primary);
+    font-size: 0.8rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .playlist-item.active .playlist-item-number {
+    background: var(--purple-primary);
+    color: var(--text-main);
+  }
+
+  .playlist-item-content {
+    flex: 1;
+    overflow: hidden;
+  }
+
+  .playlist-item-title {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--bg-dark);
+    margin-bottom: 0.2rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .playlist-item-duration {
+    font-size: 0.75rem;
+    color: var(--text-light);
+  }
+
+  .coming-soon-badge {
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    background: var(--accent-pink);
+    color: var(--text-main);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  /* --- RESPONSIVIDADE MOBILE --- */
+  @media (max-width: 992px) {
+    .content-wrapper {
+      grid-template-columns: 1fr;
+    }
+    .playlist-sidebar {
+      position: static;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .playlist-header-top .header-content {
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .header-logo-section {
+      flex-direction: column;
+      text-align: center;
+      gap: 0.5rem;
+    }
+    .header-buttons {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>

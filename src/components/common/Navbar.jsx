@@ -9,6 +9,10 @@ const navItems = [
 ];
 
 export default function FlawlessPillNavbar({ currentPath = "/" }) {
+  if (currentPath.startsWith("/playlist")) {
+    return null;
+  }
+
   const getActiveTabFromPath = (path) => {
     const normalizedPath =
       path.endsWith("/") && path.length > 1 ? path.slice(0, -1) : path;

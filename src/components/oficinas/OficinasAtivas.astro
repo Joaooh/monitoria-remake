@@ -57,11 +57,7 @@ import { oficinasAtivasData } from "@data/oficinas-ativas.js";
                 ))}
               </div>
 
-              <a
-                href={oficina.linkInscricao}
-                class="btn-inscrever"
-                rel="noopener noreferrer"
-              >
+              <a href={oficina.linkInscricao} class="btn-inscrever">
                 Clique para saber mais
               </a>
             </div>
@@ -109,7 +105,7 @@ import { oficinasAtivasData } from "@data/oficinas-ativas.js";
 
   h2 {
     font-size: clamp(2rem, 4vw, 2.5rem);
-    color: #333333;
+    color: var(--text-dark);
     margin-bottom: 1rem;
     font-weight: 700;
     letter-spacing: -1px;
@@ -118,7 +114,7 @@ import { oficinasAtivasData } from "@data/oficinas-ativas.js";
   .divider {
     width: 60px;
     height: 3px;
-    background-color: #662c92;
+    background-color: var(--purple-primary);
     border-radius: 2px;
   }
 
@@ -150,7 +146,7 @@ import { oficinasAtivasData } from "@data/oficinas-ativas.js";
     aspect-ratio: 16 / 9;
     position: relative;
     overflow: hidden;
-    background: #f5f5f5;
+    background: var(--bg-light);
   }
 
   .card-image {
@@ -209,7 +205,7 @@ import { oficinasAtivasData } from "@data/oficinas-ativas.js";
   }
 
   .descricao {
-    color: #666666;
+    color: var(--text-light);
     font-size: 0.95rem;
     line-height: 1.6;
     margin-bottom: 1.5rem;
@@ -245,7 +241,7 @@ import { oficinasAtivasData } from "@data/oficinas-ativas.js";
     display: block;
     width: 100%;
     padding: 12px 0;
-    background: #662c92;
+    background: var(--purple-primary);
     border: none;
     color: #ffffff;
     text-align: center;

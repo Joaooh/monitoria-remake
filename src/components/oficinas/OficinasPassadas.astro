@@ -71,12 +71,7 @@ import { oficinasPassadasData } from "@data/oficinas-passadas.js";
                   ))}
                 </div>
 
-                <a
-                  href="#"
-                  class="btn-inscrever"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a href={oficina.linkInscricao} class="btn-inscrever">
                   Clique para saber mais
                 </a>
               </div>
@@ -105,35 +100,78 @@ import { oficinasPassadasData } from "@data/oficinas-passadas.js";
     const track = document.getElementById("passadas-track");
     const btnPrev = document.querySelector(".carousel-btn.prev");
     const btnNext = document.querySelector(".carousel-btn.next");
+    const cards = Array.from(document.querySelectorAll(".card-passada"));
 
-    if (!track || !btnPrev || !btnNext) return;
+    if (!track || !btnPrev || !btnNext || cards.length === 0) return;
 
-    const scrollAmount = 340 + 24;
+    let currentPage = 0;
+    let itemsPerPage = 3;
 
-    const updateButtonVisibility = () => {
-      const isAtStart = track.scrollLeft <= 5;
-      const isAtEnd =
-        track.scrollLeft + track.clientWidth >= track.scrollWidth - 5;
+    const renderPage = () => {
+      // Define a quantidade de cards por página baseado no tamanho da tela
+      if (window.innerWidth >= 1024) {
+        itemsPerPage = 3;
+      } else if (window.innerWidth >= 768) {
+        itemsPerPage = 2;
+      } else {
+        itemsPerPage = 1;
+      }
 
-      btnPrev.style.opacity = isAtStart ? "0" : "1";
-      btnPrev.style.pointerEvents = isAtStart ? "none" : "all";
+      const totalPages = Math.ceil(cards.length / itemsPerPage);
 
-      btnNext.style.opacity = isAtEnd ? "0" : "1";
-      btnNext.style.pointerEvents = isAtEnd ? "none" : "all";
+      if (currentPage >= totalPages) currentPage = totalPages - 1;
+      if (currentPage < 0) currentPage = 0;
+
+      // Atualiza a opacidade dos botões se não tiver mais páginas pra avançar/voltar
+      btnPrev.style.opacity = currentPage === 0 ? "0.3" : "1";
+      btnPrev.style.pointerEvents = currentPage === 0 ? "none" : "all";
+
+      btnNext.style.opacity = currentPage >= totalPages - 1 ? "0.3" : "1";
+      btnNext.style.pointerEvents =
+        currentPage >= totalPages - 1 ? "none" : "all";
+
+      // Esconde todos os cards
+      cards.forEach((card) => {
+        card.classList.remove("active");
+        card.style.display = "none";
+      });
+
+      // Calcula os cards da página atual e mostra com animação
+      const startIndex = currentPage * itemsPerPage;
+      const endIndex = startIndex + itemsPerPage;
+      const currentCards = cards.slice(startIndex, endIndex);
+
+      currentCards.forEach((card, index) => {
+        card.style.display = "flex";
+        void card.offsetWidth;
+        // Efeito de delay na animação
+        card.style.animationDelay = `${index * 0.08}s`;
+        card.classList.add("active");
+      });
     };
 
     btnPrev.addEventListener("click", () => {
-      track.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+      if (currentPage > 0) {
+        currentPage--;
+        renderPage();
+      }
     });
 
     btnNext.addEventListener("click", () => {
-      track.scrollBy({ left: scrollAmount, behavior: "smooth" });
+      const totalPages = Math.ceil(cards.length / itemsPerPage);
+      if (currentPage < totalPages - 1) {
+        currentPage++;
+        renderPage();
+      }
     });
 
-    track.addEventListener("scroll", updateButtonVisibility);
-    window.addEventListener("resize", updateButtonVisibility);
+    let resizeTimer;
+    window.addEventListener("resize", () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(renderPage, 200);
+    });
 
-    setTimeout(updateButtonVisibility, 100);
+    renderPage();
   });
 </script>
 
@@ -174,7 +212,7 @@ import { oficinasPassadasData } from "@data/oficinas-passadas.js";
 
   h2 {
     font-size: clamp(2rem, 4vw, 2.5rem);
-    color: #333333;
+    color: var(--text-dark);
     margin-bottom: 1rem;
     font-weight: 700;
     letter-spacing: -1px;
@@ -183,7 +221,7 @@ import { oficinasPassadasData } from "@data/oficinas-passadas.js";
   .divider {
     width: 60px;
     height: 3px;
-    background-color: #662c92;
+    background-color: var(--purple-primary);
     border-radius: 2px;
   }
 
@@ -191,21 +229,15 @@ import { oficinasPassadasData } from "@data/oficinas-passadas.js";
     position: relative;
     display: flex;
     align-items: center;
+    justify-content: center;
   }
 
   .carousel-track {
     display: flex;
     gap: 24px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    padding: 0 4px 30px 4px;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-
-  .carousel-track::-webkit-scrollbar {
-    display: none;
+    justify-content: center;
+    width: 100%;
+    min-height: 440px;
   }
 
   .carousel-btn {
@@ -213,7 +245,7 @@ import { oficinasPassadasData } from "@data/oficinas-passadas.js";
     top: 50%;
     transform: translateY(-50%);
     z-index: 5;
-    background: #662c92;
+    background: var(--purple-primary);
     border: none;
     width: 48px;
     height: 48px;
@@ -249,25 +281,43 @@ import { oficinasPassadasData } from "@data/oficinas-passadas.js";
 
   .card-passada {
     flex: 0 0 340px;
-    scroll-snap-align: start;
+    display: none;
+    opacity: 0;
     background: #ffffff;
     border: 1px solid #f0f0f0;
     border-radius: 12px;
     overflow: hidden;
-    display: flex;
     flex-direction: column;
-    transition: transform 0.3s;
+    transition:
+      transform 0.3s,
+      box-shadow 0.3s;
   }
 
-  .card-passada:hover {
-    transform: translateY(-4px);
+  .card-passada.active {
+    display: flex;
+    animation: fadeInPage 0.4s ease-out forwards;
+  }
+
+  @keyframes fadeInPage {
+    0% {
+      opacity: 0;
+      transform: scale(0.96) translateY(10px);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+
+  .card-passada.active:hover {
+    transform: translateY(-4px) !important;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
   }
 
   .card-image-wrapper {
     width: 100%;
     height: 185px;
-    background: #f5f5f5;
+    background: var(--bg-light);
     position: relative;
     overflow: hidden;
   }
@@ -326,8 +376,8 @@ import { oficinasPassadasData } from "@data/oficinas-passadas.js";
     width: 100%;
     padding: 10px 0;
     background: transparent;
-    border: 1px solid #662c92;
-    color: #662c92;
+    border: 1px solid var(--purple-primary);
+    color: var(--purple-primary);
     text-align: center;
     border-radius: 8px;
     font-weight: 600;
@@ -337,7 +387,7 @@ import { oficinasPassadasData } from "@data/oficinas-passadas.js";
   }
 
   .btn-inscrever:hover {
-    background: #662c92;
+    background: var(--purple-primary);
     color: #ffffff;
   }
 
@@ -346,16 +396,31 @@ import { oficinasPassadasData } from "@data/oficinas-passadas.js";
       padding: 60px 1.5rem;
     }
 
-    .carousel-btn {
-      display: none;
-    }
-
-    .carousel-track {
-      gap: 16px;
-    }
-
     .card-passada {
-      flex: 0 0 280px;
+      flex: 0 0 100%;
+      max-width: 340px;
+    }
+
+    .carousel-wrapper {
+      padding-bottom: 60px;
+    }
+
+    .carousel-btn {
+      top: auto;
+      bottom: 0;
+      transform: none;
+    }
+
+    .carousel-btn:hover {
+      transform: scale(1.05);
+    }
+
+    .carousel-btn.prev {
+      left: calc(50% - 60px);
+    }
+
+    .carousel-btn.next {
+      right: calc(50% - 60px);
     }
   }
 </style>

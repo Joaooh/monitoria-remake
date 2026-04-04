@@ -157,6 +157,7 @@ export const equipeData = [
     descricao: "Especialista em Blender, Generalista 3D.",
     foto: imgGabrielSoares,
     ativo: true,
+    ocultarNaEquipe: true,
   },
   {
     id: "leonardo-cespedes",
@@ -164,6 +165,7 @@ export const equipeData = [
     descricao: "Entusiasta em modelagem e animação 3D.",
     foto: imgLeonardoCespedes,
     ativo: true,
+    ocultarNaEquipe: true,
   },
 
   // ==========================================

@@ -7,20 +7,28 @@
 }
 
 :root {
-  /* Cores - Fundo */
+  /* Cores - Fundo Dark */
   --bg-dark: #0d0415;
   --bg-darker: #08020d;
+
+  /* Cores - Fundo Light */
+  --bg-light: #f5f5f5;
+  --bg-page-light: #ecebf0;
+  --border-light: #f0eaff;
 
   /* Cores - Marca */
   --purple-primary: #662c92;
   --purple-light: #8640be;
   --purple-neon: #d2a8ff;
   --purple-hover: #b58ce0;
+  --accent-pink: #e81c61;
 
   /* Cores - Textos */
   --text-main: #ffffff;
   --text-secondary: #e6e6e6;
   --text-muted: rgba(255, 255, 255, 0.8);
+  --text-dark: #333333;
+  --text-light: #666666;
 
   /* Tipografia */
   --font-body:
@@ -82,7 +90,7 @@ body {
   font-family: inherit;
 }
 
-.btn:focus-visible {
+*:focus-visible {
   outline: 3px solid var(--purple-neon);
   outline-offset: 2px;
 }

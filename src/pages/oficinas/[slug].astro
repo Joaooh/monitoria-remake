@@ -30,6 +30,7 @@ const { oficina } = Astro.props;
     <div class="container main-content">
       <a href="/oficinas" class="btn-voltar">
         <svg
+          aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
           width="20"
           height="20"
@@ -65,6 +66,7 @@ const { oficina } = Astro.props;
             <span class="campus-tag">{oficina.campus}</span>
             <div class="horario-info">
               <svg
+                aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 width="18"
                 height="18"
@@ -88,16 +90,20 @@ const { oficina } = Astro.props;
 
           <div class="action-buttons">
             {
-              oficina.botoes.map((btn) => (
-                <a
-                  href={btn.link}
-                  class={`btn ${btn.tipo === "primary" ? "btn-primary" : "btn-secondary"}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {btn.texto}
-                </a>
-              ))
+              oficina.botoes.map((btn) => {
+                const isExternal = btn.link.startsWith("http");
+
+                return (
+                  <a
+                    href={btn.link}
+                    class={`btn ${btn.tipo === "primary" ? "btn-primary" : "btn-secondary"}`}
+                    target={isExternal ? "_blank" : "_self"}
+                    rel={isExternal ? "noopener noreferrer" : ""}
+                  >
+                    {btn.texto}
+                  </a>
+                );
+              })
             }
           </div>
         </div>
@@ -143,13 +149,13 @@ const { oficina } = Astro.props;
 
 <style>
   .oficina-page {
-    background-color: #f5f5f5;
+    background-color: var(--bg-light);
     min-height: 100vh;
     padding-bottom: 80px;
   }
 
   .hero-banner {
-    background-color: #662c92;
+    background-color: var(--purple-primary);
     height: 25vh;
     width: 100%;
     position: absolute;
@@ -174,7 +180,7 @@ const { oficina } = Astro.props;
 
   .btn-voltar:hover {
     transform: translateX(-5px);
-    color: #e81c61;
+    color: var(--accent-pink);
   }
 
   .container {
@@ -257,7 +263,7 @@ const { oficina } = Astro.props;
   }
 
   .horario-info svg {
-    color: #e81c61;
+    color: var(--accent-pink);
     flex-shrink: 0;
     margin-top: 2px;
   }
@@ -280,7 +286,7 @@ const { oficina } = Astro.props;
   }
 
   .btn-primary {
-    background: #e81c61;
+    background: var(--accent-pink);
     color: #ffffff;
     box-shadow: 0 4px 10px rgba(232, 28, 97, 0.2);
   }
@@ -292,8 +298,8 @@ const { oficina } = Astro.props;
 
   .btn-secondary {
     background: #ffffff;
-    color: #e81c61;
-    border: 2px solid #e81c61;
+    color: var(--accent-pink);
+    border: 2px solid var(--accent-pink);
   }
 
   .btn-secondary:hover {

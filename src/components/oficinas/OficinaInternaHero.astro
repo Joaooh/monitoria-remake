@@ -11,6 +11,7 @@ interface Props {
 }
 
 const { titulo, preTexto, subTexto } = Astro.props;
+const isTituloLongo = titulo.length > 25;
 ---
 
 <section class="oficina-interna-hero">
@@ -32,7 +33,7 @@ const { titulo, preTexto, subTexto } = Astro.props;
     <div class="hero-content">
       <div class="text-column">
         <h2 class="pre-title">{preTexto}</h2>
-        <h1 class="title">{titulo}</h1>
+        <h1 class={`title ${isTituloLongo ? "title-longo" : ""}`}>{titulo}</h1>
         <p class="subtitle">{subTexto}</p>
       </div>
 
@@ -125,6 +126,13 @@ const { titulo, preTexto, subTexto } = Astro.props;
     color: #ffffff;
     letter-spacing: -1.5px;
     line-height: 1.1;
+  }
+
+  .title-longo {
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    letter-spacing: -1px;
+    line-height: 1.2;
+    margin-bottom: 1rem;
   }
 
   .subtitle {

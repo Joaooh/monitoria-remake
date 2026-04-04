@@ -59,7 +59,7 @@ export const oficinasAtivasData = [
       "Exploração, tratamento e análise de dados utilizando as principais bibliotecas do ecossistema moderno.",
     turmas: ["Segunda, Terça e Quinta: 17h às 19h"],
     formato: "Online",
-    linkInscricao: "/oficinas/oficina-de-dados",
+    linkInscricao: "/oficinas/ciencia-de-dados-ferramentas-e-frameworks",
     imagem: imgDados,
     alt: "Mago jogando dados para cima",
   },

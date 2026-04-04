@@ -33,8 +33,9 @@ const {
 
 <style>
   .monitor-card {
-    background: #ffffff;
-    border: 1px solid #eaeaea;
+    background: #faf9fc;
+    border: 2px solid #e0d1ff;
+
     border-radius: 16px;
     padding: 2.5rem 1.5rem;
     text-align: center;
@@ -43,20 +44,24 @@ const {
     flex-direction: column;
     align-items: center;
     height: 100%;
+    box-shadow: 0 5px 15px rgba(102, 44, 146, 0.04);
   }
 
   .monitor-card:hover {
-    border-color: #ddd1ff;
+    border-color: #cab0ff;
     box-shadow: 0 15px 30px rgba(102, 44, 146, 0.08);
+    transform: translateY(-4px);
   }
 
   .ex-membro-card {
-    background: #fafafa;
-    border-color: #f0f0f0;
+    background: #f0f0f0;
+    border-color: #e0e0e0;
+    box-shadow: none;
   }
 
   .ex-membro-card:hover {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    transform: translateY(-4px);
   }
 
   .monitor-foto-wrapper {
@@ -64,7 +69,11 @@ const {
     height: 140px;
     border-radius: 50%;
     padding: 3px;
-    background: linear-gradient(135deg, #662c92, #e81c61);
+    background: linear-gradient(
+      135deg,
+      var(--purple-primary),
+      var(--accent-pink)
+    );
     margin-bottom: 1.5rem;
     box-shadow: 0 8px 15px rgba(232, 28, 97, 0.2);
   }
