@@ -16,7 +16,10 @@ const monitoresAtivos = equipeData
 const exMembros = equipeData.filter((m) => !m.ativo).sort(ordenarPorNome);
 ---
 
-<Layout title="Equipe | Monitoria de TI - CEUB">
+<Layout 
+  title="Equipe de Monitores | Monitoria de TI - CEUB"
+  description="Conheça a equipe atual e os ex-membros da Monitoria de TI do CEUB. Alunos engajados em ajudar, mentorar e compartilhar conhecimento na área de tecnologia."
+>
   <main class="equipe-page">
     <EquipeHero
       preTexto="Conheça nossa"
