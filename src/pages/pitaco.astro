@@ -1,0 +1,22 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Footer from "../components/common/Footer.astro";
+import PitacoHero from "../components/pitaco/PitacoHero.astro";
+import SobrePitaco from "../components/pitaco/SobrePitaco.astro";
+import ObjetivoPitaco from "../components/pitaco/ObjetivoPitaco.astro";
+import ParticiparPitaco from "../components/pitaco/ParticiparPitaco.astro";
+import ClickSpark from "../components/effects/ClickSpark.jsx";
+---
+
+<Layout title="Pitaco | Monitoria de TI - CEUB">
+  <ClickSpark client:load />
+
+  <main>
+    <PitacoHero />
+    <SobrePitaco />
+    <ObjetivoPitaco />
+    <ParticiparPitaco />
+  </main>
+
+  <Footer />
+</Layout>

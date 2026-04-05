@@ -1,0 +1,149 @@
+---
+import { IconCloud } from "../effects/IconCloud.jsx";
+
+const slugs = [
+  "c",
+  "cplusplus",
+  "rust",
+  "go",
+  "java",
+  "python",
+  "javascript",
+  "typescript",
+  "ruby",
+  "php",
+  "html5",
+  "css",
+  "react",
+  "astro",
+  "nodedotjs",
+  "postgresql",
+  "docker",
+  "amazonaws",
+  "nginx",
+  "linux",
+  "archlinux",
+  "git",
+  "github",
+  "visualstudiocode",
+  "figma",
+  "androidstudio",
+];
+
+const imagesUrl = slugs.map(
+  (slug) => `https://cdn.simpleicons.org/${slug}/${slug}`,
+);
+---
+
+<section class="pitaco-objetivo">
+  <div class="container">
+    <div class="grid-wrapper">
+      <div class="content-column">
+        <h2 class="title">QUAL É O NOSSO OBJETIVO?</h2>
+        <div class="divider"></div>
+
+        <p class="description">
+          Construir uma comunidade de pessoas interessadas em tecnologia,
+          criando um espaço aberto para trocar experiências, compartilhar
+          conhecimentos, aprender continuamente e desenvolver projetos em
+          conjunto.
+        </p>
+        <p class="description">
+          A proposta é fortalecer conexões entre pessoas que têm interesses em
+          comum, promovendo colaboração, crescimento coletivo e evolução técnica
+          por meio da cooperação e da prática.
+        </p>
+      </div>
+
+      <div class="cloud-column">
+        <IconCloud images={imagesUrl} icons={null} client:load />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .pitaco-objetivo {
+    padding: 80px 2rem;
+    background-color: #283a86;
+    color: #ffffff;
+  }
+
+  .container {
+    max-width: 1250px;
+    margin: 0 auto;
+  }
+
+  .grid-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4rem;
+  }
+
+  .content-column {
+    flex: 1.2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .cloud-column {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .title {
+    font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+    color: #ffffff;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    letter-spacing: -0.5px;
+  }
+
+  .divider {
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, #283a86, #7adb53, #283a86);
+    background-size: 200% 100%;
+    animation: gradientPanLine 3s ease-in-out infinite;
+    border-radius: 2px;
+    margin-bottom: 2.5rem;
+  }
+
+  @keyframes gradientPanLine {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .description {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 1.5rem;
+    max-width: 800px;
+  }
+
+  /* --- RESPONSIVIDADE MOBILE --- */
+  @media (max-width: 992px) {
+    .grid-wrapper {
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .content-column {
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    .cloud-column {
+      width: 100%;
+      margin-top: -5rem;
+      margin-bottom: -5rem;
+    }
+  }
+</style>

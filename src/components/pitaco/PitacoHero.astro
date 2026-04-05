@@ -1,0 +1,210 @@
+---
+import { Image } from "astro:assets";
+import pcPitaco from "@assets/pc-pitaco.png";
+import logoCeubLight from "@assets/logo-ceub-light.png";
+import FiberBackground from "@components/effects/Fiber.jsx";
+import SparklesText from "@components/effects/SparklesText.jsx";
+---
+
+<section class="pitaco-hero">
+  <div class="fiber-container">
+    <FiberBackground color="#283a86" client:load />
+    <div class="dark-overlay"></div>
+  </div>
+
+  <div class="container">
+    <div class="hero-logo-container">
+      <Image
+        src={logoCeubLight}
+        alt="Logo do CEUB"
+        class="hero-logo"
+        loading="eager"
+      />
+    </div>
+
+    <div class="hero-content">
+      <div class="text-column">
+        <h2 class="pre-title">Espaço colaborativo</h2>
+        <h1 class="title">
+          <SparklesText client:load>PITACO</SparklesText>
+        </h1>
+        <p class="subtitle">
+          Onde ideias ganham forma através da colaboração e feedback
+          construtivo!
+        </p>
+      </div>
+
+      <div class="image-column">
+        <Image
+          src={pcPitaco}
+          alt="Computador futurista e simpático, símbolo do projeto Pitaco"
+          class="pc-img floating-pc"
+          loading="eager"
+          fetchpriority="high"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .pitaco-hero {
+    position: relative;
+    padding: 60px 2rem 0 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    overflow: hidden;
+    background-color: #0d0b1a;
+    min-height: 40vh;
+    border-bottom: 4px solid #7adb53;
+  }
+
+  .fiber-container {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .dark-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(13, 11, 26, 0.4);
+  }
+
+  .container {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-logo-container {
+    position: absolute;
+    top: -26px;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+  }
+
+  .hero-logo {
+    width: 100px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+  }
+
+  .hero-content {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 34px;
+  }
+
+  .text-column {
+    flex: 0 0 50%;
+    padding-bottom: 50px;
+  }
+
+  .pre-title {
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    font-weight: 400;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.9);
+    letter-spacing: -0.5px;
+    line-height: 1;
+  }
+
+  .title {
+    font-size: clamp(4.5rem, 9vw, 8rem);
+    font-weight: 900;
+    margin: 0 0 1rem 0;
+    color: #ffffff;
+    letter-spacing: -3px;
+    line-height: 1;
+    margin-left: -6px;
+    text-shadow: 0px 4px 15px rgba(122, 219, 83, 0.3);
+  }
+
+  .subtitle {
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+    margin: 0;
+    max-width: 90%;
+  }
+
+  .image-column {
+    flex: 0 0 45%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .pc-img {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.6));
+  }
+
+  .floating-pc {
+    animation: floatPitacoPC 5s ease-in-out infinite;
+  }
+
+  @keyframes floatPitacoPC {
+    0%,
+    100% {
+      transform: translateY(0px) rotate(-1deg);
+    }
+    50% {
+      transform: translateY(-15px) rotate(2deg);
+    }
+  }
+
+  /* --- RESPONSIVIDADE MOBILE --- */
+  @media (max-width: 992px) {
+    .hero-logo {
+      display: none;
+    }
+
+    .pitaco-hero {
+      padding-top: 40px;
+      padding-bottom: 0px;
+    }
+
+    .hero-content {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-top: 40px;
+      padding-bottom: 20px;
+    }
+
+    .text-column {
+      flex: 1;
+      padding-bottom: 40px;
+      align-items: center;
+    }
+
+    .title {
+      margin-left: 0;
+    }
+
+    .subtitle {
+      max-width: 100%;
+    }
+
+    .image-column {
+      flex: 1;
+      width: 100%;
+    }
+
+    .pc-img {
+      max-width: 220px;
+    }
+  }
+</style>

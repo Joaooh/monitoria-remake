@@ -1,0 +1,154 @@
+---
+import { Image } from "astro:assets";
+import fotoPitaco from "../../assets/foto-pitaco.jpg";
+---
+
+<section class="pitaco-sobre">
+  <div class="container">
+    <div class="grid-wrapper">
+      <div class="image-column">
+        <div class="image-container">
+          <Image
+            src={fotoPitaco}
+            alt="Pessoas participando do Pitaco"
+            class="sobre-img"
+            loading="eager"
+          />
+        </div>
+      </div>
+
+      <div class="content-column">
+        <h2 class="title">O QUE É O PITACO?</h2>
+        <div class="divider"></div>
+
+        <p class="description">
+          Pitaco é um espaço de aprendizado vivo, horizontal e colaborativo,
+          onde todas as pessoas têm voz ativa e participam de forma conjunta no
+          processo de construção do conhecimento. Cada ciclo representa uma nova
+          oportunidade de colocar a mão na massa, experimentar na prática,
+          aprender em conjunto e transformar ideias em projetos reais e
+          concretos.
+        </p>
+        <p class="description">
+          Esta oficina funciona como um ambiente constante de troca, diálogo e
+          colaboração, onde o conhecimento não é imposto, mas sim construído
+          coletivamente a partir das experiências, vivências e contribuições de
+          cada participante.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .pitaco-sobre {
+    padding: 80px 2rem;
+    background-color: var(--bg-page-light, #f5f5f5);
+    color: var(--text-dark, #333333);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .grid-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4rem;
+  }
+
+  .image-column {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  .image-container {
+    position: relative;
+    width: 100%;
+    max-width: 650px;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(40, 58, 134, 0.15);
+    overflow: hidden;
+  }
+
+  .sobre-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease-out;
+  }
+
+  .image-container:hover .sobre-img {
+    transform: scale(1.08);
+  }
+
+  .content-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .title {
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    color: #283a86;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    letter-spacing: -0.5px;
+    align-self: center;
+    text-align: center;
+  }
+
+  .divider {
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, #283a86, #7adb53, #283a86);
+    background-size: 200% 100%;
+    animation: gradientPanLine 3s ease-in-out infinite;
+    border-radius: 2px;
+    margin-bottom: 2.5rem;
+    align-self: center;
+  }
+
+  @keyframes gradientPanLine {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .description {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #333333;
+    margin-bottom: 1.5rem;
+    max-width: 800px;
+  }
+
+  /* --- RESPONSIVIDADE MOBILE --- */
+  @media (max-width: 992px) {
+    .grid-wrapper {
+      flex-direction: column-reverse;
+      gap: 3rem;
+    }
+
+    .content-column {
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    .image-container {
+      max-width: 95%;
+    }
+  }
+</style>

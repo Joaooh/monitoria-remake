@@ -1,6 +1,5 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import Navbar from "../../components/common/Navbar.jsx";
 import Footer from "../../components/common/Footer.astro";
 import { Image } from "astro:assets";
 import { oficinasDetalhes } from "../../data/oficinas-detalhes.js";
@@ -19,8 +18,6 @@ const { oficina } = Astro.props;
 ---
 
 <Layout title={`${oficina.titulo} | Monitoria de TI - CEUB`}>
-  <Navbar currentPath={Astro.url.pathname} client:load />
-
   <main class="oficina-page">
     <OficinaInternaHero
       preTexto="Oficina de"

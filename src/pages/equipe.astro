@@ -1,6 +1,5 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Navbar from "../components/common/Navbar.jsx";
 import Footer from "../components/common/Footer.astro";
 import MonitorCard from "../components/equipe/MonitorCard.astro";
 import { equipeData } from "../data/equipe.js";
@@ -18,8 +17,6 @@ const exMembros = equipeData.filter((m) => !m.ativo).sort(ordenarPorNome);
 ---
 
 <Layout title="Equipe | Monitoria de TI - CEUB">
-  <Navbar currentPath={Astro.url.pathname} client:load />
-
   <main class="equipe-page">
     <EquipeHero
       preTexto="Conheça nossa"

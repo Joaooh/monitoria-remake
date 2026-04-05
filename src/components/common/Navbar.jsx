@@ -9,8 +9,10 @@ const navItems = [
 ];
 
 export default function FlawlessPillNavbar({ currentPath = "/" }) {
+  const [clientPath, setClientPath] = useState(currentPath);
+
   // Esconde a Navbar flutuante inteira se o usuário estiver na tela de playlist (o player foca total no vídeo).
-  if (currentPath.startsWith("/playlist")) {
+  if (clientPath.startsWith("/playlist")) {
     return null;
   }
 
@@ -37,10 +39,26 @@ export default function FlawlessPillNavbar({ currentPath = "/" }) {
   );
   const [hoveredTab, setHoveredTab] = useState(null);
 
-  // Caso a URL mude repentinamente por clique externo, esse Hook arrasta a pílula roxa pra aba certa
+  const isPitaco = clientPath.startsWith("/pitaco");
+  const styles = getStyles(isPitaco);
+
   useEffect(() => {
-    setActiveTab(getActiveTabFromPath(currentPath));
-  }, [currentPath]);
+    const syncURL = () => {
+      const newPath = window.location.pathname;
+      setClientPath(newPath);
+      setActiveTab(getActiveTabFromPath(newPath));
+    };
+
+    document.addEventListener("astro:page-load", syncURL);
+    window.addEventListener("popstate", syncURL);
+
+    syncURL();
+
+    return () => {
+      document.removeEventListener("astro:page-load", syncURL);
+      window.removeEventListener("popstate", syncURL);
+    };
+  }, []);
 
   return (
     <>
@@ -118,8 +136,14 @@ export default function FlawlessPillNavbar({ currentPath = "/" }) {
                         style={{
                           ...styles.text,
                           color: isActive
-                            ? "var(--text-main)"
+                            ? isPitaco
+                              ? "#0d041a"
+                              : "var(--text-main)"
                             : "var(--text-muted)",
+                          textShadow:
+                            isActive && isPitaco
+                              ? "none"
+                              : "0 1px 2px rgba(0,0,0,0.3)",
                         }}
                       >
                         {item.name}
@@ -160,7 +184,7 @@ export default function FlawlessPillNavbar({ currentPath = "/" }) {
   );
 }
 
-const styles = {
+const getStyles = (isPitaco) => ({
   headerContainer: {
     display: "flex",
     alignItems: "center",
@@ -198,8 +222,9 @@ const styles = {
     position: "absolute",
     inset: 0,
     borderRadius: "999px",
-    background:
-      "linear-gradient(to bottom, rgba(40, 15, 60, 0.75), rgba(20, 5, 30, 0.85))",
+    background: isPitaco
+      ? "linear-gradient(to bottom, rgba(20, 30, 60, 0.85), rgba(10, 15, 30, 0.95))"
+      : "linear-gradient(to bottom, rgba(40, 15, 60, 0.75), rgba(20, 5, 30, 0.85))",
     backdropFilter: "blur(12px)",
     WebkitBackdropFilter: "blur(12px)",
     boxShadow:
@@ -210,7 +235,7 @@ const styles = {
     position: "absolute",
     inset: "2px",
     borderRadius: "999px",
-    background: "rgba(20, 5, 30, 0.5)",
+    background: isPitaco ? "rgba(10, 15, 30, 0.6)" : "rgba(20, 5, 30, 0.5)",
     boxShadow: "inset 0 2px 8px rgba(0,0,0,0.6)",
   },
 
@@ -250,10 +275,12 @@ const styles = {
     inset: 0,
     zIndex: 2,
     borderRadius: "999px",
-    background:
-      "linear-gradient(to bottom, var(--purple-light), var(--purple-primary))",
-    boxShadow:
-      "0 2px 4px rgba(0,0,0,0.4), inset 0 2px 2px rgba(255,255,255,0.4)",
+    background: isPitaco
+      ? "linear-gradient(to bottom, #8bed65, #7adb53)"
+      : "linear-gradient(to bottom, var(--purple-light), var(--purple-primary))",
+    boxShadow: isPitaco
+      ? "0 2px 8px rgba(122, 219, 83, 0.4), inset 0 2px 2px rgba(255,255,255,0.5)"
+      : "0 2px 4px rgba(0,0,0,0.4), inset 0 2px 2px rgba(255,255,255,0.4)",
     pointerEvents: "none",
   },
   singleHoverPill: {
@@ -261,8 +288,9 @@ const styles = {
     inset: 0,
     zIndex: 1,
     borderRadius: "999px",
-    background:
-      "linear-gradient(to bottom, rgba(102, 44, 146, 0.8), rgba(60, 20, 90, 0.8))",
+    background: isPitaco
+      ? "linear-gradient(to bottom, rgba(40, 58, 134, 0.9), rgba(20, 30, 80, 0.9))"
+      : "linear-gradient(to bottom, rgba(102, 44, 146, 0.8), rgba(60, 20, 90, 0.8))",
     boxShadow:
       "inset 0 1px 1px rgba(255, 255, 255, 0.15), 0 2px 4px rgba(0,0,0,0.5)",
     pointerEvents: "none",
@@ -272,8 +300,9 @@ const styles = {
     inset: "6px",
     zIndex: 2,
     borderRadius: "999px",
-    background:
-      "linear-gradient(to bottom, rgba(102, 44, 146, 0.15), rgba(102, 44, 146, 0.05))",
+    background: isPitaco
+      ? "linear-gradient(to bottom, rgba(40, 58, 134, 0.25), rgba(40, 58, 134, 0.05))"
+      : "linear-gradient(to bottom, rgba(102, 44, 146, 0.15), rgba(102, 44, 146, 0.05))",
     pointerEvents: "none",
   },
-};
+});
