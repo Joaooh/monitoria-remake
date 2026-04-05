@@ -108,15 +108,13 @@ const ClickSpark = ({
         return true;
       });
 
-      animationId = requestAnimationFrame(draw);
+      if (sparksRef.current.length > 0) {
+        animationId = requestAnimationFrame(draw);
+      } else {
+        startTimeRef.current = null;
+      }
     };
 
-    animationId = requestAnimationFrame(draw);
-
-    return () => cancelAnimationFrame(animationId);
-  }, [sparkSize, sparkRadius, sparkCount, duration, easeFunc, extraScale]);
-
-  useEffect(() => {
     const handleClick = (e) => {
       if (window.innerWidth <= 768) return;
 
@@ -128,16 +126,30 @@ const ClickSpark = ({
         startTime: now,
       }));
 
+      const wasEmpty = sparksRef.current.length === 0;
       sparksRef.current.push(...newSparks);
+
+      if (wasEmpty) {
+        animationId = requestAnimationFrame(draw);
+      }
     };
 
     window.addEventListener("click", handleClick);
-    return () => window.removeEventListener("click", handleClick);
-  }, [sparkCount]);
+
+    if (sparksRef.current.length > 0) {
+      animationId = requestAnimationFrame(draw);
+    }
+
+    return () => {
+      window.removeEventListener("click", handleClick);
+      cancelAnimationFrame(animationId);
+    };
+  }, [sparkSize, sparkRadius, sparkCount, duration, easeFunc, extraScale]);
 
   return (
     <canvas
       ref={canvasRef}
+      aria-hidden="true"
       style={{
         position: "fixed",
         top: 0,

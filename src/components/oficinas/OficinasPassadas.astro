@@ -177,7 +177,7 @@ import { oficinasPassadasData } from "@data/oficinas-passadas.js";
 
 <style>
   .oficinas-passadas-section {
-    background-color: #fafafa;
+    background-color: var(--bg-light);
     padding: 40px 2rem;
     position: relative;
     z-index: 10;
@@ -255,7 +255,7 @@ import { oficinasPassadasData } from "@data/oficinas-passadas.js";
     justify-content: center;
     cursor: pointer;
     box-shadow: 0 4px 10px rgba(102, 44, 146, 0.3);
-    color: #ffffff;
+    color: var(--text-main);
     transition: all 0.3s ease;
   }
 
@@ -263,7 +263,7 @@ import { oficinasPassadasData } from "@data/oficinas-passadas.js";
     background: #4a148c;
     transform: translateY(-50%) scale(1.05);
     box-shadow: 0 6px 15px rgba(74, 20, 140, 0.4);
-    color: #ffffff;
+    color: var(--text-main);
   }
 
   .carousel-btn svg {
@@ -283,8 +283,8 @@ import { oficinasPassadasData } from "@data/oficinas-passadas.js";
     flex: 0 0 340px;
     display: none;
     opacity: 0;
-    background: #ffffff;
-    border: 1px solid #f0f0f0;
+    background: var(--bg-white);
+    border: 1px solid var(--border-light);
     border-radius: 12px;
     overflow: hidden;
     flex-direction: column;
@@ -341,7 +341,7 @@ import { oficinasPassadasData } from "@data/oficinas-passadas.js";
   }
 
   .card-content h3 {
-    color: #333;
+    color: var(--text-dark);
     font-size: 1.15rem;
     margin-bottom: 1rem;
     font-weight: 700;
@@ -360,7 +360,7 @@ import { oficinasPassadasData } from "@data/oficinas-passadas.js";
     display: flex;
     align-items: flex-start;
     gap: 8px;
-    color: #666;
+    color: var(--text-light);
     font-size: 0.85rem;
     line-height: 1.4;
   }
@@ -388,7 +388,7 @@ import { oficinasPassadasData } from "@data/oficinas-passadas.js";
 
   .btn-inscrever:hover {
     background: var(--purple-primary);
-    color: #ffffff;
+    color: var(--text-main);
   }
 
   @media (max-width: 768px) {

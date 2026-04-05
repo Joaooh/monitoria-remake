@@ -261,6 +261,8 @@ export function IconCloud({ icons, images }) {
     >
       <canvas
         ref={canvasRef}
+        role="img"
+        aria-label="Globo 3D animado iterativo com dezenas de logos de linguagens de programação"
         width={750}
         height={750}
         onMouseDown={handleMouseDown}

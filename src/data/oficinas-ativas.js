@@ -5,7 +5,7 @@ import imgWeb from "@assets/mago/oficinas/mago-web.png";
 import imgBlender from "@assets/mago/oficinas/monitoria-blender.png";
 
 /*
- * COMO CADASTRAR UMA OFICINA ATIVA:
+ * COMO CADASTRAR UMA OFICINA:
  * Preencha o bloco no array abaixo. 'linkInscricao' é o caminho da URL que abrirá
  * a página detalhada da oficina (ex: "/oficinas/oficina-de-web").
  * Importe a imagem correspondente lá no topo de assets/mago/oficinas.

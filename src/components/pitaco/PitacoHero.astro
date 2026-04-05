@@ -9,7 +9,7 @@ import SparklesText from "@components/effects/SparklesText.jsx";
 <section class="pitaco-hero">
   <div class="fiber-container">
     <FiberBackground color="#283a86" client:load />
-    <div class="dark-overlay"></div>
+    <div class="dark-overlay" aria-hidden="true"></div>
   </div>
 
   <div class="container">
@@ -24,7 +24,7 @@ import SparklesText from "@components/effects/SparklesText.jsx";
 
     <div class="hero-content">
       <div class="text-column">
-        <h2 class="pre-title">Espaço colaborativo</h2>
+        <p class="pre-title">Espaço colaborativo</p>
         <h1 class="title">
           <SparklesText client:load>PITACO</SparklesText>
         </h1>
@@ -55,9 +55,9 @@ import SparklesText from "@components/effects/SparklesText.jsx";
     justify-content: center;
     align-items: flex-end;
     overflow: hidden;
-    background-color: #0d0b1a;
+    background-color: var(--bg-dark);
     min-height: 40vh;
-    border-bottom: 4px solid #7adb53;
+    border-bottom: 4px solid var(--pitaco-accent);
   }
 
   .fiber-container {
@@ -100,7 +100,7 @@ import SparklesText from "@components/effects/SparklesText.jsx";
     align-items: flex-end;
     justify-content: space-between;
     width: 100%;
-    margin-top: 34px;
+    margin-top: 62px;
   }
 
   .text-column {
@@ -121,7 +121,7 @@ import SparklesText from "@components/effects/SparklesText.jsx";
     font-size: clamp(4.5rem, 9vw, 8rem);
     font-weight: 900;
     margin: 0 0 1rem 0;
-    color: #ffffff;
+    color: var(--text-main);
     letter-spacing: -3px;
     line-height: 1;
     margin-left: -6px;

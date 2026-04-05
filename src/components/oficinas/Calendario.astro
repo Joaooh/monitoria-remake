@@ -314,8 +314,8 @@ import { dadosCalendario, mesesParaGerar } from "@data/calendario.js";
   }
 
   .btn-exportar {
-    background-color: #7a1a8f;
-    color: #ffffff;
+    background-color: var(--purple-primary);
+    color: var(--bg-white);
     border: none;
     padding: 12px 24px;
     font-size: 1rem;
@@ -337,7 +337,7 @@ import { dadosCalendario, mesesParaGerar } from "@data/calendario.js";
   }
 
   #area-exportacao {
-    background: #fff;
+    background: var(--bg-white);
     padding: 30px;
     width: 100%;
     max-width: 1200px;
@@ -358,8 +358,8 @@ import { dadosCalendario, mesesParaGerar } from "@data/calendario.js";
     overflow: hidden;
   }
   .mes-titulo {
-    background-color: #7a1a8f;
-    color: white;
+    background-color: var(--purple-primary);
+    color: var(--text-main);
     text-align: center;
     font-weight: bold;
     padding: 8px 0;
@@ -371,15 +371,15 @@ import { dadosCalendario, mesesParaGerar } from "@data/calendario.js";
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     text-align: center;
-    background: #fff;
+    background: var(--bg-white);
   }
   .cabecalho-dia {
     font-weight: bold;
-    color: #666;
+    color: var(--text-light);
     padding: 6px 0;
     font-size: 0.7em;
-    border-bottom: 1px solid #eee;
-    background: #fafafa;
+    border-bottom: 1px solid var(--border-light);
+    background: var(--bg-light);
   }
   .dia {
     padding: 6px 0;
@@ -408,8 +408,8 @@ import { dadosCalendario, mesesParaGerar } from "@data/calendario.js";
     bottom: 80%;
     left: 50%;
     transform: translateX(-50%);
-    background: #222;
-    color: #fff;
+    background: var(--text-dark);
+    color: var(--bg-white);
     padding: 4px 8px;
     border-radius: 4px;
     font-size: 0.8em;
@@ -433,13 +433,13 @@ import { dadosCalendario, mesesParaGerar } from "@data/calendario.js";
     margin-top: 20px;
   }
   .bloco-ciclo {
-    background: #f9f9f9;
+    background: var(--bg-light);
     border-top: 4px solid #ccc;
     padding: 12px;
     border-radius: 6px;
-    border-left: 1px solid #eee;
-    border-right: 1px solid #eee;
-    border-bottom: 1px solid #eee;
+    border-left: 1px solid var(--border-light);
+    border-right: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--border-light);
     transition: background-color 0.2s;
   }
   .bloco-ciclo h3 {
@@ -455,14 +455,14 @@ import { dadosCalendario, mesesParaGerar } from "@data/calendario.js";
     gap: 6px;
   }
   .oficina-card {
-    background: #fafafa;
-    border: 1px solid #eee;
+    background: var(--bg-light);
+    border: 1px solid var(--border-light);
     padding: 8px;
     border-radius: 4px;
   }
   .oficina-nome {
     font-weight: bold;
-    color: #333;
+    color: var(--text-dark);
     display: block;
     margin-bottom: 4px;
     font-size: 0.75em;
@@ -505,7 +505,7 @@ import { dadosCalendario, mesesParaGerar } from "@data/calendario.js";
 
   .titulos-cabecalho h1 {
     font-size: 2rem;
-    color: #333;
+    color: var(--text-dark);
     margin-bottom: 5px;
     letter-spacing: 1px;
     text-align: center;
@@ -513,7 +513,7 @@ import { dadosCalendario, mesesParaGerar } from "@data/calendario.js";
   }
   .titulos-cabecalho h2 {
     font-size: 1rem;
-    color: #7a1a8f !important;
+    color: var(--purple-primary) !important;
     font-weight: 600;
     letter-spacing: 2px;
     text-transform: uppercase;

@@ -20,7 +20,7 @@ export const playlistsData = [
         tags: ["BLENDER", "MODELAGEM", "CRIAÇÃO DE PERSONAGENS", "INTERFACE"],
       },
       {
-        id_youtube: "", // Vazio = Em breve
+        id_youtube: "",
         title: "Em Breve",
         description: "Em Breve",
         tags: [],

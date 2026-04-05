@@ -5,6 +5,7 @@ const Sparkle = ({ id, x, y, color, delay, scale }) => {
   return (
     <motion.svg
       key={id}
+      aria-hidden="true"
       style={{ pointerEvents: "none", position: "absolute", zIndex: 20 }}
       initial={{ opacity: 0, left: x, top: y }}
       animate={{

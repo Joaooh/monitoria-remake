@@ -57,11 +57,11 @@ const { titulo, preTexto, subTexto } = Astro.props;
     padding: 20px 2rem 0 2rem;
     display: flex;
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
     overflow: hidden;
-    background-color: var(--bg-dark, #0d041a);
-    min-height: 30vh;
-    border-bottom: 4px solid #7a1a8f;
+    background-color: var(--bg-dark);
+    min-height: 35vh;
+    border-bottom: 4px solid var(--purple-primary);
   }
 
   .fiber-container {
@@ -101,16 +101,17 @@ const { titulo, preTexto, subTexto } = Astro.props;
 
   .hero-content {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: space-between;
     width: 100%;
     margin-top: 51px;
-    gap: 2rem;
+    gap: 1rem;
   }
 
   .text-column {
     flex: 0 0 50%;
-    padding-bottom: 50px;
+    padding-bottom: 0px;
+    z-index: 2;
   }
 
   .pre-title {
@@ -126,7 +127,7 @@ const { titulo, preTexto, subTexto } = Astro.props;
     font-size: clamp(4.5rem, 8vw, 7rem);
     font-weight: 800;
     margin: 0 0 1rem 0;
-    color: #ffffff;
+    color: var(--text-main);
     letter-spacing: -2px;
     line-height: 1;
     margin-left: -4px;
@@ -142,15 +143,17 @@ const { titulo, preTexto, subTexto } = Astro.props;
   .image-column {
     flex: 0 0 50%;
     display: flex;
-    justify-content: flex-start;
-    margin-bottom: -4px;
+    justify-content: center;
+    transform: translateX(-10%);
   }
 
   .image-wrapper-glow {
     position: relative;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
+    width: 100%;
+    margin-bottom: -167px;
   }
 
   .image-wrapper-glow::before {
@@ -160,21 +163,21 @@ const { titulo, preTexto, subTexto } = Astro.props;
     height: 80%;
     background: radial-gradient(
       circle,
-      rgba(122, 26, 143, 0.3) 0%,
+      rgba(122, 26, 143, 0.4) 0%,
       rgba(13, 4, 26, 0) 70%
     );
     z-index: -1;
     border-radius: 50%;
+    bottom: 100px;
   }
 
   .mago-spell-img {
     width: 100%;
-    max-width: 400px;
+    max-width: 550px;
     height: auto;
     object-fit: contain;
     transform: scaleX(-1);
     filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
-    margin-left: -10px;
   }
 
   /* --- RESPONSIVIDADE MOBILE --- */
@@ -217,13 +220,17 @@ const { titulo, preTexto, subTexto } = Astro.props;
     .image-column {
       flex: 1;
       justify-content: center;
-      margin-bottom: -4px;
+      transform: translateX(0);
       width: 100vw;
+    }
+
+    .image-wrapper-glow {
+      margin-bottom: -105px;
     }
 
     .mago-spell-img {
       width: 100%;
-      max-width: 200px;
+      max-width: 320px;
       height: auto;
       object-fit: contain;
       object-position: center bottom;

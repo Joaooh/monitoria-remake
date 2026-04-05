@@ -14,7 +14,12 @@
   /* Cores - Fundo Light */
   --bg-light: #f5f5f5;
   --bg-page-light: #ecebf0;
+  --bg-white: #ffffff;
   --border-light: #f0eaff;
+
+  /* Cores - Pitaco */
+  --pitaco-primary: #283a86;
+  --pitaco-accent: #7adb53;
 
   /* Cores - Marca */
   --purple-primary: #662c92;
