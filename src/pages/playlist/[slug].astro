@@ -32,6 +32,7 @@ function formatDate(isoDate: string) {
   });
 }
 
+// Conta pro Astro quais URLs de playlists ele deve gerar estaticamente (SSG) lendo o 'playlists.js'.
 export async function getStaticPaths() {
   return playlistsData.map((playlist) => {
     return {
@@ -44,10 +45,11 @@ export async function getStaticPaths() {
 const { playlist } = Astro.props;
 const apiKey = import.meta.env.YOUTUBE_API_KEY;
 
-// Busca os dados dos vídeos no YouTube
+// Esse Promise varre cada aula do 'playlists.js' e tenta pegar os detalhes puxando via API.
+// Roda exclusivamente no build, preservando banda e garantindo que o site abra rápido.
 const videosEnriquecidos = await Promise.all(
   playlist.videos.map(async (vid: any, index) => {
-    // Se for um vídeo hospedado fora do Youtube (ex: Streamyard)
+    // Se for um vídeo hospedado fora do YouTube (ex: Streamyard)
     if (vid.url || typeof vid.available === "boolean") {
       return {
         id: index + 1,
@@ -78,6 +80,7 @@ const videosEnriquecidos = await Promise.all(
     let dateStr = "Data não informada";
     let durationStr = "Duração não informada";
 
+    // Entrando aqui significa que tá tudo certo: tem a chave da API e o ID do YouTube no array.
     if (apiKey && vid.id_youtube) {
       try {
         const url = `https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails&id=${vid.id_youtube}&key=${apiKey}`;

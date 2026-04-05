@@ -1,3 +1,10 @@
+/*
+ * COMO PUBLICAR VÍDEOS NA PLAYLIST:
+ * 1. Crie um objeto raiz garantindo que a prop 'slug' seja a MESMA descrita lá em oficinas-detalhes.js.
+ * 2. Dentro de 'videos', para vídeos no YouTube jogue a tag do link em 'id_youtube'. Essa tag pode ser encontrada na URL do vídeo embed (Compartilhar/Share -> Incorporar/Embed -> src="https://www.youtube.com/embed/TAG" - remova o que vier depois de "?si=".
+ * 3. Para vídeos fora do Youtube (ex: Drive/Streamyard): omita o id_youtube, mas injete manualmente 'url', 'date', 'duration' e 'available: true'.
+ * 4. Para uma aula "Em breve": Passe apenas 'id_youtube: ""'.
+ */
 export const playlistsData = [
   {
     slug: "criacao-de-personagens-3d",
@@ -215,7 +222,8 @@ export const playlistsData = [
   {
     slug: "machine-learning",
     titulo: "Machine Learning",
-    classroomUrl: "https://classroom.google.com/c/ODUxNTY3MTY1OTIx?cjc=uxeqcwg6",
+    classroomUrl:
+      "https://classroom.google.com/c/ODUxNTY3MTY1OTIx?cjc=uxeqcwg6",
     videos: [
       {
         title: "Introdução ao Pandas e Manipulação de Dados",
@@ -238,7 +246,8 @@ export const playlistsData = [
         available: true,
       },
       {
-        title: "Regressões e Classificações lineares com Scikit-Learn Notebook Pratico",
+        title:
+          "Regressões e Classificações lineares com Scikit-Learn Notebook Prático",
         date: "29 de outubro de 2025",
         duration: "1h22min01s",
         description:

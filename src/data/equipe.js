@@ -25,6 +25,13 @@ import imgPedroQuartin from "@assets/equipe/pedro-quartin.jpg";
 import imgScielBuitrago from "@assets/equipe/sciel-buitrago.jpeg";
 import imgThaisRegina from "@assets/equipe/thais-regina.jpg";
 
+/*
+ * COMO ADICIONAR UM NOVO MONITOR À EQUIPE:
+ * 1. Importe a foto do monitor lá no topo usando (import imgNome from "@assets/equipe/foto.jpg").
+ * 2. Crie um novo bloco no array abaixo contendo: id, nome, descricao, foto e ativo.
+ * 3. Se 'ativo: true', ele aparece como monitor atual. Se 'ativo: false', vai pra aba de Ex-Membros
+ * 4. Dica: Use 'ocultarNaEquipe: true' caso o monitor esteva ativo no banco, mas você não quer que apareça na página da equipe.
+ */
 export const equipeData = [
   // ==========================================
   // MONITORES ATIVOS

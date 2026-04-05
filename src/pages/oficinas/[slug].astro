@@ -7,6 +7,7 @@ import { oficinasDetalhes } from "../../data/oficinas-detalhes.js";
 import MonitorCard from "../../components/equipe/MonitorCard.astro";
 import OficinaInternaHero from "../../components/oficinas/OficinaInternaHero.astro";
 
+// Diz pro Astro quais páginas estáticas (SSG) ele precisa pré-construir no servidor lendo os 'slugs' criados no oficinas-detalhes.js
 export async function getStaticPaths() {
   return oficinasDetalhes.map((oficina) => ({
     params: { slug: oficina.slug },
@@ -91,6 +92,7 @@ const { oficina } = Astro.props;
           <div class="action-buttons">
             {
               oficina.botoes.map((btn) => {
+                // Se o link começar com HTTP, joga pra uma nova aba.
                 const isExternal = btn.link.startsWith("http");
 
                 return (
@@ -127,6 +129,7 @@ const { oficina } = Astro.props;
         <h2>Monitores Responsáveis</h2>
         <div class="monitores-grid">
           {
+            // Puxa o painel de monitores casando os 'ids' informados lá no documento da oficina.
             oficina.monitores.map((monitor) => {
               if (!monitor) return null;
 

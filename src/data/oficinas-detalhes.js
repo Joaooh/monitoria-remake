@@ -8,7 +8,14 @@ import imgSql from "@assets/mago/oficinas/mago-sql.png";
 import imgRedes from "@assets/mago/oficinas/mago-redes.png";
 import { equipeData } from "./equipe.js";
 
-// Busca o monitor pelo ID e (opcionalmente) marca como líder ou adiciona info extra (ex: Turma)
+/*
+ * DETALHES GLOBAIS DE CADA OFICINA:
+ * Aqui ficam todos os dados "pesados" da página interna de cada oficina.
+ * 1. O 'slug' PRECISA ser exatamente igual ao 'linkInscricao' apontado nos outros arquivos (ex: "oficina-sql").
+ * 2. Em 'monitores', coloque exatamente o 'id' dos monitores correspondentes salvos lá em equipe.js.
+ */
+
+// Busca o monitor pelo ID e puxa seus dados para exibir no card, e opcionalmente marca como líder ou adiciona info extra (ex: Turma).
 const getMonitor = (id, isLider = false, infoExtra = "") => {
   const monitor = equipeData.find((m) => m.id === id);
 

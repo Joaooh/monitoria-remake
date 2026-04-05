@@ -5,6 +5,7 @@ export default function PlaylistViewer({ videos }) {
   const activeVideo = activeIndex !== null ? videos[activeIndex] : null;
 
   useEffect(() => {
+    // Pega input das setinhas (Cima/Baixo) do teclado para a pessoa navegar na playlist sem usar o mouse
     const handleKeyDown = (e) => {
       if (activeIndex !== null && e.key === "ArrowUp" && activeIndex > 0) {
         e.preventDefault();
@@ -159,6 +160,7 @@ export default function PlaylistViewer({ videos }) {
               className={`playlist-item ${idx === activeIndex ? "active" : ""}`}
               style={!video.available ? { opacity: 0.6 } : {}}
               onClick={() => setActiveIndex(idx)}
+              // Deixa rodar pelo "Enter" ou "Espaço" se o usuário usar Tab
               onKeyDown={(e) => {
                 if (e.key === "Enter" || e.key === " ") {
                   e.preventDefault();

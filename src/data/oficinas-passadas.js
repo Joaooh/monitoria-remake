@@ -3,6 +3,13 @@ import imgDados from "@assets/mago/oficinas/mago-dados.png";
 import imgSql from "@assets/mago/oficinas/mago-sql.png";
 import imgRedes from "@assets/mago/oficinas/mago-redes.png";
 
+/*
+ * COMO CADASTRAR UMA OFICINA PASSADA:
+ * Quando uma oficina ativa termina seu ciclo, ela deve vir pra cá.
+ * Preferencialmente, adicione as oficinas passadas em ordem decrescente de data.
+ * Basta preencher o array abaixo com os dados básicos, sendo que 'linkInscricao' na verdade será
+ * o finalzinho do link que redireciona pra página de detalhes (ex: "/oficinas/oficina-sql").
+ */
 export const oficinasPassadasData = [
   {
     id: "fundamentos-comp",

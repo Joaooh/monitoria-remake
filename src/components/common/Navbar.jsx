@@ -9,10 +9,12 @@ const navItems = [
 ];
 
 export default function FlawlessPillNavbar({ currentPath = "/" }) {
+  // Esconde a Navbar flutuante inteira se o usuário estiver na tela de playlist (o player foca total no vídeo).
   if (currentPath.startsWith("/playlist")) {
     return null;
   }
 
+  // Descobre qual botão da Navbar deve ficar "ativo" (roxo) lendo a URL que o usuário está acessando agora.
   const getActiveTabFromPath = (path) => {
     const normalizedPath =
       path.endsWith("/") && path.length > 1 ? path.slice(0, -1) : path;
@@ -35,6 +37,7 @@ export default function FlawlessPillNavbar({ currentPath = "/" }) {
   );
   const [hoveredTab, setHoveredTab] = useState(null);
 
+  // Caso a URL mude repentinamente por clique externo, esse Hook arrasta a pílula roxa pra aba certa
   useEffect(() => {
     setActiveTab(getActiveTabFromPath(currentPath));
   }, [currentPath]);
@@ -95,6 +98,7 @@ export default function FlawlessPillNavbar({ currentPath = "/" }) {
             </div>
 
             <ul role="list" style={styles.buttonsContainer}>
+              {/* Varre os botões e acende a luz no exato em que estamos acessando ou dando hover */}
               {navItems.map((item) => {
                 const isActive = activeTab === item.name;
                 const isHovered = hoveredTab === item.name;
