@@ -32,8 +32,14 @@ import logoCeub from "@assets/logo-ceub-light.png";
           <span class="line typewriter-container">
             <span class="incentivamos-text">Incentivamos{" "}</span>
 
-            <span aria-hidden="true" class="typewriter-animated" style="color: var(--purple-neon);">
-              <span id="vanilla-typewriter"></span><span class="type-cursor">|</span>
+            <span
+              aria-hidden="true"
+              class="typewriter-animated"
+              style="color: var(--purple-neon);"
+            >
+              <span id="vanilla-typewriter"></span><span class="type-cursor"
+                >|</span
+              >
             </span>
 
             <span class="sr-only">pessoas, projetos, ideias e talentos.</span>
@@ -56,6 +62,8 @@ import logoCeub from "@assets/logo-ceub-light.png";
           decoding="async"
           quality={70}
           format="webp"
+          widths={[400, 800, 1280]}
+          sizes="(max-width: 768px) 400px, (max-width: 1200px) 800px, 1280px"
         />
       </div>
     </main>
@@ -76,17 +84,28 @@ import logoCeub from "@assets/logo-ceub-light.png";
     inset: 0;
     z-index: 0;
   }
-  
+
   .mobile-gradient-bg {
-    background: linear-gradient(-45deg, var(--bg-dark), var(--purple-primary), var(--bg-dark));
-    background-size: 400% 400%;
-    animation: gradientBG 10s ease infinite;
+    background: var(--bg-dark);
   }
-  
-  @keyframes gradientBG {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+
+  .mobile-gradient-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--purple-primary);
+    opacity: 0;
+    transition: opacity 5s ease-in-out;
+    animation: pulseGradient 8s ease-in-out infinite alternate;
+  }
+
+  @keyframes pulseGradient {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0.8;
+    }
   }
 
   .hero-fade {
@@ -157,17 +176,22 @@ import logoCeub from "@assets/logo-ceub-light.png";
     display: inline-flex;
     min-width: 300px;
   }
-  
+
   .type-cursor {
     display: inline-block;
     color: var(--purple-neon);
     animation: blinkCursor 0.8s step-end infinite;
     margin-left: 2px;
   }
-  
+
   @keyframes blinkCursor {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
   }
 
   .buttons {
@@ -359,9 +383,9 @@ import logoCeub from "@assets/logo-ceub-light.png";
 
     function type() {
       if (!document.getElementById("vanilla-typewriter")) return; // Proteção extra pra views
-      
+
       const currentWord = words[wordIndex];
-      
+
       if (isDeleting) {
         el.textContent = currentWord.substring(0, charIndex - 1);
         charIndex--;
@@ -384,11 +408,15 @@ import logoCeub from "@assets/logo-ceub-light.png";
 
       timeoutId = setTimeout(type, typeSpeed);
     }
-    
-    document.addEventListener("astro:before-swap", () => {
-      clearTimeout(timeoutId);
-    }, { once: true });
-    
+
+    document.addEventListener(
+      "astro:before-swap",
+      () => {
+        clearTimeout(timeoutId);
+      },
+      { once: true },
+    );
+
     type();
   });
 </script>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://monitoria-remake.vercel.app/sitemap-index.xml

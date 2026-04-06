@@ -2,19 +2,21 @@
 import { ClientRouter } from "astro:transitions";
 import "../styles/global.css";
 import Navbar from "../components/common/Navbar.jsx";
-import Analytics from '@vercel/analytics/astro';
-import SpeedInsights from '@vercel/speed-insights/astro';
+import Analytics from "@vercel/analytics/astro";
+import SpeedInsights from "@vercel/speed-insights/astro";
 
 interface Props {
   title: string;
   description?: string;
   bodyClass?: string;
+  image?: string;
 }
 
 const {
   title,
-  description = "Site oficial da Monitoria de TI do CEUB. Incentivamos pessoas, projetos e ideias.",
+  description = "Site oficial da Monitoria de TI do CEUB. Construindo conhecimento na prática através de oficinas, projetos e aprendizado colaborativo.",
   bodyClass = "",
+  image = "/site-preview.jpg",
 } = Astro.props;
 
 const currentPath = Astro.url.pathname;
@@ -26,33 +28,42 @@ const currentPath = Astro.url.pathname;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={Astro.url} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={new URL('/favicon.png', Astro.url)} />
+    <meta property="og:image" content={new URL(image, Astro.url).href} />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary" />
     <meta property="twitter:url" content={Astro.url} />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={new URL('/favicon.png', Astro.url)} />
+    <meta property="twitter:image" content={new URL(image, Astro.url).href} />
 
     <!-- Canonical URL -->
-    <link rel="canonical" href={new URL(currentPath, Astro.site || Astro.url)} />
+    <link
+      rel="canonical"
+      href={new URL(currentPath, Astro.site || Astro.url).href}
+    />
 
     <meta name="theme-color" content="var(--purple-primary)" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/favicon.png" />
-    <link rel="preload" href="/fonts/NotoSans-Variable.woff2" as="font" type="font/woff2" crossorigin />
+    <link
+      rel="preload"
+      href="/fonts/NotoSans-Variable.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
     <title>{title}</title>
     <ClientRouter />
   </head>
   <body class={bodyClass}>
-    <Navbar client:load transition:persist="navbar" currentPath={currentPath} />
+    <Navbar client:idle transition:persist="navbar" currentPath={currentPath} />
     <slot />
     <Analytics />
     <SpeedInsights />
