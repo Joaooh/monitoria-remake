@@ -119,7 +119,7 @@ const Silk = ({
   );
 
   return (
-    <Canvas dpr={[1, 2]} frameloop="always">
+    <Canvas dpr={1} frameloop="always">
       <SilkPlane ref={meshRef} uniforms={uniforms} />
     </Canvas>
   );

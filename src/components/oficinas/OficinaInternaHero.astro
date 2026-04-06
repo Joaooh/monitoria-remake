@@ -15,8 +15,8 @@ const isTituloLongo = titulo.length > 25;
 ---
 
 <section class="oficina-interna-hero">
-  <div class="fiber-container">
-    <FiberBackground client:load />
+  <div class="fiber-container mobile-gradient-bg">
+    <FiberBackground client:media="(min-width: 768px)" />
     <div class="dark-overlay"></div>
   </div>
 
@@ -27,6 +27,8 @@ const isTituloLongo = titulo.length > 25;
         alt="Logo do CEUB"
         class="hero-logo"
         loading="eager"
+        quality={80}
+        format="webp"
       />
     </div>
 
@@ -44,6 +46,8 @@ const isTituloLongo = titulo.length > 25;
           class="mago-vertical-img"
           loading="eager"
           fetchpriority="high"
+          quality={70}
+          format="webp"
         />
       </div>
     </div>
@@ -67,6 +71,18 @@ const isTituloLongo = titulo.length > 25;
     position: absolute;
     inset: 0;
     z-index: 0;
+  }
+  
+  .mobile-gradient-bg {
+    background: linear-gradient(-45deg, var(--bg-dark), var(--purple-primary), var(--bg-dark));
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease infinite;
+  }
+  
+  @keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
   }
 
   .dark-overlay {

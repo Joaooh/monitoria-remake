@@ -14,8 +14,8 @@ const { titulo, preTexto, subTexto } = Astro.props;
 ---
 
 <section class="equipe-hero">
-  <div class="fiber-container">
-    <FiberBackground client:load />
+  <div class="fiber-container mobile-gradient-bg">
+    <FiberBackground client:media="(min-width: 768px)" />
     <div class="dark-overlay"></div>
   </div>
 
@@ -68,6 +68,18 @@ const { titulo, preTexto, subTexto } = Astro.props;
     position: absolute;
     inset: 0;
     z-index: 0;
+  }
+  
+  .mobile-gradient-bg {
+    background: linear-gradient(-45deg, var(--bg-dark), var(--purple-primary), var(--bg-dark));
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease infinite;
+  }
+  
+  @keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
   }
 
   .dark-overlay {

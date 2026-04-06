@@ -43,15 +43,10 @@ import { dadosCalendario, mesesParaGerar } from "@data/calendario.js";
 ></script>
 
 <script is:inline>
-  function getCicloDoDia(ano, mes, dia, diaDaSemana) {
+  function getCicloDoDiaNum(intDate, diaDaSemana) {
     if (diaDaSemana === 0 || diaDaSemana === 6) return null;
-    const dataAtual = new Date(ano, mes, dia);
     for (const ciclo of window._DADOS_CALENDARIO.ciclos) {
-      const [iAno, iMes, iDia] = ciclo.dataInicio.split("-").map(Number);
-      const [fAno, fMes, fDia] = ciclo.dataFim.split("-").map(Number);
-      const dataInicio = new Date(iAno, iMes - 1, iDia);
-      const dataFim = new Date(fAno, fMes - 1, fDia);
-      if (dataAtual >= dataInicio && dataAtual <= dataFim) return ciclo;
+      if (intDate >= ciclo.intInicio && intDate <= ciclo.intFim) return ciclo;
     }
     return null;
   }
@@ -61,6 +56,14 @@ import { dadosCalendario, mesesParaGerar } from "@data/calendario.js";
     const containerLegenda = document.getElementById("legenda-container");
 
     if (!containerCalendario || !containerLegenda) return;
+
+    if (!window._DADOS_CALENDARIO._initialized) {
+      window._DADOS_CALENDARIO.ciclos.forEach((c) => {
+        c.intInicio = parseInt(c.dataInicio.replace(/-/g, ""));
+        c.intFim = parseInt(c.dataFim.replace(/-/g, ""));
+      });
+      window._DADOS_CALENDARIO._initialized = true;
+    }
 
     containerCalendario.innerHTML = "";
     containerLegenda.innerHTML = "";
@@ -82,9 +85,11 @@ import { dadosCalendario, mesesParaGerar } from "@data/calendario.js";
       for (let i = 0; i < primeiroDiaSemana; i++)
         html += `<div class="dia vazio"></div>`;
 
+      let currentDiaSemana = primeiroDiaSemana;
+
       for (let dia = 1; dia <= totalDias; dia++) {
-        const diaDaSemana = new Date(config.ano, config.mes, dia).getDay();
-        const ciclo = getCicloDoDia(config.ano, config.mes, dia, diaDaSemana);
+        const intDate = config.ano * 10000 + (config.mes + 1) * 100 + dia;
+        const ciclo = getCicloDoDiaNum(intDate, currentDiaSemana);
 
         if (ciclo) {
           const idFormatado = ciclo.nome
@@ -94,6 +99,8 @@ import { dadosCalendario, mesesParaGerar } from "@data/calendario.js";
         } else {
           html += `<div class="dia">${dia}</div>`;
         }
+
+        currentDiaSemana = (currentDiaSemana + 1) % 7;
       }
 
       html += `</div>`;

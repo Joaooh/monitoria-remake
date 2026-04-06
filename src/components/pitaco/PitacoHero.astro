@@ -7,8 +7,8 @@ import SparklesText from "@components/effects/SparklesText.jsx";
 ---
 
 <section class="pitaco-hero">
-  <div class="fiber-container">
-    <FiberBackground color="#283a86" client:load />
+  <div class="fiber-container mobile-gradient-bg">
+    <FiberBackground color="#283a86" client:media="(min-width: 768px)" />
     <div class="dark-overlay" aria-hidden="true"></div>
   </div>
 
@@ -19,6 +19,8 @@ import SparklesText from "@components/effects/SparklesText.jsx";
         alt="Logo do CEUB"
         class="hero-logo"
         loading="eager"
+        quality={80}
+        format="webp"
       />
     </div>
 
@@ -41,6 +43,8 @@ import SparklesText from "@components/effects/SparklesText.jsx";
           class="pc-img floating-pc"
           loading="eager"
           fetchpriority="high"
+          quality={80}
+          format="webp"
         />
       </div>
     </div>
@@ -64,6 +68,18 @@ import SparklesText from "@components/effects/SparklesText.jsx";
     position: absolute;
     inset: 0;
     z-index: 0;
+  }
+  
+  .mobile-gradient-bg {
+    background: linear-gradient(-45deg, var(--bg-dark), var(--pitaco-primary), var(--bg-dark));
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease infinite;
+  }
+  
+  @keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
   }
 
   .dark-overlay {

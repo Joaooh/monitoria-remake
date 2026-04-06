@@ -20,7 +20,8 @@ import { oficinasAtivasData } from "@data/oficinas-ativas.js";
                 src={oficina.imagem}
                 alt={oficina.alt}
                 class="card-image"
-                quality="max"
+                quality={70}
+                format="webp"
               />
               <div class="badges-overlay">
                 <span class={`badge-formato ${oficina.formato.toLowerCase()}`}>

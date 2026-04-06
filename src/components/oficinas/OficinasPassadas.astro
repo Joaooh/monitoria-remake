@@ -33,7 +33,8 @@ import { oficinasPassadasData } from "@data/oficinas-passadas.js";
                   src={oficina.imagem}
                   alt={oficina.alt}
                   class="card-image"
-                  quality="max"
+                  quality={70}
+                  format="webp"
                 />
               </div>
 
@@ -80,6 +81,8 @@ import { oficinasPassadasData } from "@data/oficinas-passadas.js";
         }
       </div>
 
+      <div class="carousel-indicator" id="passadas-indicator"></div>
+
       <button class="carousel-btn next" aria-label="Próximas oficinas">
         <svg
           viewBox="0 0 24 24"
@@ -98,6 +101,7 @@ import { oficinasPassadasData } from "@data/oficinas-passadas.js";
 <script is:inline>
   document.addEventListener("astro:page-load", () => {
     const track = document.getElementById("passadas-track");
+    const indicator = document.getElementById("passadas-indicator");
     const btnPrev = document.querySelector(".carousel-btn.prev");
     const btnNext = document.querySelector(".carousel-btn.next");
     const cards = Array.from(document.querySelectorAll(".card-passada"));
@@ -129,6 +133,10 @@ import { oficinasPassadasData } from "@data/oficinas-passadas.js";
       btnNext.style.opacity = currentPage >= totalPages - 1 ? "0.3" : "1";
       btnNext.style.pointerEvents =
         currentPage >= totalPages - 1 ? "none" : "all";
+
+      if (indicator) {
+        indicator.textContent = `${currentPage + 1}/${totalPages}`;
+      }
 
       // Esconde todos os cards
       cards.forEach((card) => {
@@ -166,10 +174,20 @@ import { oficinasPassadasData } from "@data/oficinas-passadas.js";
     });
 
     let resizeTimer;
-    window.addEventListener("resize", () => {
+    const handleResize = () => {
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(renderPage, 200);
-    });
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    document.addEventListener(
+      "astro:before-swap",
+      () => {
+        window.removeEventListener("resize", handleResize);
+      },
+      { once: true },
+    );
 
     renderPage();
   });
@@ -391,6 +409,10 @@ import { oficinasPassadasData } from "@data/oficinas-passadas.js";
     color: var(--text-main);
   }
 
+  .carousel-indicator {
+    display: none;
+  }
+
   @media (max-width: 768px) {
     .oficinas-passadas-section {
       padding: 60px 1.5rem;
@@ -416,11 +438,24 @@ import { oficinasPassadasData } from "@data/oficinas-passadas.js";
     }
 
     .carousel-btn.prev {
-      left: calc(50% - 60px);
+      left: calc(50% - 90px);
     }
 
     .carousel-btn.next {
-      right: calc(50% - 60px);
+      right: calc(50% - 90px);
+    }
+
+    .carousel-indicator {
+      display: block;
+      position: absolute;
+      bottom: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-weight: 700;
+      color: var(--text-dark);
+      font-size: 0.95rem;
+      z-index: 5;
+      letter-spacing: 2px;
     }
   }
 </style>

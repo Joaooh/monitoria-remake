@@ -1,6 +1,5 @@
 ---
 import FiberBackground from "../effects/Fiber.jsx";
-import TextType from "../effects/Typewriter.jsx";
 
 import { Image } from "astro:assets";
 import magoImg from "@assets/mago/mago-padrao.png";
@@ -8,7 +7,9 @@ import logoCeub from "@assets/logo-ceub-light.png";
 ---
 
 <section class="hero" aria-label="Seção de boas-vindas">
-  <FiberBackground client:idle />
+  <div class="fiber-container mobile-gradient-bg">
+    <FiberBackground client:media="(min-width: 768px)" />
+  </div>
 
   <div class="hero-fade" aria-hidden="true"></div>
 
@@ -19,6 +20,8 @@ import logoCeub from "@assets/logo-ceub-light.png";
         alt="Logo do Centro Universitário de Brasília - CEUB"
         class="hero-logo"
         loading="eager"
+        quality={80}
+        format="webp"
       />
     </div>
 
@@ -29,15 +32,8 @@ import logoCeub from "@assets/logo-ceub-light.png";
           <span class="line typewriter-container">
             <span class="incentivamos-text">Incentivamos{" "}</span>
 
-            <span aria-hidden="true" class="typewriter-animated">
-              <TextType
-                client:load
-                text={["pessoas.", "projetos.", "ideias.", "talentos."]}
-                typingSpeed={80}
-                deletingSpeed={40}
-                pauseDuration={2000}
-                textColors={["var(--purple-neon)"]}
-              />
+            <span aria-hidden="true" class="typewriter-animated" style="color: var(--purple-neon);">
+              <span id="vanilla-typewriter"></span><span class="type-cursor">|</span>
             </span>
 
             <span class="sr-only">pessoas, projetos, ideias e talentos.</span>
@@ -58,6 +54,8 @@ import logoCeub from "@assets/logo-ceub-light.png";
           loading="eager"
           fetchpriority="high"
           decoding="async"
+          quality={70}
+          format="webp"
         />
       </div>
     </main>
@@ -71,6 +69,24 @@ import logoCeub from "@assets/logo-ceub-light.png";
     width: 100vw;
     overflow: hidden;
     background-color: var(--bg-dark);
+  }
+
+  .fiber-container {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  
+  .mobile-gradient-bg {
+    background: linear-gradient(-45deg, var(--bg-dark), var(--purple-primary), var(--bg-dark));
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease infinite;
+  }
+  
+  @keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
   }
 
   .hero-fade {
@@ -140,6 +156,18 @@ import logoCeub from "@assets/logo-ceub-light.png";
   .typewriter-container {
     display: inline-flex;
     min-width: 300px;
+  }
+  
+  .type-cursor {
+    display: inline-block;
+    color: var(--purple-neon);
+    animation: blinkCursor 0.8s step-end infinite;
+    margin-left: 2px;
+  }
+  
+  @keyframes blinkCursor {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
   }
 
   .buttons {
@@ -317,3 +345,50 @@ import logoCeub from "@assets/logo-ceub-light.png";
     }
   }
 </style>
+
+<script is:inline>
+  document.addEventListener("astro:page-load", () => {
+    const el = document.getElementById("vanilla-typewriter");
+    if (!el) return;
+
+    const words = ["pessoas.", "projetos.", "ideias.", "talentos."];
+    let wordIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let timeoutId;
+
+    function type() {
+      if (!document.getElementById("vanilla-typewriter")) return; // Proteção extra pra views
+      
+      const currentWord = words[wordIndex];
+      
+      if (isDeleting) {
+        el.textContent = currentWord.substring(0, charIndex - 1);
+        charIndex--;
+      } else {
+        el.textContent = currentWord.substring(0, charIndex + 1);
+        charIndex++;
+      }
+
+      let typeSpeed = 80;
+      if (isDeleting) typeSpeed = 40;
+
+      if (!isDeleting && charIndex === currentWord.length) {
+        typeSpeed = 2000;
+        isDeleting = true;
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        wordIndex = (wordIndex + 1) % words.length;
+        typeSpeed = 500;
+      }
+
+      timeoutId = setTimeout(type, typeSpeed);
+    }
+    
+    document.addEventListener("astro:before-swap", () => {
+      clearTimeout(timeoutId);
+    }, { once: true });
+    
+    type();
+  });
+</script>
