@@ -1,0 +1,188 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import magoDuvida from "@assets/mago/mago-com-duvida.png";
+---
+
+<Layout 
+  title="Página não encontrada - 404" 
+  bodyClass="theme-dark" 
+  hideNavbar={true}
+>
+  <main class="not-found-container">
+    <div class="not-found-content">
+      <div class="image-wrapper">
+        <Image 
+          src={magoDuvida} 
+          alt="Mago da monitoria coçando a cabeça com dúvida"
+          class="mago-image"
+          quality={80}
+          format="webp"
+          widths={[300, 600]}
+          sizes="(max-width: 768px) 300px, 600px"
+          loading="eager"
+        />
+      </div>
+      
+      <h1 class="error-code">404</h1>
+      
+      <div class="text-content">
+        <h2>Parece que esse feitiço falhou...</h2>
+        <p>A página que você está tentando acessar não existe ou foi movida para os arquivos secretos da monitoria.</p>
+        
+        <a href="/" class="btn-home">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          Voltar para o Início
+        </a>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .not-found-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-dark);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Fallback glow background */
+  .not-found-container::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60vw;
+    height: 60vw;
+    background: radial-gradient(circle, rgba(102, 44, 146, 0.15) 0%, rgba(20, 5, 30, 0) 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .not-found-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    z-index: 10;
+    max-width: 600px;
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .image-wrapper {
+    margin-bottom: -30px;
+    position: relative;
+    z-index: 5;
+  }
+
+  .mago-image {
+    max-width: 240px;
+    height: auto;
+    filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.4));
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-15px);
+    }
+  }
+
+  .error-code {
+    font-size: clamp(6rem, 15vw, 10rem);
+    font-weight: 900;
+    margin: 0;
+    line-height: 1;
+    background: linear-gradient(135deg, var(--purple-light), var(--purple-primary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 10px 30px rgba(102, 44, 146, 0.3);
+    position: relative;
+    z-index: 10;
+  }
+
+  .text-content {
+    margin-top: 1rem;
+    position: relative;
+    z-index: 15;
+  }
+
+  h2 {
+    color: var(--text-main);
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 700;
+    margin: 0 0 1rem 0;
+    letter-spacing: -0.5px;
+  }
+
+  p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 0 0 2.5rem 0;
+  }
+
+  .btn-home {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--purple-primary);
+    color: var(--text-main);
+    padding: 14px 28px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 1.05rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(102, 44, 146, 0.4);
+  }
+
+  .btn-home:hover {
+    background: var(--purple-light);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(102, 44, 146, 0.6);
+  }
+
+  .btn-home svg {
+    transition: transform 0.3s ease;
+  }
+
+  .btn-home:hover svg {
+    transform: translateX(-4px);
+  }
+
+  @media (max-width: 480px) {
+    .mago-image {
+      max-width: 180px;
+    }
+    
+    .image-wrapper {
+      margin-bottom: -20px;
+    }
+  }
+</style>

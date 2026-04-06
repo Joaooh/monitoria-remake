@@ -10,6 +10,7 @@ interface Props {
   description?: string;
   bodyClass?: string;
   image?: string;
+  hideNavbar?: boolean;
 }
 
 const {
@@ -17,6 +18,7 @@ const {
   description = "Site oficial da Monitoria de TI do CEUB. Construindo conhecimento na prática através de oficinas, projetos e aprendizado colaborativo.",
   bodyClass = "",
   image = "/site-preview.jpg",
+  hideNavbar = false,
 } = Astro.props;
 
 const currentPath = Astro.url.pathname;
@@ -63,7 +65,9 @@ const currentPath = Astro.url.pathname;
     <ClientRouter />
   </head>
   <body class={bodyClass}>
-    <Navbar client:idle transition:persist="navbar" currentPath={currentPath} />
+    {!hideNavbar && (
+      <Navbar client:idle transition:persist="navbar" currentPath={currentPath} />
+    )}
     <slot />
     <Analytics />
     <SpeedInsights />
