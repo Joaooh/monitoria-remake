@@ -11,11 +11,6 @@ const navItems = [
 export default function FlawlessPillNavbar({ currentPath = "/" }) {
   const [clientPath, setClientPath] = useState(currentPath);
 
-  // Esconde a Navbar flutuante inteira se o usuário estiver na tela de playlist (o player foca total no vídeo).
-  if (clientPath.startsWith("/playlist")) {
-    return null;
-  }
-
   // Descobre qual botão da Navbar deve ficar "ativo" (roxo) lendo a URL que o usuário está acessando agora.
   const getActiveTabFromPath = (path) => {
     const normalizedPath =
@@ -60,6 +55,13 @@ export default function FlawlessPillNavbar({ currentPath = "/" }) {
     };
   }, []);
 
+  // Esconde a Navbar via CSS quando o usuário estiver na tela de playlist.
+  const isPlaylist = clientPath.startsWith("/playlist");
+  const containerStyle = {
+    ...styles.headerContainer,
+    display: isPlaylist ? "none" : "flex",
+  };
+
   return (
     <>
       <style>
@@ -90,7 +92,7 @@ export default function FlawlessPillNavbar({ currentPath = "/" }) {
         `}
       </style>
 
-      <div style={styles.headerContainer} className="header-container-mobile">
+      <div style={containerStyle} className="header-container-mobile">
         <div style={styles.navWrapper} className="nav-scroll-mobile">
           <nav
             aria-label="Navegação principal"

@@ -5,7 +5,7 @@ import imgFelipeBarcelos from "@assets/equipe/felipe-barcelos.png";
 import imgFelipeRodrigues from "@assets/equipe/felipe-rodrigues.png";
 import imgFilipeCampos from "@assets/equipe/filipe-campos.jpg";
 import imgGabrielBecker from "@assets/equipe/gabriel-becker.jpg";
-import imgGabrielCaramez from "@assets/equipe/gabriel-caramez.jpeg";
+import imgGabrielCaramez from "@assets/equipe/gabriel-caramez.jpg";
 import imgGabrielSoares from "@assets/equipe/gabriel-soares.png";
 import imgGuilhermeFernandes from "@assets/equipe/guilherme-fernandes.jpeg";
 import imgIsaacLovisi from "@assets/equipe/isaac-lovisi.jpeg";
