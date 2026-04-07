@@ -39,7 +39,7 @@ export const equipeData = [
   {
     id: "lucas-borges",
     nome: "Lucas Borges",
-    descricao: "Coordenador-chefe da monitoria.",
+    descricao: "Coordenador-chefe da monitoria. Entusiasta em Redes e Cibersegurança.",
     foto: imgLucasBorges,
     ativo: true,
   },
