@@ -42,6 +42,8 @@ const exMembros = equipeData.filter((m) => !m.ativo).sort(ordenarPorNome);
                 descricao={monitor.descricao}
                 foto={monitor.foto}
                 loading={index < 8 ? "eager" : "lazy"}
+                linkedin={monitor.linkedin}
+                github={monitor.github}
               />
             ))
           }
@@ -63,6 +65,8 @@ const exMembros = equipeData.filter((m) => !m.ativo).sort(ordenarPorNome);
                   descricao={monitor.descricao}
                   foto={monitor.foto}
                   isExMembro={true}
+                  linkedin={monitor.linkedin}
+                  github={monitor.github}
                 />
               ))}
             </div>

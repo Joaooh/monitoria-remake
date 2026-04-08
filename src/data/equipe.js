@@ -28,9 +28,10 @@ import imgThaisRegina from "@assets/equipe/thais-regina.jpg";
 /*
  * COMO ADICIONAR UM NOVO MONITOR À EQUIPE:
  * 1. Importe a foto do monitor lá no topo usando (import imgNome from "@assets/equipe/foto.jpg").
- * 2. Crie um novo bloco no array abaixo contendo: id, nome, descricao, foto e ativo.
- * 3. Se 'ativo: true', ele aparece como monitor atual. Se 'ativo: false', vai pra aba de Ex-Membros
- * 4. Dica: Use 'ocultarNaEquipe: true' caso o monitor esteva ativo no banco, mas você não quer que apareça na página da equipe.
+ * 2. Crie um novo bloco no array abaixo contendo: id, nome, descricao, foto, ativo, linkedin e github.
+ * 3. Se 'ativo: true', ele aparece como monitor atual. Se 'ativo: false', vai pra aba de Ex-Membros.
+ * 4. Coloque null em linkedin/github se o membro não tiver ou não quiser exibir o link.
+ * 5. Dica: Use 'ocultarNaEquipe: true' caso o monitor esteja ativo no banco, mas você não quer que apareça na página da equipe.
  */
 export const equipeData = [
   // ==========================================
@@ -39,9 +40,12 @@ export const equipeData = [
   {
     id: "lucas-borges",
     nome: "Lucas Borges",
-    descricao: "Coordenador-chefe da monitoria. Entusiasta em Redes e Cibersegurança.",
+    descricao:
+      "Coordenador-chefe da monitoria. Entusiasta em Redes e Cibersegurança.",
     foto: imgLucasBorges,
     ativo: true,
+    linkedin: "https://www.linkedin.com/in/lucas-borges-9723b8309/",
+    github: "https://github.com/Borges070",
   },
   {
     id: "lucas-villas",
@@ -49,6 +53,9 @@ export const equipeData = [
     descricao: "Especialista em Blender e Desenvolvedor Full Stack.",
     foto: imgLucasVillas,
     ativo: true,
+    linkedin:
+      "https://www.linkedin.com/in/lucas-villas-boas-portella-0208752b9/",
+    github: "https://github.com/Lucasvillas/",
   },
   {
     id: "jess-forster",
@@ -57,6 +64,8 @@ export const equipeData = [
       "Especialista em Sistemas Operacionais, desenvolvimento Full Stack, Cibersegurança e mono Thresh.",
     foto: imgJessForster,
     ativo: true,
+    linkedin: "https://www.linkedin.com/in/jesssaitoforster/",
+    github: "https://github.com/gathddu",
   },
   {
     id: "gabriel-caramez",
@@ -65,6 +74,9 @@ export const equipeData = [
       "Especialista em React, Maven e programador Java, Python e JavaScript.",
     foto: imgGabrielCaramez,
     ativo: true,
+    linkedin:
+      "https://www.linkedin.com/in/gabriel-caramez-benvindo-da-silva-dev/",
+    github: "https://github.com/GabrielCaramez/",
   },
   {
     id: "pedro-calderon",
@@ -73,6 +85,9 @@ export const equipeData = [
       "Full Stack Developer | Python | C | SQL | entusiasta da Computação Quântica.",
     foto: imgPedroCalderon,
     ativo: true,
+    linkedin:
+      "https://www.linkedin.com/in/pedro-calder%C3%B3n-nunes-4a27812b5/",
+    github: "https://github.com/pedrocalderon52",
   },
   {
     id: "pedro-quartin",
@@ -80,6 +95,8 @@ export const equipeData = [
     descricao: "Desenvolvedor: Java, Spring, SQL, Linux, Git, Docker e React.",
     foto: imgPedroQuartin,
     ativo: true,
+    linkedin: "https://www.linkedin.com/in/pedroquartin/",
+    github: "https://github.com/phquartin",
   },
   {
     id: "lucas-moura",
@@ -88,6 +105,8 @@ export const equipeData = [
       "Backend Developer | Inteligência Artificial | Entusiasta em Linux e Cibersegurança.",
     foto: imgLucasMoura,
     ativo: true,
+    linkedin: "https://www.linkedin.com/in/lucas-salles-moura/",
+    github: "https://github.com/LucMoura",
   },
   {
     id: "sciel-buitrago",
@@ -96,6 +115,8 @@ export const equipeData = [
       "Desenvolvedor Backend, entusiasta em Python, com conhecimentos em SQL e fundamentos de estrutura de dados.",
     foto: imgScielBuitrago,
     ativo: true,
+    linkedin: "https://www.linkedin.com/in/felipe-buitrago-3225b1364/",
+    github: "https://github.com/FerBuitrago",
   },
   {
     id: "enzo-rodrigues",
@@ -104,6 +125,8 @@ export const equipeData = [
       "Ciência de Dados | Machine Learning | Análise de Dados | Desenvolvimento Full Stack.",
     foto: imgEnzo,
     ativo: true,
+    linkedin: "https://www.linkedin.com/in/enzo-rodrigues-ribeiro-134405268/",
+    github: "https://github.com/eznrr",
   },
   {
     id: "otavio-oliveira",
@@ -111,6 +134,8 @@ export const equipeData = [
     descricao: "Engenheiro de Dados experiente em SQL e Python.",
     foto: imgOtavioOliveira,
     ativo: true,
+    linkedin: "https://www.linkedin.com/in/0ot%C3%A1vio-vieira/",
+    github: "https://github.com/Olveir",
   },
   {
     id: "lucas-paiva",
@@ -118,6 +143,8 @@ export const equipeData = [
     descricao: "Analista de Dados | Desenvolvedor Web.",
     foto: imgLucasPaiva,
     ativo: true,
+    linkedin: "https://www.linkedin.com/in/paiva-sa01/",
+    github: "https://github.com/lucasdpsa01",
   },
   {
     id: "felipe-barcelos",
@@ -126,6 +153,8 @@ export const equipeData = [
       "Entusiasta em Cibersegurança | Analista de Redes | Python & Linux.",
     foto: imgFelipeBarcelos,
     ativo: true,
+    linkedin: "https://www.linkedin.com/in/felipe-barcelos-5b0637321/",
+    github: "https://github.com/felpsbc",
   },
   {
     id: "kaynan",
@@ -133,6 +162,8 @@ export const equipeData = [
     descricao: "Especialista em Java, Engenheiro DevOps.",
     foto: imgKaynan,
     ativo: true,
+    linkedin: "https://www.linkedin.com/in/kaynansouza/",
+    github: "https://github.com/KaynanSouza",
   },
   {
     id: "guilherme-fernandes",
@@ -141,6 +172,8 @@ export const equipeData = [
       "Cientista de Dados com foco em Engenharia de IA, MLOps e LLMOps.",
     foto: imgGuilhermeFernandes,
     ativo: true,
+    linkedin: "https://www.linkedin.com/in/gui-fernandes04/",
+    github: "https://github.com/guifzy",
   },
   {
     id: "joao-gabriel",
@@ -149,6 +182,8 @@ export const equipeData = [
       "Desenvolvedor Front-end com interesse em Java e Linux | vulgo 'Modo Escuro'.",
     foto: imgJoaoGabriel,
     ativo: true,
+    linkedin: "https://www.linkedin.com/in/joaogmtorres",
+    github: "https://github.com/Joaooh",
   },
   {
     id: "luiz-nicolau",
@@ -157,6 +192,8 @@ export const equipeData = [
       "Full Stack & AI Engineer | Startup Founder | @SeuNicolau -> YouTube | AWS, Python, JavaScript, SQL…",
     foto: imgLuizNicolau,
     ativo: true,
+    linkedin: "https://www.linkedin.com/in/luis-felipe-nicolau/",
+    github: "https://github.com/luisfnicolau",
   },
   {
     id: "gabriel-soares",
@@ -165,6 +202,8 @@ export const equipeData = [
     foto: imgGabrielSoares,
     ativo: true,
     ocultarNaEquipe: true,
+    linkedin: "https://www.linkedin.com/in/gabrielsoaresss/",
+    github: "https://github.com/Zouares",
   },
   {
     id: "leonardo-cespedes",
@@ -173,6 +212,9 @@ export const equipeData = [
     foto: imgLeonardoCespedes,
     ativo: true,
     ocultarNaEquipe: true,
+    linkedin:
+      "https://www.linkedin.com/in/leonardo-cespedes-paes-huard-7026a435b/",
+    github: "https://github.com/rexleo111",
   },
 
   // ==========================================
@@ -185,6 +227,8 @@ export const equipeData = [
       "Desenvolvedor Backend, entusiasta de Linux e especialista em tudo.",
     foto: imgAngelo,
     ativo: false,
+    linkedin: "https://www.linkedin.com/in/angkeller/",
+    github: "https://www.linkedin.com/in/angkeller/",
   },
   {
     id: "arthur-arash",
@@ -192,6 +236,8 @@ export const equipeData = [
     descricao: "Arquiteto de Soluções | Especialista em Python.",
     foto: imgArthurArash,
     ativo: false,
+    linkedin: "https://www.linkedin.com/in/arthur-arash/",
+    github: "https://github.com/Arthurbric",
   },
   {
     id: "filipe-campos",
@@ -200,6 +246,8 @@ export const equipeData = [
       "Engenheiro e Cientista de Dados. Especialista em Big Data e Machine Learning.",
     foto: imgFilipeCampos,
     ativo: false,
+    linkedin: "https://www.linkedin.com/in/filipe-sampaio-campos/",
+    github: "https://github.com/FilipeSCampos",
   },
   {
     id: "gabriel-becker",
@@ -208,6 +256,8 @@ export const equipeData = [
       "Junior Programmer | Backend | Python | Java | PyTorch | Spring Boot.",
     foto: imgGabrielBecker,
     ativo: false,
+    linkedin: "https://www.linkedin.com/in/gabriel-becker-cidral/",
+    github: "https://github.com/BudaBecker",
   },
   {
     id: "thais",
@@ -216,6 +266,8 @@ export const equipeData = [
       "Desenvolvedora Backend, Analista de Dados. Experiência com MySQL, Java, C e Python.",
     foto: imgThaisRegina,
     ativo: false,
+    linkedin: "https://www.linkedin.com/in/tha%C3%ADs-regina-dias-da-mota/",
+    github: "https://github.com/thaisdmota",
   },
   {
     id: "felipe-rodrigues",
@@ -223,6 +275,8 @@ export const equipeData = [
     descricao: "Especialista em React.",
     foto: imgFelipeRodrigues,
     ativo: false,
+    linkedin: "https://www.linkedin.com/in/felipe-rodrigues-queiroz-564377171/",
+    github: "https://github.com/felipethecreator",
   },
   {
     id: "isaac-lovisi",
@@ -230,6 +284,8 @@ export const equipeData = [
     descricao: "Full Stack Developer e entusiasta de Linux.",
     foto: imgIsaacLovisi,
     ativo: false,
+    linkedin: "https://www.linkedin.com/in/isaac-lovisi/",
+    github: "https://github.com/isaaclovisi",
   },
   {
     id: "isabella-oliveira",
@@ -237,5 +293,7 @@ export const equipeData = [
     descricao: "Especialista em Sistemas Operacionais e manipulação de dados.",
     foto: imgIsabellaOliveira,
     ativo: false,
+    linkedin: "https://www.linkedin.com/in/isabella-oliveira-747804201/",
+    github: "https://github.com/B3ella",
   },
 ];
