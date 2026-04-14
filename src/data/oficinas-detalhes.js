@@ -48,7 +48,7 @@ export const oficinasDetalhes = [
     botoes: [
       {
         texto: "Inscreva-se Agora",
-        link: "https://forms.gle/X389SKQTBrUSytQMA",
+        link: "https://forms.gle/znc7K3u426sRbedq5",
         tipo: "primary",
       },
       {
@@ -61,12 +61,12 @@ export const oficinasDetalhes = [
       {
         titulo: "",
         texto:
-          "Esta oficina oferece uma introdução prática e dinâmica ao mundo da Modelagem 3D no Blender. Partindo do zero, os alunos aprenderão o básico de blender, desenvolvendo gradualmente as habilidades necessárias para construir seu primeiro personagem 3D.",
+          "Durante esta oficina, serão explorados fundamentos essenciais para modelagem de personagem, texturização, rigging e controle do personagem utilizando a ferramenta Blender.<br/><br/>Esta oficina faz parte de uma trilha ofertada pela monitoria de TI da Asa Norte que tem como objetivo apresentar a ferramenta Blender e ensinar como modelar personagens do início ao fim para utilização em jogos e animações.<br/><br/>A oficina será realizada entre os dias <strong>13/04 e 08/05</strong>, com encontros às <strong>segundas, quartas e sextas-feiras</strong>. As aulas serão ministradas <strong>presencialmente</strong>.",
       },
       {
         titulo: "O que você vai aprender:",
         texto:
-          "<strong>Fundamentos:</strong> Como utilizar a interface, e como aplicar os princípios de modelagem e texturização para desenvolver diversos personagens low poly até o fim.<br/><strong>Ferramentas:</strong> Trabalharemos apenas com o Blender para modelagem 3D, UV unwrap, texturização, rigging e animação - totalmente gratuito e open source.<br/><strong>Modelagem 3D:</strong> Desde objetos primitivos até a construção de modelos complexos com topologia correta e malha limpa.<br/><strong>Texturização:</strong> Aprenderemos a aplicar texturas a um modelo 3D e iremos pintar as texturas dos próprios personagens.<br/><strong>Rigging e animação:</strong> Aprenderemos a criar o esqueleto base do nosso personagem e animações para dar vida a ele.",
+          "<strong>Fundamentos do Blender:</strong> Como utilizar a interface e aplicar os princípios de modelagem e texturização para desenvolver personagens low poly.<br/><strong>Modelagem 3D:</strong> Desde objetos primitivos até a construção de modelos complexos com topologia correta e malha limpa.<br/><strong>Texturização:</strong> Aprenderemos a aplicar texturas a um modelo 3D e pintar as texturas dos próprios personagens.<br/><strong>Rigging:</strong> Aprenderemos a criar o esqueleto base do personagem.<br/><strong>Controle e Animação:</strong> Como dar vida ao personagem com animações básicas.",
       },
       {
         titulo: "Projetos e Liberdade Criativa:",
@@ -74,9 +74,14 @@ export const oficinasDetalhes = [
           "Em toda a oficina, vocês terão toda a liberdade criativa para criar qualquer personagem de sua escolha, desde que siga a ideia do projeto e os conceitos apresentados nas aulas.",
       },
       {
-        titulo: "Para quem é este curso:",
+        titulo: "Para quem é esta oficina:",
         texto:
-          "Quaisquer alunos que desejam transformar seus personagens em realidade no Blender.<br/>Alunos que buscam criar personagens 3D do zero.<br/>Interessados em entender na prática como funciona a criação de personagens no Blender.",
+          "<ul style='margin-left: 20px; margin-bottom: 20px; list-style-type: disc;'>" +
+          "<li>Quaisquer alunos que desejam transformar seus personagens em realidade no Blender;</li>" +
+          "<li>Alunos que buscam criar personagens 3D do zero;</li>" +
+          "<li>Interessados em entender na prática como funciona a criação de personagens para jogos e animações.</li>" +
+          "</ul>" +
+          "Preencha o formulário de inscrição para garantir sua participação. <strong>As vagas são limitadas.</strong>",
       },
     ],
     monitores: [
@@ -95,13 +100,7 @@ export const oficinasDetalhes = [
       "Turma Manhã: Segundas, Terças e Sextas, das 11h às 13h | Turma Noite: Segundas, Quartas e Sextas, das 17h às 19h",
     imagem: imgJava,
     alt: "Mago em ambiente digital matrix",
-    botoes: [
-      {
-        texto: "Inscreva-se Agora",
-        link: "https://forms.gle/aeqzqE69ET8v9h7p9",
-        tipo: "primary",
-      },
-    ],
+    botoes: [],
     sobre: [
       {
         titulo: "",
@@ -138,15 +137,15 @@ export const oficinasDetalhes = [
   // --- OFICINA DE WEB ---
   {
     slug: "oficina-de-web",
-    titulo: "Oficina de Web",
+    titulo: "Oficina de Web (JavaScript)",
     campus: "Campus Asa Norte",
-    horarios: "Quartas e Sextas, das 11h às 13h",
+    horarios: "Quarta e Sexta, das 11h às 13h",
     imagem: imgWeb,
     alt: "Mago pensando em desenvolvimento web cercado por tags HTML",
     botoes: [
       {
         texto: "Inscreva-se Agora",
-        link: "https://forms.gle/kycnCX58jLpMTDvT7",
+        link: "https://forms.gle/Rm9iLtr5uxoP73eY8",
         tipo: "primary",
       },
     ],
@@ -154,28 +153,29 @@ export const oficinasDetalhes = [
       {
         titulo: "",
         texto:
-          "A <strong>Oficina de HTML e CSS</strong> foi desenvolvida para introduzir os participantes ao universo do desenvolvimento web, apresentando os conceitos fundamentais utilizados na construção de páginas na Internet. Ao longo da oficina, os alunos aprenderão como estruturar conteúdos utilizando <strong>HTML</strong> e como aplicar estilos e layouts utilizando <strong>CSS</strong>, criando páginas visualmente organizadas e funcionais.<br/><br/>Durante as aulas, serão explorados os principais elementos utilizados na criação de páginas web, permitindo que os participantes compreendam como textos, imagens e outros componentes são organizados dentro de um site. Além disso, serão apresentados os primeiros conceitos de estilização e organização visual das páginas.",
+          "Durante esta oficina, você terá uma introdução prática aos principais conceitos do desenvolvimento web, explorando como aplicações modernas são estruturadas e funcionam. Serão abordados temas como interação com páginas, manipulação de dados, comunicação com serviços externos e noções básicas de integração entre diferentes camadas de uma aplicação.<br/><br/>Ao longo das aulas, você desenvolverá aplicações simples e progressivas, permitindo compreender na prática como cada parte contribui para o funcionamento do todo.<br/><br/>A oficina será realizada entre os dias <strong>15/04 e 08/05</strong>, com encontros às <strong>quartas e sextas</strong>. As aulas serão ministradas <strong>presencialmente</strong>.",
       },
       {
         titulo: "O que você vai aprender:",
         texto:
-          "<strong>Estrutura de páginas com HTML:</strong> Introdução às principais tags utilizadas para estruturar conteúdos em páginas web.<br/><strong>Elementos e organização:</strong> Como organizar títulos, parágrafos, imagens, links e outros componentes fundamentais de uma página.<br/><strong>Estilização com CSS:</strong> Aplicação de cores, fontes, tamanhos e estilos para melhorar a aparência das páginas.<br/><strong>Layout e posicionamento:</strong> Conceitos básicos de organização visual utilizando CSS, incluindo introdução ao Flexbox.<br/><strong>Construção de páginas simples:</strong> Criação de páginas web básicas aplicando os conceitos aprendidos durante a oficina.<br/><strong>Base para desenvolvimento web:</strong> Preparação para etapas mais avançadas da trilha, onde serão exploradas técnicas mais complexas de criação de interfaces.",
+          "<strong>Estrutura de páginas com HTML:</strong> Introdução às principais tags utilizadas para estruturar conteúdos em páginas web.<br/><strong>Interação com páginas:</strong> Como utilizar JavaScript para tornar páginas dinâmicas e responsivas ao usuário.<br/><strong>Manipulação de dados:</strong> Conceitos de como trabalhar com dados localmente e exibir informações de forma dinâmica.<br/><strong>Comunicação com serviços externos:</strong> Introdução a requisições HTTP e como consumir APIs para integrar dados externos nas suas aplicações.<br/><strong>Camadas de uma aplicação:</strong> Noções básicas de como o frontend, backend e banco de dados se integram para formar uma aplicação completa.<br/><strong>Construção progressiva:</strong> Desenvolvimento de aplicação simples e funcional que evolui a cada aula, consolidando o aprendizado na prática.",
       },
       {
         titulo: "Para quem é esta oficina:",
         texto:
           "<ul style='margin-left: 20px; margin-bottom: 20px; list-style-type: disc;'>" +
-          "<li>Estudantes que desejam iniciar no desenvolvimento web;</li>" +
-          "<li>Iniciantes em programação que querem entender como sites são construídos;</li>" +
-          "<li>Alunos interessados em aprender a estruturar e estilizar páginas na internet;</li>" +
-          "<li>Pessoas que desejam dar os primeiros passos na criação de interfaces web.</li>" +
+          "<li>Estudantes que desejam entender como aplicações web modernas funcionam;</li>" +
+          "<li>Iniciantes em programação que querem desenvolver suas primeiras aplicações;</li>" +
+          "<li>Alunos interessados em aprender desenvolvimento web com foco prático.</li>" +
           "</ul>" +
           "Preencha o formulário de inscrição para garantir sua participação. <strong>As vagas são limitadas.</strong>",
       },
     ],
-    monitores: [getMonitor("lucas-paiva"), getMonitor("joao-gabriel")].filter(
-      Boolean,
-    ),
+    monitores: [
+      getMonitor("lucas-paiva"),
+      getMonitor("joao-gabriel"),
+      getMonitor("joao-pedro"),
+    ].filter(Boolean),
   },
 
   // --- OFICINA DE LINUX ---
@@ -183,13 +183,13 @@ export const oficinasDetalhes = [
     slug: "oficina-de-linux",
     titulo: "Oficina de Linux",
     campus: "Campus Asa Norte",
-    horarios: "Terça e Quinta, das 17h às 19h",
+    horarios: "Segunda e Quinta, das 17h às 19h",
     imagem: imgLinux,
     alt: "Mago ao lado do pinguim Tux em cenário de neve",
     botoes: [
       {
         texto: "Inscreva-se Agora",
-        link: "https://forms.gle/9b2TTFmLpUYxDVQ57",
+        link: "https://forms.gle/g1CSPNoyhz9Kjuo8A",
         tipo: "primary",
       },
     ],
@@ -197,29 +197,31 @@ export const oficinasDetalhes = [
       {
         titulo: "",
         texto:
-          "A <strong>Oficina de Linux</strong> foi desenvolvida para introduzir os participantes ao funcionamento e uso prático de sistemas baseados em Linux. Durante a oficina, os alunos aprenderão os conceitos fundamentais de sistemas operacionais e como utilizar Linux de forma eficiente, explorando ferramentas e práticas comuns no ambiente de desenvolvimento e infraestrutura.<br/><br/>A oficina será realizada entre os dias <strong>18 e 27</strong>, com encontros às <strong>terças e quintas-feiras</strong>, no horário das <strong>17h às 19h</strong>.<br/><br/>Ao final da oficina, os participantes que cumprirem os requisitos receberão <strong>certificado de conclusão</strong>. A avaliação será baseada na frequência e participação nas atividades práticas realizadas durante as aulas.",
+          "Durante esta oficina, serão explorados os fundamentos essenciais do sistema operacional Linux, desde o funcionamento do Shell e suas ferramentas de texto, passando pela estrutura real do sistema de arquivos, executáveis, bibliotecas e configurações, até a inicialização do sistema, gerenciamento de serviços, controle de processos e gerenciamento de pacotes — com atividades práticas em máquina virtual.<br/><br/>Esta oficina faz parte de uma trilha ofertada pela monitoria de TI da Asa Norte que tem como objetivo capacitar os participantes a compreender e operar sistemas Linux com autonomia, entendendo como o sistema se organiza, inicializa e executa programas, e oferecendo uma base sólida para atuar em ambientes de desenvolvimento, servidores e infraestrutura.<br/><br/>A oficina será realizada entre os dias <strong>13/04 e 08/05</strong>, com encontros às <strong>segundas e quintas</strong>. As aulas serão ministradas <strong>presencialmente</strong>.",
       },
       {
         titulo: "O que você vai aprender:",
         texto:
-          "<strong>O que é um sistema operacional:</strong> Papel do sistema operacional e diferenças entre ambientes como Windows e Linux.<br/><strong>Instalação e inicialização:</strong> BIOS, processo de boot, dual boot e diferentes formas de instalar ou testar Linux.<br/><strong>Interfaces e ambiente do sistema:</strong> Interface gráfica, terminal e como interagir com o sistema de forma eficiente.<br/><strong>Sistema de arquivos:</strong> Estrutura do filesystem, rotas absolutas e relativas e pontos de montagem.<br/><strong>Usuários e permissões:</strong> Conceitos de usuários, grupos e controle de permissões no sistema.<br/><strong>Processos e funcionamento interno:</strong> O que são processos, comunicação entre processos (IPC) e sinais.<br/><strong>Gerenciamento de software:</strong> Uso de package managers para instalar, atualizar e gerenciar programas no sistema.<br/><strong>Segurança e boas práticas:</strong> Uso de sudo, organização do sistema e fundamentos de segurança ao utilizar Linux.",
+          "<strong>Shell e ferramentas de texto:</strong> Como utilizar o terminal, navegar pelo sistema e operar arquivos com eficiência usando ferramentas de linha de comando.<br/><strong>Estrutura real do sistema de arquivos:</strong> Como o Linux organiza seus diretórios, onde ficam os executáveis, bibliotecas e arquivos de configuração.<br/><strong>Inicialização do sistema:</strong> Como o Linux inicia, desde o boot até o carregamento dos serviços e do ambiente do usuário.<br/><strong>Gerenciamento de serviços:</strong> Como iniciar, parar e monitorar serviços com systemd e outras ferramentas.<br/><strong>Controle de processos:</strong> Como visualizar, gerenciar e encerrar processos em execução no sistema.<br/><strong>Gerenciamento de pacotes:</strong> Como instalar, atualizar e remover softwares utilizando os gerenciadores de pacotes do Linux.",
       },
       {
         titulo: "Para quem é esta oficina:",
         texto:
           "<ul style='margin-left: 20px; margin-bottom: 20px; list-style-type: disc;'>" +
-          "<li>Estudantes que desejam aprender a utilizar Linux de forma prática;</li>" +
+          "<li>Estudantes que desejam aprender a utilizar Linux de forma prática e autônoma;</li>" +
           "<li>Pessoas interessadas em desenvolvimento, servidores ou infraestrutura;</li>" +
-          "<li>Alunos que querem entender melhor como sistemas operacionais funcionam;</li>" +
-          "<li>Iniciantes que querem começar a usar Linux no dia a dia.</li>" +
+          "<li>Alunos que querem entender de verdade como o sistema operacional funciona por dentro;</li>" +
+          "<li>Iniciantes que querem construir uma base sólida para trabalhar com Linux no dia a dia.</li>" +
           "</ul>" +
           "Preencha o formulário de inscrição para garantir sua participação. <strong>As vagas são limitadas.</strong>",
       },
     ],
     monitores: [
       getMonitor("jess-forster", true),
-      getMonitor("gabriel-caramez", true),
-      getMonitor("pedro-quartin"),
+      getMonitor("gabriel-caramez"),
+      getMonitor("ricardo-bonna"),
+      getMonitor("gabriel-garcia"),
+      getMonitor("caio-godoy"),
     ].filter(Boolean),
   },
   // --- CIÊNCIA DE DADOS - FERRAMENTAS E FRAMEWORKS ---
@@ -232,14 +234,9 @@ export const oficinasDetalhes = [
     alt: "Mago jogando dados e manipulando poções em um cenário de análise",
     botoes: [
       {
-        texto: "Inscreva-se Agora",
-        link: "https://forms.gle/JeHitj7XgzukmdrM9",
-        tipo: "primary",
-      },
-      {
         texto: "Playlist Ciência de Dados",
         link: "/playlist/ciencia-de-dados-ferramentas-e-frameworks",
-        tipo: "secondary",
+        tipo: "primary",
       },
     ],
     sobre: [
@@ -278,13 +275,7 @@ export const oficinasDetalhes = [
     horarios: "Segundas, Quartas e Sextas, das 11h às 13h ou 17h às 19h",
     imagem: imgFundamentos,
     alt: "Mago conversando com robô de blocos",
-    botoes: [
-      {
-        texto: "Inscreva-se Agora",
-        link: "https://forms.gle/SS6XFPT3MvQEomHR9",
-        tipo: "primary",
-      },
-    ],
+    botoes: [],
     sobre: [
       {
         titulo: "",
@@ -330,14 +321,9 @@ export const oficinasDetalhes = [
     alt: "Mago jogando dados",
     botoes: [
       {
-        texto: "Inscreva-se Agora",
-        link: "https://forms.gle/ryjrwRf5SV5NLfPy5",
-        tipo: "primary",
-      },
-      {
         texto: "Playlist Fundamentos de Ciência de Dados",
         link: "/playlist/fundamentos-ciencia-de-dados",
-        tipo: "secondary",
+        tipo: "primary",
       },
     ],
     sobre: [
@@ -418,37 +404,43 @@ export const oficinasDetalhes = [
     slug: "intro-redes",
     titulo: "Introdução de Redes para Cibersegurança",
     campus: "Campus Asa Norte",
-    horarios: "Terças e Quintas, das 17h às 19h",
+    horarios: "Segunda, Terça e Quinta, das 11h às 13h",
     imagem: imgRedes,
     alt: "Mago flutuando na matrix",
-    botoes: [],
+    botoes: [
+      {
+        texto: "Inscreva-se Agora",
+        link: "https://forms.gle/k1R5dSFoFwHRBtZ57",
+        tipo: "primary",
+      },
+    ],
     sobre: [
       {
         titulo: "",
         texto:
-          "Esta oficina oferece uma introdução prática e essencial ao universo de Redes de Computadores sob a ótica da cibersegurança. Partindo dos fundamentos, os alunos aprenderão o básico da comunicação de dados, desenvolvendo gradualmente as habilidades necessárias para analisar o tráfego de uma rede, identificar vulnerabilidades e compreender como os ataques mais comuns funcionam.",
+          "Durante esta oficina, de forma progressiva, os participantes verão os fundamentos de redes de computadores e segurança da informação, partindo de conceitos essenciais como a Tríade CIA e os modelos OSI/TCP-IP, até chegar à construção de redes segmentadas e protegidas com VLANs, NAT, firewalls e DMZ. Ao longo do curso, entende-se não somente como a rede funciona, mas também como ela pode ser atacada e defendida.<br/><br/>Esta oficina faz parte de uma trilha ofertada pela monitoria de TI da Asa Norte que tem como objetivo entender os fundamentos necessários para o estudo de Cibersegurança. Essencial para quem deseja dar os primeiros passos sólidos na área de redes e cibersegurança.<br/><br/>A oficina será realizada entre os dias <strong>13/04 e 07/05</strong>, com encontros às <strong>segundas, terças e quintas</strong>. As aulas serão ministradas <strong>presencialmente</strong>.",
       },
       {
-        titulo: "O que você vai aprender:",
+        titulo: "Programação por semana:",
         texto:
-          "<strong>Fundamentos:</strong> Como funcionam os modelos de comunicação (OSI e TCP/IP) e os protocolos essenciais (IP, TCP, UDP) que sustentam a internet. Entenda a teoria para dominar a prática.<br/><strong>Ferramentas:</strong> Trabalharemos com ferramentas padrão da indústria como <strong>Wireshark</strong> para análise de pacotes e <strong>Nmap</strong> para varredura de redes — softwares gratuitos e poderosos, essenciais para qualquer profissional de tecnologia.<br/><strong>Análise de Rede:</strong> Aprender a ler e entender o que está acontecendo com o sistema de redes e quais comunicações estão ocorrendo.<br/><strong>Vetores de Ataque:</strong> Aprenderemos a teoria por trás dos ataques mais clássicos, como Man-in-the-Middle, Negação de Serviço (DoS) e Spoofing, entendendo como exploram as fraquezas inerentes aos protocolos de rede.<br/><strong>Mecanismos de Defesa:</strong> Iremos explorar os conceitos de equipamentos e estratégias de defesa, como Firewalls, VLANs e VPNs, entendendo como criar camadas de segurança para proteger uma infraestrutura.<br/><strong>Atividades Práticas e Análise Crítica:</strong><br/>Serão apresentados cenários de análise e desafios a serem resolvidos. Com o objetivo é desenvolver seu raciocínio crítico para que você possa aplicar os conceitos e ferramentas aprendidos em qualquer situação, capacitando-o a diagnosticar problemas e suspeitas em diferentes ambientes de rede.",
+          '<strong>Semana 1: O Alicerce</strong> – Fundamentos da Tríade CIA (Confidencialidade, Integridade e Disponibilidade) e os modelos OSI e TCP/IP.<br/><strong>Semana 2: Sobrevivência em Rede Local</strong> – O funcionamento de Switches, ataques de Camada 2 (MAC Flooding/Spoofing) e protocolos de transporte (TCP vs UDP).<br/><strong>Semana 3: O Mapa da Internet</strong> – Endereçamento IP (IPv4/CIDR), protocolos essenciais como DHCP e DNS, e a dinâmica de roteamento.<br/><strong>Semana 4: Arquitetura de Defesa</strong> – Construção de "castelos seguros" utilizando VLANs, NAT, Firewalls e zonas de segurança (DMZ).<br/><br/>Ao final, espera-se que o aluno tenha um perfil analítico e técnico, capaz de compreender o funcionamento básico de uma rede, identificar as camadas e suas principais vulnerabilidades e conceitos fundamentais como VLAN, gateway, ataques de camada, entre outros.',
       },
       {
-        titulo: "Para quem é este curso:",
+        titulo: "Para quem é esta oficina:",
         texto:
           "<ul style='margin-left: 20px; margin-bottom: 20px; list-style-type: disc;'>" +
           "<li>Alunos que queiram saber sobre como funciona a internet e curiosidade sobre redes e protocolos;</li>" +
           "<li>Alunos que buscam aprender a identificar e entender tráfego de rede, assim como identificar atividades maliciosas;</li>" +
           "<li>Interessados em entender na prática como as vulnerabilidades de rede são exploradas e como se defender delas;</li>" +
           "<li>Estudantes que querem criar uma base sólida para futuras carreiras em Cibersegurança e Infraestrutura.</li>" +
-          "</ul>",
+          "</ul>" +
+          "Preencha o formulário de inscrição para garantir sua participação. <strong>As vagas são limitadas.</strong>",
       },
     ],
     monitores: [
       getMonitor("lucas-borges", true),
-      getMonitor("felipe-barcelos", true),
-      getMonitor("isabella-oliveira"),
-      getMonitor("gabriel-caramez"),
+      getMonitor("lucas-moura"),
+      getMonitor("daniel-godoi"),
     ].filter(Boolean),
   },
 
@@ -457,41 +449,46 @@ export const oficinasDetalhes = [
     slug: "machine-learning",
     titulo: "Machine Learning",
     campus: "Campus Asa Norte",
-    horarios: "Segundas e Quartas: 17h às 19h",
+    horarios: "Terça e Quarta, das 11h às 13h",
     imagem: imgDados,
     alt: "Mago jogando dados",
     botoes: [
       {
+        texto: "Inscreva-se Agora",
+        link: "https://forms.gle/jjwSVUxeDN3JY9Gv9",
+        tipo: "primary",
+      },
+      {
         texto: "Playlist Machine Learning",
         link: "/playlist/machine-learning",
-        tipo: "primary",
+        tipo: "secondary",
       },
     ],
     sobre: [
       {
         titulo: "",
         texto:
-          "Esta oficina oferece uma introdução prática e acessível ao mundo do Machine Learning e Ciência de Dados. Partindo do zero, os alunos aprenderão os conceitos fundamentais através de exemplos concretos e hands-on, desenvolvendo gradualmente as habilidades necessárias para construir seu primeiro modelo preditivo.",
+          "Durante esta oficina, serão abordados modelos clássicos de regressão, classificação e clusterização, incluindo métodos lineares, modelos baseados em árvores e técnicas de ensemble. A oficina irá desenvolver a capacidade teórica e prática para avaliar modelos e interpretar seus resultados, preparando os participantes para construir soluções mais robustas e servindo como base para o avanço em Deep Learning.<br/><br/>Esta oficina faz parte da trilha de Ciência de Dados ofertada pela monitoria de TI da Asa Norte que tem como objetivo apresentar o que é necessário para seguir uma carreira de dados com conteúdos voltados para Machine Learning, Deep Learning, análise de dados e integração DevOps, onde os dados preparados serão utilizados na construção de modelos de inteligência artificial em ambientes reais.<br/><br/>A oficina será realizada entre os dias <strong>14/04 e 06/05</strong>, com encontros às <strong>terças e quartas</strong>. As aulas serão ministradas <strong>presencialmente na sala 1110 e serão gravadas!</strong>",
       },
       {
         titulo: "O que você vai aprender:",
         texto:
-          "<strong>Fundamentos:</strong> O que é Machine Learning, onde se aplica no mundo real e como funciona um projeto de dados do início ao fim.<br/><strong>Ferramentas:</strong> Trabalharemos com Python, Pandas e Scikit-Learn no Google Colab - tudo gratuito e na nuvem.<br/><strong>Fluxo de Dados:</strong> Desde a importação e exploração de dados até a construção e avaliação de modelos.<br/><strong>Pré-processamento:</strong> Como limpar e preparar dados para análise.<br/><strong>Modelos Básicos:</strong> Introdução aos algoritmos de classificação.",
-      },
-      {
-        titulo: "Projeto Final - Sobrevivência no Titanic:",
-        texto:
-          "Você vai analisar os dados históricos do Titanic e construir um modelo que prevê quais passageiros sobreviveram ao naufrágio. Este projeto emblemático da comunidade de Data Science permitirá aplicar todo o conhecimento adquirido:<br/>Analisar quais fatores influenciavam a sobrevivência (classe, gênero, idade).<br/>Limpar e preparar os dados.<br/>Treinar um modelo de Machine Learning.<br/>Avaliar o desempenho do seu modelo.",
+          "<strong>Regressão:</strong> Métodos lineares e polinomiais para prever valores contínuos e avaliar seu desempenho.<br/><strong>Classificação:</strong> Algoritmos como Árvores de Decisão, Random Forest, SVM e KNN para categorizar dados.<br/><strong>Clusterização:</strong> Técnicas não supervisionadas como K-Means para descobrir grupos em dados sem rótulos.<br/><strong>Ensemble:</strong> Como combinar modelos (Bagging, Boosting) para obter melhores resultados do que modelos individuais.<br/><strong>Avaliação de modelos:</strong> Métricas como acurácia, precisão, recall, F1-score, RMSE e como interpretá-las.<br/><strong>Base para Deep Learning:</strong> Consolidação dos conceitos clássicos que servem de alicerce para o estudo de redes neurais.",
       },
       {
         titulo: "Para quem é este curso:",
         texto:
-          "Alunos sem experiência prévia em Machine Learning.<br/>Quem tem conhecimento básico de programação (ou nenhum).<br/>Interessados em entender na prática como a ciência de dados funciona.",
+          "<ul style='margin-left: 20px; margin-bottom: 20px; list-style-type: disc;'>" +
+          "<li>Alunos que já têm base em Python e bibliotecas de dados (Pandas, NumPy);</li>" +
+          "<li>Quem deseja aprender ML com foco prático e aplicado;</li>" +
+          "<li>Interessados em seguir carreira de dados e inteligência artificial.</li>" +
+          "</ul>" +
+          "Preencha o formulário de inscrição para garantir sua participação. <strong>As vagas são limitadas.</strong>",
       },
     ],
     monitores: [
-      getMonitor("filipe-campos", true),
-      getMonitor("gabriel-becker"),
+      getMonitor("guilherme-fernandes", true),
+      getMonitor("enzo-rodrigues"),
       getMonitor("otavio-oliveira"),
     ].filter(Boolean),
   },

@@ -12,6 +12,25 @@ import imgRedes from "@assets/mago/oficinas/mago-redes.png";
  */
 export const oficinasPassadasData = [
   {
+    id: "oficina-java",
+    titulo: "Oficina de Java",
+    turmas: [
+      "Segunda, Terça e Quinta: 11h às 13h",
+      "Segunda, Quarta e Sexta: 17h às 19h",
+    ],
+    imagem: imgRedes,
+    alt: "Mago flutuando na matrix",
+    linkInscricao: "/oficinas/oficina-de-java",
+  },
+  {
+    id: "oficina-dados",
+    titulo: "Ciência de Dados - Ferramentas e Frameworks",
+    turmas: ["Segunda, Terça e Quinta: 17h às 19h"],
+    imagem: imgDados,
+    alt: "Mago jogando dados para cima",
+    linkInscricao: "/oficinas/ciencia-de-dados-ferramentas-e-frameworks",
+  },
+  {
     id: "fundamentos-comp",
     titulo: "Fundamentos da Computação",
     turmas: [
@@ -37,21 +56,5 @@ export const oficinasPassadasData = [
     imagem: imgSql,
     alt: "Mago gerenciando banco de dados SQL",
     linkInscricao: "/oficinas/oficina-sql",
-  },
-  {
-    id: "intro-redes",
-    titulo: "Introdução de Redes para Cibersegurança",
-    turmas: ["Terça e Quinta: 17h às 19h"],
-    imagem: imgRedes,
-    alt: "Mago flutuando na matrix",
-    linkInscricao: "/oficinas/intro-redes",
-  },
-  {
-    id: "machine-learning",
-    titulo: "Oficina de Machine Learning",
-    turmas: ["Segunda e Quarta: 17h às 19h"],
-    imagem: imgDados,
-    alt: "Mago jogando dados para cima",
-    linkInscricao: "/oficinas/machine-learning",
   },
 ];

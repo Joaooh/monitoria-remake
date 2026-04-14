@@ -1,7 +1,7 @@
 export const statsData = [
   {
     id: "oficinas",
-    numero: 10,
+    numero: 20,
     sufixo: "+",
     duracao: 2,
     legenda: "Oficinas realizadas",

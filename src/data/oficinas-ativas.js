@@ -23,22 +23,19 @@ export const oficinasAtivasData = [
     alt: "Mago ao lado de personagens 3D",
   },
   {
-    id: "oficina-java",
-    titulo: "Oficina de Java",
+    id: "intro-redes",
+    titulo: "Introdução de Redes para Cibersegurança",
     descricao:
-      "Domine a linguagem Java, orientação a objetos e construa bases sólidas para o desenvolvimento de software.",
-    turmas: [
-      "Segunda, Terça e Quinta: 11h às 13h",
-      "Segunda, Quarta e Sexta: 17h às 19h",
-    ],
+      "Esta oficina oferece uma introdução prática e essencial ao universo de Redes de Computadores sob a ótica da cibersegurança.",
+    turmas: ["Segunda, Terça e Quinta: 11h às 13h"],
     formato: "Presencial",
-    linkInscricao: "/oficinas/oficina-de-java",
+    linkInscricao: "/oficinas/intro-redes",
     imagem: imgRedes,
     alt: "Mago flutuando na matrix",
   },
   {
     id: "oficina-web",
-    titulo: "Oficina de Web",
+    titulo: "Oficina de Web (JavaScript)",
     descricao:
       "Construa sites rápidos e modernos do zero, focando em componentização e layouts responsivos.",
     turmas: ["Quarta e Sexta: 11h às 13h"],
@@ -52,21 +49,21 @@ export const oficinasAtivasData = [
     titulo: "Oficina de Linux",
     descricao:
       "Domine o terminal, permissões e scripts básicos essenciais para o dia a dia do desenvolvedor.",
-    turmas: ["Terça e Quinta: 17h às 19h"],
+    turmas: ["Segunda e Quinta: 17h às 19h"],
     formato: "Presencial",
     linkInscricao: "/oficinas/oficina-de-linux",
     imagem: imgLinux,
     alt: "Mago ao lado do pinguim Tux",
   },
   {
-    id: "oficina-dados",
-    titulo: "Ciência de Dados - Ferramentas e Frameworks",
+    id: "machine-learning",
+    titulo: "Ciência de Dados - Machine Learning",
     descricao:
-      "Exploração, tratamento e análise de dados utilizando as principais bibliotecas do ecossistema moderno.",
-    turmas: ["Segunda, Terça e Quinta: 17h às 19h"],
-    formato: "Online",
-    linkInscricao: "/oficinas/ciencia-de-dados-ferramentas-e-frameworks",
+      "Oferece uma introdução prática e acessível ao mundo do Machine Learning e Ciência de Dados.",
+    turmas: ["Terça e Quarta: 11h às 13h"],
+    formato: "Presencial",
+    linkInscricao: "/oficinas/machine-learning",
     imagem: imgDados,
-    alt: "Mago jogando dados para cima",
+    alt: "Mago jogando dados",
   },
 ];

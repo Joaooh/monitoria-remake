@@ -1,3 +1,4 @@
+import imgPadrao from "@assets/mago/mago-padrao.png";
 import imgAngelo from "@assets/equipe/angelo.jpeg";
 import imgArthurArash from "@assets/equipe/arthur-arash.png";
 import imgEnzo from "@assets/equipe/enzo-rodrigues.jpeg";
@@ -24,6 +25,7 @@ import imgPedroCalderon from "@assets/equipe/pedro-calderon.jpg";
 import imgPedroQuartin from "@assets/equipe/pedro-quartin.jpg";
 import imgScielBuitrago from "@assets/equipe/sciel-buitrago.jpeg";
 import imgThaisRegina from "@assets/equipe/thais-regina.jpg";
+import imgSavioNery from "@assets/equipe/savio-nery.jpg";
 
 /*
  * COMO ADICIONAR UM NOVO MONITOR À EQUIPE:
@@ -215,6 +217,67 @@ export const equipeData = [
     linkedin:
       "https://www.linkedin.com/in/leonardo-cespedes-paes-huard-7026a435b/",
     github: "https://github.com/rexleo111",
+  },
+  {
+    id: "savio-nery",
+    nome: "Sávio Nery",
+    descricao: "Data Engineering | Python, ML, NLP",
+    foto: imgSavioNery,
+    ativo: true,
+    ocultarNaEquipe: false,
+    linkedin: "https://www.linkedin.com/in/s%C3%A1vio-arbu%C3%AAs-3028aa33a",
+    github: "https://github.com/nizpew",
+  },
+  {
+    id: "daniel-godoi",
+    nome: "Daniel Godoi",
+    descricao: "Monitor de Redes para Cibersegurança",
+    foto: imgPadrao,
+    ativo: true,
+    ocultarNaEquipe: true,
+    linkedin:
+      "https://www.linkedin.com/in/daniel-godoi-alves-watrin-038b8935b/",
+    github: "https://github.com/DGodoi19",
+  },
+  {
+    id: "joao-pedro",
+    nome: "João Pedro Passos",
+    descricao: "Monitor de Web (JavaScript)",
+    foto: imgPadrao,
+    ativo: true,
+    ocultarNaEquipe: true,
+    linkedin: "https://www.linkedin.com/in/jpsoupa/",
+    github: null,
+  },
+  {
+    id: "ricardo-bonna",
+    nome: "Ricardo Bonna",
+    descricao: "Monitor de Linux",
+    foto: imgPadrao,
+    ativo: true,
+    ocultarNaEquipe: true,
+    linkedin: "https://www.linkedin.com/in/ricbonna/",
+    github: "https://github.com/ricbonna",
+  },
+  {
+    id: "gabriel-garcia",
+    nome: "Gabriel Garcia",
+    descricao: "Monitor de Linux",
+    foto: imgPadrao,
+    ativo: true,
+    ocultarNaEquipe: true,
+    linkedin: null,
+    github: null,
+  },
+  {
+    id: "caio-godoy",
+    nome: "Caio de Godoy",
+    descricao: "Monitor de Linux",
+    foto: imgPadrao,
+    ativo: true,
+    ocultarNaEquipe: true,
+    linkedin: null,
+    github: null,
   },
 
   // ==========================================
