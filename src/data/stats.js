@@ -15,7 +15,7 @@ export const statsData = [
   },
   {
     id: "colaboradores",
-    numero: 20,
+    numero: 30,
     sufixo: "+",
     duracao: 2,
     legenda: "Colaboradores",

@@ -1,8 +1,9 @@
 export const faqs = [
   {
-    pergunta: "O que vocês fazem na prática? São aulas ou desenvolvimento?",
+    pergunta:
+      "O que vocês fazem na prática: é uma aula extra, um grupo de estudos ou vocês desenvolvem softwares juntos?",
     resposta:
-      "Fazemos um pouco de tudo! Oferecemos oficinas para aprender novas tecnologias na prática, desenvolvemos projetos reais de software e hardware para turbinar o portfólio, e mantemos o PITACO, focado em estudo e produção em comunidade. Além disso, também atuamos nos bastidores com um compromisso sólido de oferecer suporte tecnológico e acadêmico sob demanda para os próprios professores do UniCEUB.",
+      "Fazemos as três coisas! Oferecemos oficinas práticas (para você aprender novas tecnologias), desenvolvemos projetos reais de software e hardware (para turbinar o seu portfólio) e mantemos o PITACO, que é o nosso espaço de estudos e produção de resultados em comunidade.",
   },
   {
     pergunta: "Preciso passar por processo seletivo para participar?",

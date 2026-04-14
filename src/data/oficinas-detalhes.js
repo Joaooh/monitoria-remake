@@ -40,7 +40,7 @@ const getMonitor = (id, isLider = false, infoExtra = "") => {
 export const oficinasDetalhes = [
   {
     slug: "criacao-de-personagens-3d",
-    titulo: "Criação de Personagens 3D",
+    titulo: "Criação de Personagens 3D: Ciclo 2",
     campus: "Campus Asa Norte",
     horarios: "Segunda, Quarta e Sexta, das 11h às 13h",
     imagem: img3D,
@@ -137,7 +137,7 @@ export const oficinasDetalhes = [
   // --- OFICINA DE WEB ---
   {
     slug: "oficina-de-web",
-    titulo: "Oficina de Web (JavaScript)",
+    titulo: "Oficina de Web (JavaScript): Ciclo 2",
     campus: "Campus Asa Norte",
     horarios: "Quarta e Sexta, das 11h às 13h",
     imagem: imgWeb,
@@ -181,7 +181,7 @@ export const oficinasDetalhes = [
   // --- OFICINA DE LINUX ---
   {
     slug: "oficina-de-linux",
-    titulo: "Oficina de Linux",
+    titulo: "Oficina de Linux: Ciclo 2",
     campus: "Campus Asa Norte",
     horarios: "Segunda e Quinta, das 17h às 19h",
     imagem: imgLinux,
@@ -402,7 +402,7 @@ export const oficinasDetalhes = [
   // --- INTRODUÇÃO DE REDES PARA CIBERSEGURANÇA ---
   {
     slug: "intro-redes",
-    titulo: "Introdução de Redes para Cibersegurança",
+    titulo: "Introdução de Redes para Cibersegurança: Ciclo 2",
     campus: "Campus Asa Norte",
     horarios: "Segunda, Terça e Quinta, das 11h às 13h",
     imagem: imgRedes,
@@ -447,7 +447,7 @@ export const oficinasDetalhes = [
   // --- MACHINE LEARNING ---
   {
     slug: "machine-learning",
-    titulo: "Machine Learning",
+    titulo: "Machine Learning: Ciclo 2",
     campus: "Campus Asa Norte",
     horarios: "Terça e Quarta, das 11h às 13h",
     imagem: imgDados,

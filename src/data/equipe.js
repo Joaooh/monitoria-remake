@@ -26,6 +26,10 @@ import imgPedroQuartin from "@assets/equipe/pedro-quartin.jpg";
 import imgScielBuitrago from "@assets/equipe/sciel-buitrago.jpeg";
 import imgThaisRegina from "@assets/equipe/thais-regina.jpg";
 import imgSavioNery from "@assets/equipe/savio-nery.jpg";
+import imgBrunoDluka from "@assets/equipe/bruno-dluka.jpg";
+import imgCaioGodoy from "@assets/equipe/caio-godoy.jpg";
+import imgDanielGodoi from "@assets/equipe/daniel-godoi.jpg";
+import imgPietraPaz from "@assets/equipe/pietra-paz.jpg";
 
 /*
  * COMO ADICIONAR UM NOVO MONITOR À EQUIPE:
@@ -229,15 +233,31 @@ export const equipeData = [
     github: "https://github.com/nizpew",
   },
   {
+    id: "bruno-dluka",
+    nome: "Bruno D'Luka",
+    descricao: "Desenvolvedor Mobile e Desktop | Flutter | Dart | Lua",
+    foto: imgBrunoDluka,
+    ativo: true,
+    linkedin: "https://www.linkedin.com/in/bdlukaa/?locale=pt",
+    github: "https://github.com/bdlukaa",
+  },
+  {
     id: "daniel-godoi",
     nome: "Daniel Godoi",
-    descricao: "Monitor de Redes para Cibersegurança",
-    foto: imgPadrao,
+    descricao: "Entusiasta em Cibersegurança | Redes de computadores | Desenvolvimento Full Stack",
+    foto: imgDanielGodoi,
     ativo: true,
-    ocultarNaEquipe: true,
-    linkedin:
-      "https://www.linkedin.com/in/daniel-godoi-alves-watrin-038b8935b/",
+    linkedin: "https://www.linkedin.com/in/daniel-godoi-alves-watrin/",
     github: "https://github.com/DGodoi19",
+  },
+  {
+    id: "pietra-paz",
+    nome: "Pietra Paz",
+    descricao: "Desenvolvimento Full-Stack | Dados | SQL | R | UX/UI",
+    foto: imgPietraPaz,
+    ativo: true,
+    linkedin: "https://www.linkedin.com/in/pietrapaz/",
+    github: "https://github.com/pietrapaz",
   },
   {
     id: "joao-pedro",
@@ -272,12 +292,11 @@ export const equipeData = [
   {
     id: "caio-godoy",
     nome: "Caio de Godoy",
-    descricao: "Monitor de Linux",
-    foto: imgPadrao,
+    descricao: "Entusiasta de Cybersegurança | Pentest | Linux | Python",
+    foto: imgCaioGodoy,
     ativo: true,
-    ocultarNaEquipe: true,
-    linkedin: null,
-    github: null,
+    linkedin: "https://www.linkedin.com/in/1caiogodoy",
+    github: "https://github.com/1caiogodoy",
   },
 
   // ==========================================

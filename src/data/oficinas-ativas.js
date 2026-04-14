@@ -13,7 +13,7 @@ import imgBlender from "@assets/mago/oficinas/monitoria-blender.png";
 export const oficinasAtivasData = [
   {
     id: "oficina-blender",
-    titulo: "Criação de Personagens 3D",
+    titulo: "Criação de Personagens 3D: Ciclo 2",
     descricao:
       "Aprenda os fundamentos da criação de modelos de personagens 3D e conceitos iniciais para integração na web.",
     turmas: ["Segunda, Quarta e Sexta: 11h às 13h"],
@@ -24,7 +24,7 @@ export const oficinasAtivasData = [
   },
   {
     id: "intro-redes",
-    titulo: "Introdução de Redes para Cibersegurança",
+    titulo: "Introdução de Redes para Cibersegurança: Ciclo 2",
     descricao:
       "Esta oficina oferece uma introdução prática e essencial ao universo de Redes de Computadores sob a ótica da cibersegurança.",
     turmas: ["Segunda, Terça e Quinta: 11h às 13h"],
@@ -35,7 +35,7 @@ export const oficinasAtivasData = [
   },
   {
     id: "oficina-web",
-    titulo: "Oficina de Web (JavaScript)",
+    titulo: "Oficina de Web (JavaScript): Ciclo 2",
     descricao:
       "Construa sites rápidos e modernos do zero, focando em componentização e layouts responsivos.",
     turmas: ["Quarta e Sexta: 11h às 13h"],
@@ -46,7 +46,7 @@ export const oficinasAtivasData = [
   },
   {
     id: "oficina-linux",
-    titulo: "Oficina de Linux",
+    titulo: "Oficina de Linux: Ciclo 2",
     descricao:
       "Domine o terminal, permissões e scripts básicos essenciais para o dia a dia do desenvolvedor.",
     turmas: ["Segunda e Quinta: 17h às 19h"],
@@ -57,7 +57,7 @@ export const oficinasAtivasData = [
   },
   {
     id: "machine-learning",
-    titulo: "Ciência de Dados - Machine Learning",
+    titulo: "Ciência de Dados - Machine Learning: Ciclo 2",
     descricao:
       "Oferece uma introdução prática e acessível ao mundo do Machine Learning e Ciência de Dados.",
     turmas: ["Terça e Quarta: 11h às 13h"],
