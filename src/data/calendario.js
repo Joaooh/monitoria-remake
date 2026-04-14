@@ -32,8 +32,8 @@ export const dadosCalendario = {
       // prettier-ignore
       oficinas: [
         { nome: "Criação de Modelos de Personagens 3D", dias: "Seg, Qua e Sex", hora: "11h às 13h", formato: "Presencial" },
-        { nome: "Oficina de HTML/CSS", dias: "Qua e Sex", hora: "11h às 13h", formato: "Presencial" },
         { nome: "Oficina de Java", dias: "Seg, Ter e Qui", hora: "11h às 13h", formato: "Presencial" },
+        { nome: "Oficina de HTML/CSS", dias: "Qua e Sex", hora: "11h às 13h", formato: "Presencial" },
         { nome: "Oficina de Java", dias: "Seg, Qua e Sex", hora: "17h às 19h", formato: "Presencial" },
         { nome: "Oficina de Linux", dias: "Ter e Qui", hora: "17h às 19h", formato: "Presencial" },
         { nome: "Ciência de Dados - Ferramentas e Frameworks", dias: "Seg, Ter e Qui", hora: "17h às 19h", formato: "Online" },
@@ -48,11 +48,11 @@ export const dadosCalendario = {
       corBorda: "#f57c00",
       // prettier-ignore
       oficinas: [
-        { nome: "Criação de Modelos de Personagens 3D" },
-        { nome: "Ciência de Dados - Machine Learning" },
-        { nome: "A confirmar" },
-        { nome: "A confirmar" },
-        { nome: "A confirmar" },
+        { nome: "Criação de Modelos de Personagens 3D", dias: "Seg, Qua e Sex", hora: "11h às 13h", formato: "Presencial" },
+        { nome: "Introdução de Redes para Cibersegurança", dias: "Seg, Ter e Qui", hora: "11h às 13h", formato: "Presencial" },
+        { nome: "Oficina de Linux", dias: "Seg e Qui", hora: "17h às 19h", formato: "Presencial" },
+        { nome: "Ciência de Dados - Machine Learning", dias: "Ter e Qua", hora: "11h às 13h", formato: "Presencial" },
+        { nome: "Oficina de Web (JavaScript)", dias: "Qua e Sex", hora: "11h às 13h", formato: "Presencial" },
       ],
     },
     {

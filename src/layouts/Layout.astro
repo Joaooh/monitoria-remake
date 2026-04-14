@@ -51,7 +51,7 @@ const currentPath = Astro.url.pathname;
       href={new URL(currentPath, Astro.site || Astro.url).href}
     />
 
-    <meta name="theme-color" content="var(--purple-primary)" />
+    <meta name="theme-color" content="#662c92" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/favicon.png" />
     <link
@@ -65,9 +65,15 @@ const currentPath = Astro.url.pathname;
     <ClientRouter />
   </head>
   <body class={bodyClass}>
-    {!hideNavbar && (
-      <Navbar client:idle transition:persist="navbar" currentPath={currentPath} />
-    )}
+    {
+      !hideNavbar && (
+        <Navbar
+          client:idle
+          transition:persist="navbar"
+          currentPath={currentPath}
+        />
+      )
+    }
     <slot />
     <Analytics />
     <SpeedInsights />
