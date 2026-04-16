@@ -30,6 +30,8 @@ import imgBrunoDluka from "@assets/equipe/bruno-dluka.jpg";
 import imgCaioGodoy from "@assets/equipe/caio-godoy.jpg";
 import imgDanielGodoi from "@assets/equipe/daniel-godoi.jpg";
 import imgPietraPaz from "@assets/equipe/pietra-paz.jpg";
+import imgLeticiaBorsaro from "@assets/equipe/leticia-borsaro.jpg";
+import imgMarcoMarques from "@assets/equipe/marco-marques.jpg";
 
 /*
  * COMO ADICIONAR UM NOVO MONITOR À EQUIPE:
@@ -244,7 +246,8 @@ export const equipeData = [
   {
     id: "daniel-godoi",
     nome: "Daniel Godoi",
-    descricao: "Entusiasta em Cibersegurança | Redes de computadores | Desenvolvimento Full Stack",
+    descricao:
+      "Entusiasta em Cibersegurança | Redes de computadores | Desenvolvimento Full Stack",
     foto: imgDanielGodoi,
     ativo: true,
     linkedin: "https://www.linkedin.com/in/daniel-godoi-alves-watrin/",
@@ -297,6 +300,25 @@ export const equipeData = [
     ativo: true,
     linkedin: "https://www.linkedin.com/in/1caiogodoy",
     github: "https://github.com/1caiogodoy",
+  },
+  {
+    id: "leticia-borsaro",
+    nome: "Letícia Borsaro",
+    descricao:
+      "Apaixonada por Criatividade. Interessada em Gerência de Projetos e Pesquisa Científica. Entusiasta em Ética & IA e Tecnologias Sociais",
+    foto: imgLeticiaBorsaro,
+    ativo: true,
+    linkedin: "https://www.linkedin.com/in/leticiaborsaro",
+    github: "https://github.com/leticiaborsaro",
+  },
+  {
+    id: "marco-marques",
+    nome: "Marco Marques",
+    descricao: "Engenharia de Redes | Infraestrutura | Cloud e Automação",
+    foto: imgMarcoMarques,
+    ativo: true,
+    linkedin: "https://www.linkedin.com/in/marco-marques-aa1478278/",
+    github: null,
   },
 
   // ==========================================
