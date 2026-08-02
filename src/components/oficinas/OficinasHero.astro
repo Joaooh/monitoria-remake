@@ -1,7 +1,6 @@
 ---
 import { Image } from "astro:assets";
 import magoWorking from "@assets/mago/mago-working-sem-fundo.png";
-import logoCeubLight from "@assets/logo-ceub-light.png";
 import FiberBackground from "@components/effects/Fiber.jsx";
 ---
 
@@ -12,17 +11,6 @@ import FiberBackground from "@components/effects/Fiber.jsx";
   </div>
 
   <div class="container">
-    <div class="hero-logo-container">
-      <Image
-        src={logoCeubLight}
-        alt="Logo do CEUB"
-        class="hero-logo"
-        loading="eager"
-        quality={80}
-        format="webp"
-      />
-    </div>
-
     <div class="hero-content">
       <div class="text-column">
         <h2 class="pre-title">Central de</h2>
@@ -49,7 +37,7 @@ import FiberBackground from "@components/effects/Fiber.jsx";
 <style>
   .oficinas-hero {
     position: relative;
-    padding: 60px 2rem 0 2rem;
+    padding: 87px 2rem 0 2rem;
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -102,27 +90,12 @@ import FiberBackground from "@components/effects/Fiber.jsx";
     height: 100%;
   }
 
-  .hero-logo-container {
-    position: absolute;
-    top: -26px;
-    left: 0;
-    width: 100%;
-    z-index: 10;
-  }
-
-  .hero-logo {
-    width: 100px;
-    height: auto;
-    object-fit: contain;
-    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
-  }
-
   .hero-content {
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
     width: 100%;
-    margin-top: 140px;
+    margin-top: 80px;
   }
 
   .text-column {
@@ -173,10 +146,6 @@ import FiberBackground from "@components/effects/Fiber.jsx";
 
   /* --- RESPONSIVIDADE MOBILE --- */
   @media (max-width: 992px) {
-    .hero-logo {
-      display: none;
-    }
-
     .oficinas-hero {
       padding-top: 40px;
       padding-left: 0;

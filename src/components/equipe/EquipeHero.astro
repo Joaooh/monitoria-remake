@@ -1,6 +1,5 @@
 ---
 import { Image } from "astro:assets";
-import logoCeubLight from "@assets/logo-ceub-light.png";
 import FiberBackground from "@components/effects/Fiber.jsx";
 import magoSpell from "@assets/mago/mago-spell.png";
 
@@ -20,15 +19,6 @@ const { titulo, preTexto, subTexto } = Astro.props;
   </div>
 
   <div class="container">
-    <div class="hero-logo-container">
-      <Image
-        src={logoCeubLight}
-        alt="Logo do CEUB"
-        class="hero-logo"
-        loading="eager"
-      />
-    </div>
-
     <div class="hero-content">
       <div class="text-column">
         <h2 class="pre-title">{preTexto}</h2>
@@ -54,7 +44,7 @@ const { titulo, preTexto, subTexto } = Astro.props;
 <style>
   .equipe-hero {
     position: relative;
-    padding: 20px 2rem 0 2rem;
+    padding: 50px 2rem 0 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -107,27 +97,12 @@ const { titulo, preTexto, subTexto } = Astro.props;
     height: 100%;
   }
 
-  .hero-logo-container {
-    position: absolute;
-    top: 14px;
-    left: 0;
-    width: 100%;
-    z-index: 10;
-  }
-
-  .hero-logo {
-    width: 100px;
-    height: auto;
-    object-fit: contain;
-    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
-  }
-
   .hero-content {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    margin-top: 51px;
+    margin-top: 30px;
     gap: 1rem;
   }
 
@@ -196,7 +171,7 @@ const { titulo, preTexto, subTexto } = Astro.props;
 
   .mago-spell-img {
     width: 100%;
-    max-width: 550px;
+    max-width: 510px;
     height: auto;
     object-fit: contain;
     transform: scaleX(-1);
@@ -205,10 +180,6 @@ const { titulo, preTexto, subTexto } = Astro.props;
 
   /* --- RESPONSIVIDADE MOBILE --- */
   @media (max-width: 992px) {
-    .hero-logo-container {
-      display: none;
-    }
-
     .equipe-hero {
       padding-top: 40px;
       padding-left: 0;
@@ -225,13 +196,12 @@ const { titulo, preTexto, subTexto } = Astro.props;
       flex-direction: column;
       align-items: center;
       text-align: center;
-      margin-top: 60px;
       gap: 1rem;
     }
 
     .text-column {
       flex: 1;
-      padding-bottom: 10px;
+      padding-bottom: 2px;
       padding-top: 0;
       align-items: center;
     }

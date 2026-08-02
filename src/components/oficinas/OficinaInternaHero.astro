@@ -1,6 +1,5 @@
 ---
 import { Image } from "astro:assets";
-import logoCeubLight from "@assets/logo-ceub-light.png";
 import FiberBackground from "@components/effects/Fiber.jsx";
 import magoRelogio from "@assets/mago/mago-relogio.png";
 
@@ -21,17 +20,6 @@ const isTituloLongo = titulo.length > 25;
   </div>
 
   <div class="container">
-    <div class="hero-logo-container">
-      <Image
-        src={logoCeubLight}
-        alt="Logo do CEUB"
-        class="hero-logo"
-        loading="eager"
-        quality={80}
-        format="webp"
-      />
-    </div>
-
     <div class="hero-content">
       <div class="text-column">
         <h2 class="pre-title">{preTexto}</h2>
@@ -110,20 +98,6 @@ const isTituloLongo = titulo.length > 25;
     height: 100%;
   }
 
-  .hero-logo-container {
-    position: absolute;
-    top: -26px;
-    left: 0;
-    z-index: 10;
-  }
-
-  .hero-logo {
-    width: 100px;
-    height: auto;
-    object-fit: contain;
-    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
-  }
-
   .hero-content {
     display: flex;
     align-items: flex-end;
@@ -186,10 +160,6 @@ const isTituloLongo = titulo.length > 25;
 
   /* --- RESPONSIVIDADE MOBILE --- */
   @media (max-width: 992px) {
-    .hero-logo-container {
-      display: none;
-    }
-
     .oficina-interna-hero {
       padding-top: 80px;
       padding-bottom: 0;

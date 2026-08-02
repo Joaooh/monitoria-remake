@@ -1,7 +1,6 @@
 ---
 import { Image } from "astro:assets";
 import pcPitaco from "@assets/pc-pitaco.png";
-import logoCeubLight from "@assets/logo-ceub-light.png";
 import FiberBackground from "@components/effects/Fiber.jsx";
 import SparklesText from "@components/effects/SparklesText.jsx";
 ---
@@ -13,17 +12,6 @@ import SparklesText from "@components/effects/SparklesText.jsx";
   </div>
 
   <div class="container">
-    <div class="hero-logo-container">
-      <Image
-        src={logoCeubLight}
-        alt="Logo do CEUB"
-        class="hero-logo"
-        loading="eager"
-        quality={80}
-        format="webp"
-      />
-    </div>
-
     <div class="hero-content">
       <div class="text-column">
         <p class="pre-title">Espaço colaborativo</p>
@@ -107,27 +95,12 @@ import SparklesText from "@components/effects/SparklesText.jsx";
     height: 100%;
   }
 
-  .hero-logo-container {
-    position: absolute;
-    top: -26px;
-    left: 0;
-    width: 100%;
-    z-index: 10;
-  }
-
-  .hero-logo {
-    width: 100px;
-    height: auto;
-    object-fit: contain;
-    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
-  }
-
   .hero-content {
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
     width: 100%;
-    margin-top: 62px;
+    margin-top: 30px;
   }
 
   .text-column {
@@ -194,10 +167,6 @@ import SparklesText from "@components/effects/SparklesText.jsx";
 
   /* --- RESPONSIVIDADE MOBILE --- */
   @media (max-width: 992px) {
-    .hero-logo {
-      display: none;
-    }
-
     .pitaco-hero {
       padding-top: 40px;
       padding-bottom: 0px;
@@ -208,12 +177,12 @@ import SparklesText from "@components/effects/SparklesText.jsx";
       align-items: center;
       text-align: center;
       margin-top: 40px;
-      padding-bottom: 20px;
+      padding-bottom: 0px;
     }
 
     .text-column {
       flex: 1;
-      padding-bottom: 40px;
+      padding-bottom: 22px;
       align-items: center;
     }
 

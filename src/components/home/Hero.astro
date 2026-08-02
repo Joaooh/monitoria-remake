@@ -3,7 +3,6 @@ import FiberBackground from "../effects/Fiber.jsx";
 
 import { Image } from "astro:assets";
 import magoImg from "@assets/mago/mago-padrao.png";
-import logoCeub from "@assets/logo-ceub-light.png";
 ---
 
 <section class="hero" aria-label="Seção de boas-vindas">
@@ -14,18 +13,7 @@ import logoCeub from "@assets/logo-ceub-light.png";
   <div class="hero-fade" aria-hidden="true"></div>
 
   <div class="hero-content">
-    <div class="hero-logo-container">
-      <Image
-        src={logoCeub}
-        alt="Logo do Centro Universitário de Brasília - CEUB"
-        class="hero-logo"
-        loading="eager"
-        quality={80}
-        format="webp"
-      />
-    </div>
-
-    <main class="main-layout" role="main">
+    <main class="main-layout">
       <div class="text-section">
         <h1 class="sr-only">
           Monitoria de TI CEUB - Ciência da Computação, Engenharia de Software,
@@ -71,6 +59,13 @@ import logoCeub from "@assets/logo-ceub-light.png";
         />
       </div>
     </main>
+    
+    <div class="scroll-indicator" aria-hidden="true">
+      <svg class="scroll-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--purple-neon)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="7 13 12 18 17 13"></polyline>
+        <polyline points="7 6 12 11 17 6"></polyline>
+      </svg>
+    </div>
   </div>
 </section>
 
@@ -135,18 +130,6 @@ import logoCeub from "@assets/logo-ceub-light.png";
     width: 100%;
     height: 100%;
     color: var(--text-main);
-  }
-
-  .hero-logo-container {
-    width: 100%;
-    z-index: 10;
-  }
-
-  .hero-logo {
-    width: 105px;
-    height: auto;
-    object-fit: contain;
-    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
   }
 
   .main-layout {
@@ -250,7 +233,7 @@ import logoCeub from "@assets/logo-ceub-light.png";
     position: absolute;
     right: -10rem;
     bottom: 0rem;
-    height: 90vh;
+    height: 82vh;
     z-index: 5;
     pointer-events: none;
   }
@@ -284,12 +267,31 @@ import logoCeub from "@assets/logo-ceub-light.png";
     }
   }
 
+  .scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: bounceScroll 2s infinite ease-in-out;
+    opacity: 0.8;
+  }
+
+  @keyframes bounceScroll {
+    0%, 100% {
+      transform: translate(-50%, 0);
+      opacity: 0.6;
+    }
+    50% {
+      transform: translate(-50%, 10px);
+      opacity: 1;
+    }
+  }
+
   /* --- RESPONSIVIDADE MOBILE --- */
   @media (max-width: 768px) {
-    .hero-logo-container {
-      display: none;
-    }
-
     .btn {
       padding: 0.9rem 1.45rem;
       border-radius: 8px;
@@ -314,7 +316,7 @@ import logoCeub from "@assets/logo-ceub-light.png";
       left: 50%;
       transform: translate(-50%, -62%);
       width: 105vw;
-      height: 60vh;
+      height: 52vh;
       z-index: 1;
       pointer-events: none;
     }
