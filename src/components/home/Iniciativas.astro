@@ -30,6 +30,14 @@ const iniciativas = [
     link: "https://linktr.ee/monitoriaticeub",
     isExternal: true,
   },
+  {
+    title: "Playlists",
+    description: "Reveja nossas aulas gravadas a qualquer momento.",
+    image: imgProjetos,
+    alt: "Mago com vídeos de aulas gravadas",
+    link: "/playlists",
+    isExternal: false,
+  },
 ];
 ---
 
@@ -73,7 +81,10 @@ const iniciativas = [
                   >
                     <path d="M7 17L17 7M17 7H7M17 7V17" />
                   </svg>
-                  <span class="indicator-text">Clique para explorar</span>
+                  <span class="indicator-text">
+                    <span class="desktop-text">Clique para explorar</span>
+                    <span class="mobile-text">Saiba mais</span>
+                  </span>
                 </div>
               </div>
               <div class="card-image-wrapper">
@@ -102,7 +113,7 @@ const iniciativas = [
 <style>
   .iniciativas-section {
     background: linear-gradient(to bottom, var(--bg-dark), #160824);
-    padding: 100px 2rem 50px 2rem;
+    padding: 30px 2rem 50px 2rem;
     position: relative;
     z-index: 10;
   }
@@ -150,13 +161,14 @@ const iniciativas = [
 
   .cards-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 2rem;
   }
 
   .card-link {
     text-decoration: none;
     display: block;
+    height: 100%;
   }
 
   .card {
@@ -170,43 +182,18 @@ const iniciativas = [
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     position: relative;
-  }
-
-  @keyframes bounce-in {
-    0% {
-      opacity: 0;
-      transform: scale(0) translateY(20px);
-    }
-    70% {
-      opacity: 1;
-      transform: scale(1.1) translateY(-3px);
-    }
-    100% {
-      opacity: 1;
-      transform: scale(1) translateY(0);
-    }
+    height: 100%;
+    transform: translateZ(0);
+    isolation: isolate;
   }
 
   @keyframes glow-pulse {
-    0%, 100% {
+    0%,
+    100% {
       filter: drop-shadow(0 0 4px rgba(210, 168, 255, 0.4));
     }
     50% {
       filter: drop-shadow(0 0 12px rgba(210, 168, 255, 0.8));
-    }
-  }
-
-  @keyframes typewriter {
-    0% {
-      max-width: 0;
-      opacity: 0;
-    }
-    15% {
-      opacity: 1;
-    }
-    100% {
-      max-width: 250px;
-      opacity: 1;
     }
   }
 
@@ -218,6 +205,9 @@ const iniciativas = [
     opacity: 0;
     transform: scale(0) translateY(20px);
     width: fit-content;
+    transition:
+      opacity 0.4s ease,
+      transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
   .indicator-content svg {
@@ -233,6 +223,13 @@ const iniciativas = [
     max-width: 0;
     opacity: 0;
     letter-spacing: 0.5px;
+    transition:
+      max-width 0.4s ease,
+      opacity 0.3s ease;
+  }
+
+  .mobile-text {
+    display: none;
   }
 
   .click-indicator {
@@ -247,11 +244,17 @@ const iniciativas = [
   }
 
   .card-link:hover .indicator-content {
-    animation: bounce-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards, glow-pulse 1.5s ease-in-out infinite 0.3s;
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    animation: glow-pulse 1.5s ease-in-out infinite 0.5s;
   }
 
   .card-link:hover .indicator-text {
-    animation: typewriter 1.2s ease-out 0.3s forwards;
+    max-width: 250px;
+    opacity: 1;
+    transition:
+      max-width 1.2s ease-out 0.2s,
+      opacity 0.4s ease 0.1s;
   }
 
   .card:hover {
@@ -267,6 +270,8 @@ const iniciativas = [
     aspect-ratio: 16 / 10;
     overflow: hidden;
     background: #1a1a1a;
+    position: relative;
+    z-index: 1;
   }
 
   .card-image {
@@ -274,6 +279,7 @@ const iniciativas = [
     height: 100%;
     object-fit: cover;
     transition: transform 0.5s ease;
+    display: block;
   }
 
   .card:hover .card-image {
@@ -315,6 +321,86 @@ const iniciativas = [
     .cards-grid {
       grid-template-columns: 1fr;
       gap: 1.5rem;
+    }
+
+    .card {
+      min-height: 120px;
+    }
+
+    .card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to right,
+        rgba(102, 44, 146, 0.6) 0%,
+        rgba(102, 44, 146, 0) 45%
+      );
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .card-image-wrapper {
+      position: absolute;
+      inset: 0;
+      height: 100%;
+      background: transparent;
+      z-index: 0;
+    }
+
+    .card-image {
+      opacity: 0.12;
+      object-position: right center;
+    }
+
+    .card-content {
+      position: relative;
+      z-index: 2;
+      padding: 1.25rem 1.25rem 2.2rem 1.25rem;
+    }
+
+    .card-content h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .card-content p {
+      font-size: 0.9rem;
+      max-width: 100%;
+      padding-right: 90px;
+      margin-bottom: 0;
+    }
+
+    .click-indicator {
+      z-index: 10;
+      bottom: 1.25rem;
+      right: 1.25rem;
+    }
+
+    .indicator-content {
+      opacity: 1;
+      transform: none;
+      flex-direction: row-reverse;
+      gap: 6px;
+      color: #ebd4ff;
+    }
+
+    .indicator-text {
+      opacity: 1;
+      max-width: none;
+    }
+
+    .indicator-content svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .desktop-text {
+      display: none;
+    }
+
+    .mobile-text {
+      display: inline;
     }
   }
 </style>

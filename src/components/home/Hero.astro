@@ -59,9 +59,19 @@ import magoImg from "@assets/mago/mago-padrao.png";
         />
       </div>
     </main>
-    
+
     <div class="scroll-indicator" aria-hidden="true">
-      <svg class="scroll-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--purple-neon)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <svg
+        class="scroll-arrow"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="var(--purple-neon)"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
         <polyline points="7 13 12 18 17 13"></polyline>
         <polyline points="7 6 12 11 17 6"></polyline>
       </svg>
@@ -280,7 +290,8 @@ import magoImg from "@assets/mago/mago-padrao.png";
   }
 
   @keyframes bounceScroll {
-    0%, 100% {
+    0%,
+    100% {
       transform: translate(-50%, 0);
       opacity: 0.6;
     }
@@ -389,7 +400,7 @@ import magoImg from "@assets/mago/mago-padrao.png";
     let timeoutId;
 
     function type() {
-      if (!document.getElementById("vanilla-typewriter")) return; // Proteção extra pra views
+      if (!document.getElementById("vanilla-typewriter")) return;
 
       const currentWord = words[wordIndex];
 

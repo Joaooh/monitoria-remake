@@ -3,43 +3,61 @@ import { Image } from "astro:assets";
 import imgMagoDuvida from "@assets/mago/mago-com-duvida.png";
 ---
 
-<div class="sobre-nos-wrapper">
-  <div class="sobre-nos-content">
-    <div class="text-column">
-      <h3 id="sobre-titulo">Sobre a Monitoria de TI</h3>
-      <p>
-        Somos uma comunidade universitária focada no crescimento mútuo e no
-        fortalecimento do setor tecnológico. Unimos monitores e alunos em um
-        ecossistema que integra o saber acadêmico à prática de mercado,
-        transformando desafios em aprendizado colaborativo e inovação técnica.
-      </p>
-      <p>
-        Nossa missão é promover um estudo produtivo e equilibrado, oferecendo
-        oficinas de base, projetos de alto impacto e apoio acadêmico
-        estratégico. Através dessa troca, expandimos os horizontes dos
-        estudantes, visando o desempenho de excelência e a construção de
-        trajetórias profissionais de sucesso.
-      </p>
-    </div>
+<section class="sobre-section">
+  <div class="container">
+    <div class="sobre-nos-wrapper">
+      <div class="sobre-nos-content">
+        <div class="text-column">
+          <h3 id="sobre-titulo">Sobre a Monitoria de TI</h3>
+          <p>
+            Somos uma comunidade universitária focada no crescimento mútuo e no
+            fortalecimento do setor tecnológico. Unimos monitores e alunos em um
+            ecossistema que integra o saber acadêmico à prática de mercado,
+            transformando desafios em aprendizado colaborativo e inovação
+            técnica.
+          </p>
+          <p>
+            Nossa missão é promover um estudo produtivo e equilibrado,
+            oferecendo oficinas de base, projetos de alto impacto e apoio
+            acadêmico estratégico. Através dessa troca, expandimos os horizontes
+            dos estudantes, visando o desempenho de excelência e a construção de
+            trajetórias profissionais de sucesso.
+          </p>
+        </div>
 
-    <div class="image-column" aria-hidden="true">
-      <Image
-        src={imgMagoDuvida}
-        alt="Mago da monitoria do CEUB com dúvida"
-        class="mago-duvida-img"
-        quality={70}
-        format="webp"
-        widths={[300, 600, 900]}
-        sizes="(max-width: 900px) 300px, 600px"
-      />
+        <div class="image-column" aria-hidden="true">
+          <Image
+            src={imgMagoDuvida}
+            alt="Mago da monitoria do CEUB com dúvida"
+            class="mago-duvida-img"
+            quality={70}
+            format="webp"
+            widths={[300, 600, 900]}
+            sizes="(max-width: 900px) 300px, 600px"
+          />
+        </div>
+      </div>
     </div>
   </div>
-</div>
+</section>
 
 <style>
+  .sobre-section {
+    background-color: var(--bg-dark);
+    padding: 80px 2rem 40px 2rem;
+    position: relative;
+    z-index: 10;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 12;
+  }
+
   .sobre-nos-wrapper {
     width: 100%;
-    margin: 2.5rem 0;
   }
 
   .sobre-nos-content {
@@ -92,9 +110,10 @@ import imgMagoDuvida from "@assets/mago/mago-com-duvida.png";
 
   /* --- RESPONSIVIDADE MOBILE --- */
   @media (max-width: 900px) {
-    .sobre-nos-wrapper {
-      margin: 2rem 0;
+    .sobre-section {
+      padding: 60px 1.5rem 20px 1.5rem;
     }
+
     .sobre-nos-content {
       flex-direction: column;
       text-align: center;

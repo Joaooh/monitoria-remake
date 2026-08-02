@@ -1,0 +1,495 @@
+---
+import { playlistsData } from "@data/playlists.js";
+
+const totalPlaylists = playlistsData.length;
+const totalVideos = playlistsData.reduce((acc, playlist) => {
+  return (
+    acc +
+    playlist.videos.filter((v: any) => {
+      const hasYoutube = v.id_youtube && v.id_youtube !== "";
+      const hasExternal = v.available === true;
+      return hasYoutube || hasExternal;
+    }).length
+  );
+}, 0);
+---
+
+<section
+  class="playlist-banner"
+  id="playlists"
+  aria-labelledby="playlist-banner-title"
+>
+  <div class="banner-glow" aria-hidden="true"></div>
+  <div class="container">
+    <div class="banner-content">
+      <div class="banner-text">
+        <div class="banner-tag-row">
+          <span class="banner-tag">
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+            Novo
+          </span>
+        </div>
+        <h2 id="playlist-banner-title">
+          Assista nossas aulas <strong>gravadas</strong>
+        </h2>
+        <p class="banner-description">
+          Todo o conteúdo das oficinas disponível para você assistir ou revisar
+          no seu ritmo. São <strong>{totalPlaylists} playlists</strong> com
+          <strong> {totalVideos} aulas</strong> prontas para você.
+        </p>
+
+        <div class="banner-stats">
+          <div class="mini-stat">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="2" y="2" width="20" height="20" rx="2"></rect>
+              <line x1="7" y1="2" x2="7" y2="22"></line>
+              <line x1="17" y1="2" x2="17" y2="22"></line>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <line x1="2" y1="7" x2="7" y2="7"></line>
+              <line x1="2" y1="17" x2="7" y2="17"></line>
+              <line x1="17" y1="7" x2="22" y2="7"></line>
+              <line x1="17" y1="17" x2="22" y2="17"></line>
+            </svg>
+            <span>{totalPlaylists} playlists</span>
+          </div>
+          <div class="mini-stat">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="12" r="10"></circle>
+              <polygon points="10 8 16 12 10 16 10 8"></polygon>
+            </svg>
+            <span>{totalVideos} aulas disponíveis</span>
+          </div>
+        </div>
+
+        <a href="/playlists" class="banner-cta">
+          Explorar Playlists
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </div>
+
+      <div class="banner-visual" aria-hidden="true">
+        <div class="play-ring">
+          <div class="play-ring-inner">
+            <svg
+              class="play-icon"
+              width="48"
+              height="48"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <polygon points="6 3 20 12 6 21 6 3"></polygon>
+            </svg>
+          </div>
+        </div>
+        <div class="floating-card card-1">
+          <div class="fc-bar"></div>
+          <div class="fc-bar short"></div>
+        </div>
+        <div class="floating-card card-2">
+          <div class="fc-bar"></div>
+          <div class="fc-bar short"></div>
+        </div>
+        <div class="floating-card card-3">
+          <div class="fc-bar"></div>
+          <div class="fc-bar short"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .playlist-banner {
+    position: relative;
+    z-index: 10;
+    padding: 80px 2rem;
+    overflow: hidden;
+    background: linear-gradient(135deg, #160824 0%, #1a0a2e 50%, #200e35 100%);
+  }
+
+  .banner-glow {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle,
+      rgba(102, 44, 146, 0.2) 0%,
+      transparent 70%
+    );
+    top: 50%;
+    right: 10%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    animation: glowPulse 4s ease-in-out infinite alternate;
+  }
+
+  @keyframes glowPulse {
+    0% {
+      opacity: 0.5;
+      transform: translateY(-50%) scale(0.9);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(-50%) scale(1.1);
+    }
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .banner-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem;
+  }
+
+  .banner-text {
+    flex: 1;
+    max-width: 600px;
+  }
+
+  .banner-tag-row {
+    margin-bottom: 1.25rem;
+  }
+
+  .banner-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 6px 14px;
+    background: rgba(210, 168, 255, 0.1);
+    color: var(--purple-neon);
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    border: 1px solid rgba(210, 168, 255, 0.25);
+    animation: badgeGlow 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes badgeGlow {
+    0% {
+      box-shadow: 0 0 8px rgba(210, 168, 255, 0.1);
+    }
+    100% {
+      box-shadow: 0 0 18px rgba(210, 168, 255, 0.25);
+    }
+  }
+
+  h2 {
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    line-height: 1.25;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 1rem;
+    letter-spacing: -1px;
+  }
+
+  h2 strong {
+    color: var(--purple-neon);
+  }
+
+  .banner-description {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .banner-description strong {
+    color: var(--text-main);
+    font-weight: 600;
+  }
+
+  .banner-stats {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .mini-stat {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--purple-neon);
+    font-size: 0.92rem;
+    font-weight: 500;
+  }
+
+  .mini-stat svg {
+    opacity: 0.8;
+  }
+
+  .banner-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.8rem;
+    background: var(--purple-primary);
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 20px rgba(102, 44, 146, 0.4);
+  }
+
+  .banner-cta:hover {
+    transform: translateY(-3px);
+    filter: brightness(1.15);
+    box-shadow: 0 8px 30px rgba(102, 44, 146, 0.6);
+  }
+
+  .banner-cta svg {
+    transition: transform 0.3s ease;
+  }
+
+  .banner-cta:hover svg {
+    transform: translateX(4px);
+  }
+
+  .banner-cta:focus-visible {
+    outline: 3px solid var(--purple-neon);
+    outline-offset: 2px;
+  }
+
+  .banner-visual {
+    flex-shrink: 0;
+    position: relative;
+    width: 280px;
+    height: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .play-ring {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: linear-gradient(
+      135deg,
+      rgba(102, 44, 146, 0.3),
+      rgba(134, 64, 190, 0.2)
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    animation: ringPulse 3s ease-in-out infinite;
+  }
+
+  .play-ring::before {
+    content: "";
+    position: absolute;
+    inset: -12px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(210, 168, 255, 0.15);
+    animation: ringExpand 3s ease-in-out infinite;
+  }
+
+  .play-ring::after {
+    content: "";
+    position: absolute;
+    inset: -28px;
+    border-radius: 50%;
+    border: 1px solid rgba(210, 168, 255, 0.08);
+    animation: ringExpand 3s ease-in-out infinite 0.5s;
+  }
+
+  @keyframes ringPulse {
+    0%,
+    100% {
+      box-shadow: 0 0 30px rgba(102, 44, 146, 0.2);
+    }
+    50% {
+      box-shadow: 0 0 50px rgba(102, 44, 146, 0.4);
+    }
+  }
+
+  @keyframes ringExpand {
+    0%,
+    100% {
+      transform: scale(1);
+      opacity: 0.5;
+    }
+    50% {
+      transform: scale(1.08);
+      opacity: 1;
+    }
+  }
+
+  .play-ring-inner {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: linear-gradient(
+      135deg,
+      var(--purple-primary),
+      var(--purple-light)
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 30px rgba(102, 44, 146, 0.5);
+  }
+
+  .play-icon {
+    color: #ffffff;
+    margin-left: 4px;
+  }
+
+  .floating-card {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(210, 168, 255, 0.1);
+    border-radius: 10px;
+    padding: 12px 16px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    animation: floatCard 5s ease-in-out infinite;
+  }
+
+  .fc-bar {
+    height: 6px;
+    width: 60px;
+    background: rgba(210, 168, 255, 0.2);
+    border-radius: 3px;
+  }
+
+  .fc-bar.short {
+    width: 36px;
+    background: rgba(210, 168, 255, 0.12);
+  }
+
+  .card-1 {
+    top: 15%;
+    right: 5%;
+    animation-delay: 0s;
+  }
+
+  .card-2 {
+    bottom: 20%;
+    left: 0%;
+    animation-delay: 1.5s;
+  }
+
+  .card-3 {
+    bottom: 5%;
+    right: 10%;
+    animation-delay: 3s;
+  }
+
+  @keyframes floatCard {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .play-ring,
+    .play-ring::before,
+    .play-ring::after,
+    .floating-card,
+    .banner-glow,
+    .banner-tag {
+      animation: none;
+    }
+  }
+
+  /* --- RESPONSIVIDADE MOBILE --- */
+  @media (max-width: 900px) {
+    .banner-content {
+      flex-direction: column;
+      text-align: center;
+      gap: 2.5rem;
+    }
+
+    .banner-text {
+      max-width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .banner-stats {
+      justify-content: center;
+    }
+
+    .banner-visual {
+      display: none;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .playlist-banner {
+      padding: 60px 1.5rem;
+    }
+
+    .banner-stats {
+      flex-direction: column;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .banner-description {
+      font-size: 1rem;
+    }
+  }
+</style>
