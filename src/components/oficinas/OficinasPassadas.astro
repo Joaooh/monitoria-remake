@@ -41,6 +41,10 @@ import { oficinasPassadasData } from "@data/oficinas-passadas.js";
               <div class="card-content">
                 <h3>{oficina.titulo}</h3>
 
+                {oficina.descricao && (
+                  <p class="descricao">{oficina.descricao}</p>
+                )}
+
                 <div class="info-horario">
                   {oficina.turmas.map((turma) => (
                     <div class="info-item">
@@ -361,9 +365,20 @@ import { oficinasPassadasData } from "@data/oficinas-passadas.js";
   .card-content h3 {
     color: var(--text-dark);
     font-size: 1.15rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     font-weight: 700;
     line-height: 1.3;
+  }
+
+  .descricao {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   .info-horario {
@@ -413,6 +428,7 @@ import { oficinasPassadasData } from "@data/oficinas-passadas.js";
     display: none;
   }
 
+  /* --- RESPONSIVIDADE MOBILE --- */
   @media (max-width: 768px) {
     .oficinas-passadas-section {
       padding: 60px 1.5rem;

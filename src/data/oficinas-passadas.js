@@ -28,7 +28,7 @@ export const oficinasPassadasData = [
     id: "oficina-web",
     titulo: "Oficina de Web (JavaScript)",
     descricao:
-      "Construa sites rápidos e modernos do zero, focando em componentização e layouts responsivos.",
+      "Construa sites rápidos e modernos do zero, focando em layouts responsivos e código bem estruturado.",
     turmas: ["Quarta e Sexta: 11h às 13h"],
     formato: "Presencial",
     linkInscricao: "/oficinas/oficina-de-web",
@@ -38,6 +38,8 @@ export const oficinasPassadasData = [
   {
     id: "oficina-blender",
     titulo: "Oficina de Criação de Personagens 3D",
+    descricao:
+      "Aprenda a modelar, texturizar e renderizar seus próprios personagens e cenários 3D no Blender.",
     turmas: ["Segunda, Quarta e Sexta: 11h às 13h"],
     formato: "Presencial",
     linkInscricao: "/oficinas/criacao-de-personagens-3d",
@@ -47,6 +49,8 @@ export const oficinasPassadasData = [
   {
     id: "oficina-java",
     titulo: "Oficina de Java",
+    descricao:
+      "Conheça as bases da programação Orientada a Objetos e crie aplicações no ecossistema Java.",
     turmas: [
       "Segunda, Terça e Quinta: 11h às 13h",
       "Segunda, Quarta e Sexta: 17h às 19h",
@@ -58,6 +62,8 @@ export const oficinasPassadasData = [
   {
     id: "oficina-dados",
     titulo: "Ciência de Dados - Ferramentas e Frameworks",
+    descricao:
+      "Aprofunde-se no uso de bibliotecas como Pandas, NumPy e Scikit-Learn para análise de dados.",
     turmas: ["Segunda, Terça e Quinta: 17h às 19h"],
     imagem: imgDados,
     alt: "Mago jogando dados para cima",
@@ -66,6 +72,8 @@ export const oficinasPassadasData = [
   {
     id: "fundamentos-comp",
     titulo: "Fundamentos da Computação",
+    descricao:
+      "Entenda como computadores funcionam por debaixo dos panos, do hardware ao sistema operacional.",
     turmas: [
       "Segunda, Quarta e Sexta: 11h às 13h",
       "Segunda, Quarta e Sexta: 17h00 às 19h",
@@ -77,6 +85,8 @@ export const oficinasPassadasData = [
   {
     id: "fundamentos-dados",
     titulo: "Fundamentos de Ciência de Dados - Introdução a Python",
+    descricao:
+      "Inicie sua jornada na área de dados utilizando a linguagem Python para manipular informações.",
     turmas: ["Segunda, Terça e Quinta: 17h30 às 19h"],
     imagem: imgDados,
     alt: "Mago jogando dados para cima",
@@ -85,6 +95,8 @@ export const oficinasPassadasData = [
   {
     id: "oficina-sql",
     titulo: "Oficina de SQL",
+    descricao:
+      "Aprenda a linguagem estruturada para bancos de dados relacionais, desde consultas básicas a modelagens.",
     turmas: ["Segunda, Quarta e Sexta: 17h30 às 19h"],
     imagem: imgSql,
     alt: "Mago gerenciando banco de dados SQL",
