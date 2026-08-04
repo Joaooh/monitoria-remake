@@ -6,120 +6,6 @@
  * 4. Para uma aula "Em breve": Passe apenas 'id_youtube: ""'.
  */
 export const playlistsData = [
-  {
-    slug: "criacao-de-personagens-3d",
-    titulo: "Criação de Personagens 3D",
-    classroomUrl:
-      "https://classroom.google.com/c/ODUxNTY3MTY1OTIx?cjc=uxeqcwg6",
-    videos: [
-      {
-        id_youtube: "9rtyfQowWHc",
-        title: "Introdução ao Blender",
-        description:
-          "Aprendemos a visualizar a interface do Blender, a como navegar na viewport e como manipular objetos primitivos",
-        tags: ["BLENDER", "MODELAGEM", "CRIAÇÃO DE PERSONAGENS", "INTERFACE"],
-      },
-      {
-        id_youtube: "",
-        title: "Em Breve",
-        description: "Em Breve",
-        tags: [],
-      },
-      {
-        id_youtube: "",
-        title: "Em Breve",
-        description: "Em Breve",
-        tags: [],
-      },
-    ],
-  },
-  // --- CIÊNCIA DE DADOS - FERRAMENTAS E FRAMEWORKS ---
-  {
-    slug: "ciencia-de-dados-ferramentas-e-frameworks",
-    titulo: "Ciência de Dados - Ferramentas e Frameworks",
-    classroomUrl: "https://classroom.github.com/a/0v1wQ_7Z",
-    videos: [
-      {
-        id_youtube: "WYHysPv3PJU",
-        title: "Manipulação de dados com Pandas e Numpy",
-        description:
-          "Aprendemos sobre como realizar a manipulação inicial dos dados no Python com Pandas e Numpy",
-        tags: [
-          "PYTHON",
-          "CD",
-          "IDE",
-          "VSCODE",
-          "GITHUB",
-          "MODULOS",
-          "BIBLIOTECAS",
-          "PANDAS",
-          "NUMPY",
-        ],
-      },
-      {
-        id_youtube: "EhLd8FBOA_M",
-        title: "EDA e Estatística",
-        description:
-          "Aprendemos sobre EDA, algumas de suas técnicas e sua importância para etapas futuras de pré-processamento e modelagem de dados",
-        tags: [
-          "PYTHON",
-          "CD",
-          "GAUSS",
-          "ESTATISTICA",
-          "EDA",
-          "MATPLOTLIB",
-          "BIBLIOTECAS",
-          "PANDAS",
-          "NUMPY",
-        ],
-      },
-      {
-        id_youtube: "snoztVdecKo",
-        title: "Pré-processamento com dados do Titanic",
-        description:
-          "Visualizamos na prática como realizar um EDA e o pré-processamento em um dataset de estudos (Titanic), aprofundando técnicas de análise de dados, estatística e modelagem",
-        tags: [
-          "PYTHON",
-          "CD",
-          "PRE-PROCESSAMENTO",
-          "ESTATISTICA",
-          "EDA",
-          "SCIKIT-LEARN",
-          "MATPLOTLIB",
-          "SEABORN",
-          "PANDAS",
-          "NUMPY",
-        ],
-      },
-      {
-        id_youtube: "NKfJXRy354c",
-        title: "Regressão e Introdução ao Scickit-learn",
-        description:
-          "EDA e pré-processamento em um dataset de regressão (aluguel de casas), aprofundando em técnicas de modelagem de dados utilizando a biblioteca scickit-learn",
-        tags: [
-          "PYTHON",
-          "CD",
-          "REGRESSÃO",
-          "ESTATISTICA",
-          "SCIKIT-LEARN",
-          "MATPLOTLIB",
-          "SEABORN",
-        ],
-      },
-      {
-        id_youtube: "",
-        title: "Aula 05 - Em Breve",
-        description: "Esta aula será disponibilizada em breve",
-        tags: [],
-      },
-      {
-        id_youtube: "",
-        title: "Aula 06 - Em Breve",
-        description: "Esta aula será disponibilizada em breve",
-        tags: [],
-      },
-    ],
-  },
   // --- FUNDAMENTOS DE CIÊNCIA DE DADOS - INTRODUÇÃO A PYTHON ---
   {
     slug: "fundamentos-ciencia-de-dados",
@@ -215,6 +101,93 @@ export const playlistsData = [
           "PANDAS",
           "NUMPY",
         ],
+      },
+    ],
+  },
+  // --- CIÊNCIA DE DADOS - FERRAMENTAS E FRAMEWORKS ---
+  {
+    slug: "ciencia-de-dados-ferramentas-e-frameworks",
+    titulo: "Ciência de Dados - Ferramentas e Frameworks",
+    classroomUrl: "https://classroom.github.com/a/0v1wQ_7Z",
+    videos: [
+      {
+        id_youtube: "WYHysPv3PJU",
+        title: "Manipulação de dados com Pandas e Numpy",
+        description:
+          "Aprendemos sobre como realizar a manipulação inicial dos dados no Python com Pandas e Numpy",
+        tags: [
+          "PYTHON",
+          "CD",
+          "IDE",
+          "VSCODE",
+          "GITHUB",
+          "MODULOS",
+          "BIBLIOTECAS",
+          "PANDAS",
+          "NUMPY",
+        ],
+      },
+      {
+        id_youtube: "EhLd8FBOA_M",
+        title: "EDA e Estatística",
+        description:
+          "Aprendemos sobre EDA, algumas de suas técnicas e sua importância para etapas futuras de pré-processamento e modelagem de dados",
+        tags: [
+          "PYTHON",
+          "CD",
+          "GAUSS",
+          "ESTATISTICA",
+          "EDA",
+          "MATPLOTLIB",
+          "BIBLIOTECAS",
+          "PANDAS",
+          "NUMPY",
+        ],
+      },
+      {
+        id_youtube: "snoztVdecKo",
+        title: "Pré-processamento com dados do Titanic",
+        description:
+          "Visualizamos na prática como realizar um EDA e o pré-processamento em um dataset de estudos (Titanic), aprofundando técnicas de análise de dados, estatística e modelagem",
+        tags: [
+          "PYTHON",
+          "CD",
+          "PRE-PROCESSAMENTO",
+          "ESTATISTICA",
+          "EDA",
+          "SCIKIT-LEARN",
+          "MATPLOTLIB",
+          "SEABORN",
+          "PANDAS",
+          "NUMPY",
+        ],
+      },
+      {
+        id_youtube: "NKfJXRy354c",
+        title: "Regressão e Introdução ao Scickit-learn",
+        description:
+          "EDA e pré-processamento em um dataset de regressão (aluguel de casas), aprofundando em técnicas de modelagem de dados utilizando a biblioteca scickit-learn",
+        tags: [
+          "PYTHON",
+          "CD",
+          "REGRESSÃO",
+          "ESTATISTICA",
+          "SCIKIT-LEARN",
+          "MATPLOTLIB",
+          "SEABORN",
+        ],
+      },
+      {
+        id_youtube: "",
+        title: "Aula 05 - Em Breve",
+        description: "Esta aula será disponibilizada em breve",
+        tags: [],
+      },
+      {
+        id_youtube: "",
+        title: "Aula 06 - Em Breve",
+        description: "Esta aula será disponibilizada em breve",
+        tags: [],
       },
     ],
   },
@@ -319,6 +292,34 @@ export const playlistsData = [
         id_youtube: "",
         title: "Em Breve",
         description: "Esta aula será disponibilizada em breve",
+        tags: [],
+      },
+    ],
+  },
+  // --- CRIAÇÃO DE PERSONAGENS 3D ---
+  {
+    slug: "criacao-de-personagens-3d",
+    titulo: "Criação de Personagens 3D",
+    classroomUrl:
+      "https://classroom.google.com/c/ODUxNTY3MTY1OTIx?cjc=uxeqcwg6",
+    videos: [
+      {
+        id_youtube: "9rtyfQowWHc",
+        title: "Introdução ao Blender",
+        description:
+          "Aprendemos a visualizar a interface do Blender, a como navegar na viewport e como manipular objetos primitivos",
+        tags: ["BLENDER", "MODELAGEM", "CRIAÇÃO DE PERSONAGENS", "INTERFACE"],
+      },
+      {
+        id_youtube: "",
+        title: "Em Breve",
+        description: "Em Breve",
+        tags: [],
+      },
+      {
+        id_youtube: "",
+        title: "Em Breve",
+        description: "Em Breve",
         tags: [],
       },
     ],

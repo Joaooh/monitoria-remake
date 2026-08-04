@@ -56,7 +56,8 @@ const videosEnriquecidos = await Promise.all(
         title: vid.title || "Em Breve",
         date: vid.date || "",
         duration: vid.duration || "",
-        description: vid.description || "Esta aula será disponibilizada em breve",
+        description:
+          vid.description || "Esta aula será disponibilizada em breve",
         url: vid.url || "",
         tags: vid.tags || [],
         available: vid.available !== undefined ? vid.available : true,
@@ -175,6 +176,20 @@ const videosEnriquecidos = await Promise.all(
         </div>
       </div>
     </header>
+
+    <script>
+      document.addEventListener("astro:page-load", () => {
+        const btnVoltar = document.querySelector(
+          ".btn-voltar",
+        ) as HTMLAnchorElement;
+        if (btnVoltar) {
+          const urlParams = new URLSearchParams(window.location.search);
+          if (urlParams.get("from") === "playlists") {
+            btnVoltar.href = "/playlists";
+          }
+        }
+      });
+    </script>
 
     <main class="main-content">
       <div class="container">
@@ -558,21 +573,21 @@ const videosEnriquecidos = await Promise.all(
       width: 100%;
       justify-content: center;
     }
-    
+
     .coming-soon-container {
       padding: 1rem;
     }
-    
+
     .coming-soon-image {
       max-width: 80px;
       margin-bottom: 0.5rem;
     }
-    
+
     .coming-soon-text {
       font-size: 1.1rem;
       margin-bottom: 0.25rem;
     }
-    
+
     .coming-soon-subtitle {
       font-size: 0.8rem;
     }

@@ -1,7 +1,19 @@
 import React, { useState, useEffect } from "react";
 
 export default function PlaylistViewer({ videos }) {
-  const [activeIndex, setActiveIndex] = useState(null);
+  const [activeIndex, setActiveIndex] = useState(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const v = params.get("v");
+      if (v !== null) {
+        const idx = parseInt(v, 10);
+        if (!isNaN(idx) && idx >= 0 && idx < videos.length) {
+          return idx;
+        }
+      }
+    }
+    return null;
+  });
   const activeVideo = activeIndex !== null ? videos[activeIndex] : null;
 
   useEffect(() => {
@@ -127,7 +139,9 @@ export default function PlaylistViewer({ videos }) {
                   ),
               )
             ) : (
-              <span className="tag">Oficinas Gravadas | Monitoria de TI - CEUB</span>
+              <span className="tag">
+                Oficinas Gravadas | Monitoria de TI - CEUB
+              </span>
             )}
           </div>
         </div>
