@@ -257,7 +257,7 @@ const getImagemParaPlaylist = (slug: string) => {
 
   .playlists-hero {
     position: relative;
-    padding: 104px 2rem 0 2rem;
+    padding: 90px 2rem 0 2rem;
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -314,33 +314,37 @@ const getImagemParaPlaylist = (slug: string) => {
   }
 
   .text-column {
-    max-width: 600px;
-    padding-bottom: 3rem;
+    flex: 0 0 45%;
+    padding-bottom: 50px;
   }
 
   .pre-title {
-    color: var(--purple-neon);
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    font-weight: 400;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.9);
+    letter-spacing: -0.5px;
+    line-height: 1;
+    text-transform: none;
   }
 
   .title {
-    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-size: clamp(4.5rem, 8vw, 7rem);
     font-weight: 800;
-    color: var(--text-main);
-    line-height: 1.1;
-    margin-bottom: 1.5rem;
-    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    margin: 0 0 1rem 0;
+    color: #ffffff;
+    letter-spacing: -2px;
+    line-height: 1;
+    margin-left: -4px;
+    text-shadow: none;
   }
 
   .subtitle {
     font-size: clamp(1.1rem, 2vw, 1.3rem);
-    color: var(--text-muted);
-    line-height: 1.6;
-    max-width: 500px;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.5;
+    margin: 0;
+    max-width: 600px;
   }
 
   .image-column {
@@ -359,41 +363,57 @@ const getImagemParaPlaylist = (slug: string) => {
     max-width: 550px;
     object-fit: contain;
     transform-origin: bottom center;
+    transform: scaleX(-1);
+    filter: drop-shadow(0 -5px 25px rgba(0, 0, 0, 0.4));
   }
 
   /* --- RESPONSIVIDADE MOBILE --- */
-  @media (max-width: 900px) {
+  @media (max-width: 992px) {
     .hero-content {
       flex-direction: column;
       align-items: center;
       text-align: center;
       margin-top: 40px;
     }
+
     .text-column {
-      padding-bottom: 1.5rem;
+      flex: 1;
+      padding-bottom: 20px;
+      padding-top: 0;
+      align-items: center;
     }
-    .pre-title {
-      font-size: 1rem;
+
+    .title {
+      margin-left: 0;
     }
-    .subtitle {
-      margin: 0 auto;
-    }
+
     .image-column {
       width: 80%;
+      flex: 1;
+      justify-content: center;
+      margin-bottom: -2px;
     }
+
     .mago-img {
       max-width: 350px;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      object-position: center bottom;
+      transform: scaleX(-1);
     }
+
     .playlists-hero {
       padding: 46px 2rem 0 2rem;
     }
   }
 
   .container {
-    max-width: 1400px;
-    margin: 0 auto;
     position: relative;
-    z-index: 1;
+    z-index: 2;
+    max-width: 1200px;
+    width: 100%;
+    height: 100%;
   }
 
   .netflix-container {
