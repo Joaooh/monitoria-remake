@@ -7,4 +7,7 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   site: "https://site-monitoria-blue.vercel.app",
   integrations: [react(), sitemap()],
+  image: {
+    domains: ["img.youtube.com"],
+  },
 });

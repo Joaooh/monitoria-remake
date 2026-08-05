@@ -115,11 +115,14 @@ const getImagemParaPlaylist = (slug: string) => {
                         >
                           <div class="thumbnail-wrapper">
                             {thumbUrl ? (
-                              <img
+                              <Image
                                 src={thumbUrl}
                                 alt={vid.title}
                                 class="thumbnail"
-                                loading="lazy"
+                                width={480}
+                                height={360}
+                                format="webp"
+                                quality={80}
                               />
                             ) : fallbackImage ? (
                               <Image
