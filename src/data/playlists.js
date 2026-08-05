@@ -296,32 +296,4 @@ export const playlistsData = [
       },
     ],
   },
-  // --- CRIAÇÃO DE PERSONAGENS 3D ---
-  {
-    slug: "criacao-de-personagens-3d",
-    titulo: "Criação de Personagens 3D",
-    classroomUrl:
-      "https://classroom.google.com/c/ODUxNTY3MTY1OTIx?cjc=uxeqcwg6",
-    videos: [
-      {
-        id_youtube: "9rtyfQowWHc",
-        title: "Introdução ao Blender",
-        description:
-          "Aprendemos a visualizar a interface do Blender, a como navegar na viewport e como manipular objetos primitivos",
-        tags: ["BLENDER", "MODELAGEM", "CRIAÇÃO DE PERSONAGENS", "INTERFACE"],
-      },
-      {
-        id_youtube: "",
-        title: "Em Breve",
-        description: "Em Breve",
-        tags: [],
-      },
-      {
-        id_youtube: "",
-        title: "Em Breve",
-        description: "Em Breve",
-        tags: [],
-      },
-    ],
-  },
 ];

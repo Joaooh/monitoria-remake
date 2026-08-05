@@ -87,13 +87,7 @@ export const oficinasDetalhes = [
     horarios: "Segunda, Quarta e Sexta, das 11h às 13h",
     imagem: img3D,
     alt: "Oficina de Criação de Personagens 3D no Blender",
-    botoes: [
-      {
-        texto: "Playlist Criação de Personagens 3D",
-        link: "/playlist/criacao-de-personagens-3d",
-        tipo: "primary",
-      },
-    ],
+    botoes: [],
     sobre: [
       {
         titulo: "",
