@@ -35,7 +35,15 @@ export const oficinasPassadasData = [
     imagem: imgWeb,
     alt: "Mago pensando em desenvolvimento web",
   },
-
+  {
+    id: "oficina-blender",
+    titulo: "Oficina de Criação de Personagens 3D",
+    turmas: ["Segunda, Quarta e Sexta: 11h às 13h"],
+    formato: "Presencial",
+    linkInscricao: "/oficinas/criacao-de-personagens-3d",
+    imagem: img3D,
+    alt: "Mago ao lado ",
+  },
   {
     id: "oficina-java",
     titulo: "Oficina de Java",
