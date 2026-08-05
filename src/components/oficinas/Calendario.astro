@@ -12,7 +12,7 @@ import { dadosCalendario, mesesParaGerar } from "@data/calendario.js";
       <div class="titulos-cabecalho">
         <div class="wrapper-titulo-central">
           <h1>CALENDÁRIO DE OFICINAS</h1>
-          <h2>Ciência da Computação & Ciência de Dados • 2026.1</h2>
+          <h2>Ciência da Computação & Ciência de Dados • 2026.2</h2>
         </div>
       </div>
 
@@ -145,7 +145,7 @@ import { dadosCalendario, mesesParaGerar } from "@data/calendario.js";
 
               const infoFaltante =
                 !oficina.dias && !oficina.hora
-                  ? `<span class="badge" style="background-color: #fff3e0; color: #e65100; border: 1px dashed #ffb74d; font-style: italic;">A definir</span>`
+                  ? `<span class="badge badge-indefinido">A definir</span>`
                   : "";
 
               return `
@@ -489,6 +489,13 @@ import { dadosCalendario, mesesParaGerar } from "@data/calendario.js";
     vertical-align: middle;
     margin-right: 2px;
     margin-bottom: 2px;
+  }
+
+  .badge-indefinido {
+    background: #fff3e0 !important;
+    color: #e65100 !important;
+    font-style: italic;
+    border: 1px dashed #ffb74d !important;
   }
 
   #cabecalho {
