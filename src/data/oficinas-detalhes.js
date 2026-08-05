@@ -94,11 +94,11 @@ export const oficinasDetalhes = [
     imagem: img3D,
     alt: "Oficina de Criação de Personagens 3D no Blender",
     botoes: [
-      {
+      /*{
         texto: "Playlist Criação de Personagens 3D",
         link: "/playlist/criacao-de-personagens-3d",
         tipo: "secondary",
-      },
+      },*/
     ],
     sobre: [
       {
