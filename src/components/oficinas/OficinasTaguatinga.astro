@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import imgMagosTrabalhando from "@assets/mago/oficinas/magos-trabalhando.png";
 import { oficinasAtivasTaguatingaData } from "@data/oficinas-ativas-taguatinga.js";
+import { oficinasPassadasTaguatingaData } from "@data/oficinas-passadas-taguatinga.js";
 
 const placeholders = [1, 2, 3];
 ---
@@ -15,57 +16,85 @@ const placeholders = [1, 2, 3];
 
     <div class="cards-grid">
       {
-        oficinasAtivasTaguatingaData.map((oficina) => (
-          <article class="card">
-            <div class="card-image-wrapper">
-              <Image
-                src={oficina.imagem}
-                alt={oficina.alt}
-                class="card-image"
-                quality={70}
-                format="webp"
-              />
-              <div class="badges-overlay">
-                <span class={`badge-formato ${oficina.formato.toLowerCase()}`}>
-                  {oficina.formato}
-                </span>
-              </div>
-            </div>
-
-            <div class="card-content">
-              <h3>{oficina.titulo}</h3>
-              <p class="descricao">{oficina.descricao}</p>
-
-              <div class="info-horario">
-                {oficina.turmas.map((turma) => (
-                  <div class="info-item">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+        oficinasAtivasTaguatingaData.length > 0
+          ? oficinasAtivasTaguatingaData.map((oficina) => (
+              <article class="card">
+                <div class="card-image-wrapper">
+                  <Image
+                    src={oficina.imagem}
+                    alt={oficina.alt}
+                    class="card-image"
+                    quality={70}
+                    format="webp"
+                  />
+                  <div class="badges-overlay">
+                    <span
+                      class={`badge-formato ${oficina.formato.toLowerCase()}`}
                     >
-                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                      <line x1="16" y1="2" x2="16" y2="6" />
-                      <line x1="8" y1="2" x2="8" y2="6" />
-                      <line x1="3" y1="10" x2="21" y2="10" />
-                    </svg>
-                    <span>{turma}</span>
+                      {oficina.formato}
+                    </span>
                   </div>
-                ))}
-              </div>
+                </div>
 
-              <a href={oficina.linkInscricao} class="btn-inscrever">
-                Clique para saber mais
-              </a>
-            </div>
-          </article>
-        ))
+                <div class="card-content">
+                  <h3>{oficina.titulo}</h3>
+                  <p class="descricao">{oficina.descricao}</p>
+
+                  <div class="info-horario">
+                    {oficina.turmas.map((turma: string) => (
+                      <div class="info-item">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <rect
+                            x="3"
+                            y="4"
+                            width="18"
+                            height="18"
+                            rx="2"
+                            ry="2"
+                          />
+                          <line x1="16" y1="2" x2="16" y2="6" />
+                          <line x1="8" y1="2" x2="8" y2="6" />
+                          <line x1="3" y1="10" x2="21" y2="10" />
+                        </svg>
+                        <span>{turma}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <a href={oficina.linkInscricao} class="btn-inscrever">
+                    Clique para saber mais
+                  </a>
+                </div>
+              </article>
+            ))
+          : placeholders.map(() => (
+              <article class="card-placeholder">
+                <div class="card-image-wrapper">
+                  <Image
+                    src={imgMagosTrabalhando}
+                    alt="Magos trabalhando nas futuras oficinas de Taguatinga"
+                    class="card-image"
+                    quality={70}
+                    format="webp"
+                  />
+                </div>
+                <div class="card-content">
+                  <button class="btn-em-breve-fantasma" disabled>
+                    Em breve
+                  </button>
+                </div>
+              </article>
+            ))
       }
     </div>
   </div>
@@ -78,30 +107,204 @@ const placeholders = [1, 2, 3];
       <div class="divider"></div>
     </div>
 
-    <div class="cards-grid">
-      {
-        placeholders.map(() => (
-          <article class="card-placeholder">
-            <div class="card-image-wrapper">
-              <Image
-                src={imgMagosTrabalhando}
-                alt="Magos trabalhando nas futuras oficinas de Taguatinga"
-                class="card-image"
-                quality={70}
-                format="webp"
-              />
-            </div>
-            <div class="card-content">
-              <button class="btn-em-breve-fantasma" disabled>
-                Em breve
-              </button>
-            </div>
-          </article>
-        ))
-      }
+    <div class="carousel-wrapper">
+      <button class="carousel-btn prev" aria-label="Oficinas anteriores">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          ><polyline points="15 18 9 12 15 6"></polyline></svg
+        >
+      </button>
+
+      <div class="carousel-track" id="taguatinga-passadas-track">
+        {
+          oficinasPassadasTaguatingaData.length > 0
+            ? oficinasPassadasTaguatingaData.map((oficina) => (
+                <article class="card-passada">
+                  <div class="card-image-wrapper">
+                    <Image
+                      src={oficina.imagem}
+                      alt={oficina.alt}
+                      class="card-image"
+                      quality={70}
+                      format="webp"
+                    />
+                  </div>
+
+                  <div class="card-content">
+                    <h3>{oficina.titulo}</h3>
+                    <p class="descricao">{oficina.descricao}</p>
+
+                    <div class="info-horario">
+                      {oficina.turmas.map((turma: string) => (
+                        <div class="info-item">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          >
+                            <rect
+                              x="3"
+                              y="4"
+                              width="18"
+                              height="18"
+                              rx="2"
+                              ry="2"
+                            />
+                            <line x1="16" y1="2" x2="16" y2="6" />
+                            <line x1="8" y1="2" x2="8" y2="6" />
+                            <line x1="3" y1="10" x2="21" y2="10" />
+                          </svg>
+                          <span>{turma}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    <a href={oficina.linkInscricao} class="btn-inscrever">
+                      Clique para saber mais
+                    </a>
+                  </div>
+                </article>
+              ))
+            : placeholders.map(() => (
+                <article class="card-passada card-placeholder">
+                  <div class="card-image-wrapper">
+                    <Image
+                      src={imgMagosTrabalhando}
+                      alt="Magos trabalhando nas futuras oficinas de Taguatinga"
+                      class="card-image"
+                      quality={70}
+                      format="webp"
+                    />
+                  </div>
+                  <div class="card-content">
+                    <button class="btn-em-breve-fantasma" disabled>
+                      Em breve
+                    </button>
+                  </div>
+                </article>
+              ))
+        }
+      </div>
+
+      <div class="carousel-indicator" id="taguatinga-passadas-indicator"></div>
+
+      <button class="carousel-btn next" aria-label="Próximas oficinas">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          ><polyline points="9 18 15 12 9 6"></polyline></svg
+        >
+      </button>
     </div>
   </div>
 </section>
+
+<script is:inline>
+  document.addEventListener("astro:page-load", () => {
+    const track = document.getElementById("taguatinga-passadas-track");
+    const indicator = document.getElementById("taguatinga-passadas-indicator");
+    const carouselWrapper = track?.closest(".carousel-wrapper");
+    if (!carouselWrapper) return;
+    const btnPrev = carouselWrapper.querySelector(".carousel-btn.prev");
+    const btnNext = carouselWrapper.querySelector(".carousel-btn.next");
+    const cards = Array.from(carouselWrapper.querySelectorAll(".card-passada"));
+
+    if (!track || !btnPrev || !btnNext || cards.length === 0) return;
+
+    let currentPage = 0;
+    let itemsPerPage = 3;
+
+    const renderPage = () => {
+      if (window.innerWidth >= 1024) {
+        itemsPerPage = 3;
+      } else if (window.innerWidth >= 768) {
+        itemsPerPage = 2;
+      } else {
+        itemsPerPage = 1;
+      }
+
+      const totalPages = Math.ceil(cards.length / itemsPerPage);
+
+      if (currentPage >= totalPages) currentPage = totalPages - 1;
+      if (currentPage < 0) currentPage = 0;
+
+      btnPrev.style.opacity = currentPage === 0 ? "0.3" : "1";
+      btnPrev.style.pointerEvents = currentPage === 0 ? "none" : "all";
+
+      btnNext.style.opacity = currentPage >= totalPages - 1 ? "0.3" : "1";
+      btnNext.style.pointerEvents =
+        currentPage >= totalPages - 1 ? "none" : "all";
+
+      if (indicator) {
+        indicator.textContent = `${currentPage + 1}/${totalPages}`;
+      }
+
+      cards.forEach((card) => {
+        card.classList.remove("active");
+        card.style.display = "none";
+      });
+
+      const startIndex = currentPage * itemsPerPage;
+      const endIndex = startIndex + itemsPerPage;
+      const currentCards = cards.slice(startIndex, endIndex);
+
+      currentCards.forEach((card, index) => {
+        card.style.display = "flex";
+        void card.offsetWidth;
+        card.style.animationDelay = `${index * 0.08}s`;
+        card.classList.add("active");
+      });
+    };
+
+    btnPrev.addEventListener("click", () => {
+      if (currentPage > 0) {
+        currentPage--;
+        renderPage();
+      }
+    });
+
+    btnNext.addEventListener("click", () => {
+      const totalPages = Math.ceil(cards.length / itemsPerPage);
+      if (currentPage < totalPages - 1) {
+        currentPage++;
+        renderPage();
+      }
+    });
+
+    let resizeTimer;
+    const handleResize = () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(renderPage, 200);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    document.addEventListener(
+      "astro:before-swap",
+      () => {
+        window.removeEventListener("resize", handleResize);
+      },
+      { once: true },
+    );
+
+    renderPage();
+  });
+</script>
 
 <style>
   .taguatinga-section {
@@ -300,7 +503,7 @@ const placeholders = [1, 2, 3];
     flex-direction: column;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   }
-  
+
   .card-placeholder .card-image-wrapper {
     aspect-ratio: 4 / 3;
     background: #a9d6ff;
@@ -327,6 +530,105 @@ const placeholders = [1, 2, 3];
     transition: all 0.3s ease;
   }
 
+  /* ESTILOS CARROUSSEL DE PASSADAS */
+  .carousel-wrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .carousel-track {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    width: 100%;
+    min-height: 440px;
+  }
+
+  .carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 5;
+    background: var(--purple-primary);
+    border: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(102, 44, 146, 0.3);
+    color: var(--text-main);
+    transition: all 0.3s ease;
+  }
+
+  .carousel-btn:hover {
+    background: #4a148c;
+    transform: translateY(-50%) scale(1.05);
+    box-shadow: 0 6px 15px rgba(74, 20, 140, 0.4);
+    color: var(--text-main);
+  }
+
+  .carousel-btn svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .carousel-btn.prev {
+    left: -60px;
+  }
+
+  .carousel-btn.next {
+    right: -60px;
+  }
+
+  .card-passada {
+    flex: 0 0 340px;
+    display: none;
+    opacity: 0;
+    background: var(--bg-white);
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    overflow: hidden;
+    flex-direction: column;
+    transition:
+      transform 0.3s,
+      box-shadow 0.3s;
+  }
+
+  .card-passada.active {
+    display: flex;
+    animation: fadeInPage 0.4s ease-out forwards;
+  }
+
+  @keyframes fadeInPage {
+    0% {
+      opacity: 0;
+      transform: scale(0.96) translateY(10px);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+
+  .card-passada.active:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .card-passada.card-placeholder {
+    background: #ddd1ff;
+  }
+
+  .carousel-indicator {
+    display: none;
+  }
+
   /* --- RESPONSIVIDADE MOBILE --- */
   @media (max-width: 600px) {
     .taguatinga-section {
@@ -343,6 +645,46 @@ const placeholders = [1, 2, 3];
 
     .card-placeholder:nth-child(n + 2) {
       display: none;
+    }
+
+    .card-passada {
+      flex: 0 0 100%;
+      max-width: 340px;
+    }
+
+    .carousel-wrapper {
+      padding-bottom: 60px;
+    }
+
+    .carousel-btn {
+      top: auto;
+      bottom: 0;
+      transform: none;
+    }
+
+    .carousel-btn:hover {
+      transform: scale(1.05);
+    }
+
+    .carousel-btn.prev {
+      left: calc(50% - 90px);
+    }
+
+    .carousel-btn.next {
+      right: calc(50% - 90px);
+    }
+
+    .carousel-indicator {
+      display: block;
+      position: absolute;
+      bottom: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-weight: 700;
+      color: var(--text-dark);
+      font-size: 0.95rem;
+      z-index: 5;
+      letter-spacing: 2px;
     }
   }
 </style>

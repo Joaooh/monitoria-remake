@@ -46,13 +46,7 @@ export const oficinasDetalhes = [
     horarios: "Segunda, Quarta e Sexta, das 11h às 13h",
     imagem: imgNuvem,
     alt: "Mago manipulando nuvens",
-    botoes: [
-      {
-        texto: "Inscreva-se Agora",
-        link: "https://forms.gle/9CrJhaC1JpBYNM4Z6",
-        tipo: "primary",
-      },
-    ],
+    botoes: [],
     sobre: [
       {
         titulo: "",
@@ -97,7 +91,7 @@ export const oficinasDetalhes = [
       {
         texto: "Playlist Criação de Personagens 3D",
         link: "/playlist/criacao-de-personagens-3d",
-        tipo: "secondary",
+        tipo: "primary",
       },
     ],
     sobre: [
@@ -223,13 +217,7 @@ export const oficinasDetalhes = [
     horarios: "Segunda, Terça e Quinta, das 17h às 19h",
     imagem: imgLinux,
     alt: "Mago ao lado do pinguim Tux em cenário de neve",
-    botoes: [
-      {
-        texto: "Inscreva-se Agora",
-        link: "https://forms.gle/CqWuZsKsHQPNx1Lf6",
-        tipo: "primary",
-      },
-    ],
+    botoes: [],
     sobre: [
       {
         titulo: "",
@@ -349,12 +337,12 @@ export const oficinasDetalhes = [
     ].filter(Boolean),
   },
 
-  // --- FUNDAMENTOS DE CIÊNCIA DE DADOS - INTRODUÇÃO A PYTHON ---
+  // --- FUNDAMENTOS DE CIÊNCIA DE DADOS ---
   {
     slug: "fundamentos-ciencia-de-dados",
-    titulo: "Fundamentos de Ciência de Dados - Introdução a Python",
+    titulo: "Fundamentos de Ciência de Dados",
     campus: "Campus Asa Norte",
-    horarios: "Segundas, Terças e Quintas: 17h30 às 19h",
+    horarios: "Segunda, Quarta e Quinta, das 17h às 19h",
     imagem: imgDados,
     alt: "Mago jogando dados",
     botoes: [
@@ -368,7 +356,7 @@ export const oficinasDetalhes = [
       {
         titulo: "",
         texto:
-          "A <strong>oficina de Introdução à Ciência de Dados</strong> foi desenvolvida para apresentar os principais fundamentos, ferramentas e práticas da área, utilizando <strong>Python</strong> como linguagem base. Durante os encontros, os participantes irão compreender o fluxo essencial de um projeto de dados — da coleta à análise — aplicando conceitos de forma prática e estruturada.<br/><br/>Esta oficina faz parte da trilha formativa da monitoria de TI da Asa Norte, com o objetivo de oferecer uma visão clara sobre como dados são organizados, analisados e utilizados para gerar insights e apoiar a tomada de decisões.<br/><br/>A oficina será realizada entre os dias <strong>02/03 e 12/03</strong>, com encontros às <strong>segundas, terças e quintas-feiras</strong>. As aulas serão ministradas <strong>online, via Discord</strong>.<br/><br/>A participação garante <strong>certificado de conclusão</strong>, mediante frequência e desempenho nas atividades propostas ao longo do curso.",
+          "A <strong>oficina de Introdução à Ciência de Dados</strong> foi desenvolvida para apresentar os principais fundamentos, ferramentas e práticas da área, utilizando <strong>Python</strong> como linguagem base. Durante os encontros, os participantes irão compreender o fluxo essencial de um projeto de dados — da coleta à análise — aplicando conceitos de forma prática e estruturada.<br/><br/>Esta oficina faz parte da trilha formativa da monitoria de TI da Asa Norte, com o objetivo de oferecer uma visão clara sobre como dados são organizados, analisados e utilizados para gerar insights e apoiar a tomada de decisões.<br/><br/>A oficina será realizada entre os dias <strong>17/08 e 28/08</strong>, com encontros às <strong>segundas, quartas e quintas-feiras</strong>. As aulas serão ministradas <strong>presencialmente</strong>.<br/><br/>A participação garante <strong>certificado de conclusão</strong>, mediante frequência e desempenho nas atividades propostas ao longo do curso.",
       },
       {
         titulo: "O que você vai aprender:",
@@ -445,13 +433,7 @@ export const oficinasDetalhes = [
     horarios: "Segunda, Terça e Quinta, das 17h às 19h",
     imagem: imgRedes,
     alt: "Mago flutuando na matrix",
-    botoes: [
-      {
-        texto: "Inscreva-se Agora",
-        link: "https://forms.gle/JyV8hcT81rwE9iGB7",
-        tipo: "primary",
-      },
-    ],
+    botoes: [],
     sobre: [
       {
         titulo: "",
@@ -495,7 +477,7 @@ export const oficinasDetalhes = [
       {
         texto: "Playlist Machine Learning",
         link: "/playlist/machine-learning",
-        tipo: "secondary",
+        tipo: "primary",
       },
     ],
     sobre: [
@@ -535,13 +517,7 @@ export const oficinasDetalhes = [
     horarios: "Segunda a Sexta, das 11h às 13h",
     imagem: imgFundamentos,
     alt: "Mago estudando fundamentos",
-    botoes: [
-      {
-        texto: "Inscreva-se Agora",
-        link: "https://forms.gle/mwiFxu1Mbmo3fFAr5",
-        tipo: "primary",
-      },
-    ],
+    botoes: [],
     sobre: [
       {
         titulo: "",
@@ -575,13 +551,7 @@ export const oficinasDetalhes = [
     horarios: "Terças e Quintas, das 11h às 12h (Sala 194)",
     imagem: imgLinux,
     alt: "Mago ao lado do pinguim Tux",
-    botoes: [
-      {
-        texto: "Inscreva-se Agora",
-        link: "https://forms.gle/HYp1Er1y3z6NMUrx7",
-        tipo: "primary",
-      },
-    ],
+    botoes: [],
     sobre: [
       {
         titulo: "",

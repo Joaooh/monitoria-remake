@@ -2,6 +2,7 @@ import imgRedes from "@assets/mago/oficinas/mago-redes.png";
 import imgLinux from "@assets/mago/oficinas/mago-linux.png";
 import imgNuvem from "@assets/mago/oficinas/mago-nuvem.png";
 import imgFundamentos from "@assets/mago/oficinas/mago-fundamentos.png";
+import imgDados from "@assets/mago/oficinas/mago-dados.png";
 /*
  * COMO CADASTRAR UMA OFICINA:
  * Preencha o bloco no array abaixo. 'linkInscricao' é o caminho da URL que abrirá
@@ -10,47 +11,28 @@ import imgFundamentos from "@assets/mago/oficinas/mago-fundamentos.png";
  */
 export const oficinasAtivasData = [
   {
-    id: "oficina-computação-nuvem",
-    titulo: "Oficina de Computação em Nuvem (AWS)",
+    id: "fundamentos-comp",
+    titulo: "Fundamentos da Computação",
     descricao:
-      "Criação de servidores virtuais, publicação de aplicações e gerenciamento básico de recursos em nuvem AWS.",
-    turmas: ["Segunda, Quarta e Sexta: 11h às 13h"],
+      "Entenda como computadores funcionam por debaixo dos panos, do hardware ao sistema operacional.",
+    turmas: [
+      "Segunda, Quarta e Quinta: 11h às 13h",
+      "Segunda, Quarta e Quinta: 17h às 19h",
+    ],
     formato: "Presencial",
-    linkInscricao: "/oficinas/computacao-em-nuvem",
-    imagem: imgNuvem,
-    alt: "Mago ao lado ",
-  },
-  {
-    id: "oficina-linux",
-    titulo: "Oficina de Linux: Monte sua própria distro!",
-    descricao:
-      "Compilação e personalização de sistemas Linux, incluindo kernel, boot, rede, segurança e gerenciamento de pacotes.",
-    turmas: ["Segunda, Terça e Quinta: 17h às 19h"],
-    formato: "Presencial",
-    linkInscricao: "/oficinas/oficina-de-linux",
-    imagem: imgLinux,
-    alt: "Mago ao lado do pinguim Tux",
-  },
-  {
-    id: "web-hacking",
-    titulo: "Estudo Dirigido: Web Hacking (Cibersegurança)",
-    descricao:
-      "Introdução prática ao pentesting web, abordando fundamentos de segurança e exploração de vulnerabilidades em ambientes controlados.",
-    turmas: ["Segunda, Terça e Quinta: 17h às 19h"],
-    formato: "Online",
-    linkInscricao: "/oficinas/web-hacking",
-    imagem: imgRedes,
-    alt: "Mago flutuando na matrix",
-  },
-  {
-    id: "oficina-golang",
-    titulo: "Oficina de Go (Golang)",
-    descricao:
-      "Aprenda os fundamentos de Go, uma das linguagens de programação mais performáticas e demandadas no mercado atual. Do básico de variáveis a estruturas complexas de dados.",
-    turmas: ["Segunda a Sexta: 11h às 13h"],
-    formato: "Presencial",
-    linkInscricao: "/oficinas/oficina-golang",
     imagem: imgFundamentos,
-    alt: "Mago estudando fundamentos",
+    alt: "Mago conversando com robô",
+    linkInscricao: "/oficinas/fundamentos-comp",
+  },
+  {
+    id: "fundamentos-dados",
+    titulo: "Fundamentos de Ciência de Dados",
+    descricao:
+      "Inicie sua jornada na área de dados utilizando a linguagem Python para manipular informações.",
+    turmas: ["Segunda, Quarta e Quinta: 17h às 19h"],
+    formato: "Presencial",
+    imagem: imgDados,
+    alt: "Mago jogando dados para cima",
+    linkInscricao: "/oficinas/fundamentos-ciencia-de-dados",
   },
 ];

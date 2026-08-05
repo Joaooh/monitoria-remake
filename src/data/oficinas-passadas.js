@@ -4,6 +4,8 @@ import imgSql from "@assets/mago/oficinas/mago-sql.png";
 import imgRedes from "@assets/mago/oficinas/mago-redes.png";
 import img3D from "@assets/mago/oficinas/monitoria-blender.png";
 import imgWeb from "@assets/mago/oficinas/mago-web.png";
+import imgLinux from "@assets/mago/oficinas/mago-linux.png";
+import imgNuvem from "@assets/mago/oficinas/mago-nuvem.png";
 
 /*
  * COMO CADASTRAR UMA OFICINA PASSADA:
@@ -13,6 +15,50 @@ import imgWeb from "@assets/mago/oficinas/mago-web.png";
  * o finalzinho do link que redireciona pra página de detalhes (ex: "/oficinas/oficina-sql").
  */
 export const oficinasPassadasData = [
+  {
+    id: "web-hacking",
+    titulo: "Estudo Dirigido: Web Hacking (Cibersegurança)",
+    descricao:
+      "Introdução prática ao pentesting web, abordando fundamentos de segurança e exploração de vulnerabilidades.",
+    turmas: ["Segunda, Terça e Quinta: 17h às 19h"],
+    formato: "Online",
+    linkInscricao: "/oficinas/web-hacking",
+    imagem: imgRedes,
+    alt: "Mago flutuando na matrix",
+  },
+  {
+    id: "oficina-golang",
+    titulo: "Oficina de Go (Golang)",
+    descricao:
+      "Aprenda os fundamentos de Go, uma das linguagens de programação mais performáticas e demandadas no mercado.",
+    turmas: ["Segunda a Sexta: 11h às 13h"],
+    formato: "Presencial",
+    linkInscricao: "/oficinas/oficina-golang",
+    imagem: imgFundamentos,
+    alt: "Mago estudando fundamentos",
+  },
+  {
+    id: "oficina-linux",
+    titulo: "Oficina de Linux: Monte sua própria distro!",
+    descricao:
+      "Compilação e personalização de sistemas Linux, incluindo kernel, boot, rede, segurança e gerenciamento de pacotes.",
+    turmas: ["Segunda, Terça e Quinta: 17h às 19h"],
+    formato: "Presencial",
+    linkInscricao: "/oficinas/oficina-de-linux",
+    imagem: imgLinux,
+    alt: "Mago ao lado do pinguim Tux",
+  },
+  {
+    id: "oficina-computação-nuvem",
+    titulo: "Oficina de Computação em Nuvem (AWS)",
+    descricao:
+      "Criação de servidores virtuais, publicação de aplicações e gerenciamento básico de recursos em nuvem AWS.",
+    turmas: ["Segunda, Quarta e Sexta: 11h às 13h"],
+    formato: "Presencial",
+    linkInscricao: "/oficinas/computacao-em-nuvem",
+    imagem: imgNuvem,
+    alt: "Mago ao lado ",
+  },
   {
     id: "machine-learning",
     titulo: "Ciência de Dados - Machine Learning",
@@ -69,29 +115,8 @@ export const oficinasPassadasData = [
     alt: "Mago jogando dados para cima",
     linkInscricao: "/oficinas/ciencia-de-dados-ferramentas-e-frameworks",
   },
-  {
-    id: "fundamentos-comp",
-    titulo: "Fundamentos da Computação",
-    descricao:
-      "Entenda como computadores funcionam por debaixo dos panos, do hardware ao sistema operacional.",
-    turmas: [
-      "Segunda, Quarta e Sexta: 11h às 13h",
-      "Segunda, Quarta e Sexta: 17h00 às 19h",
-    ],
-    imagem: imgFundamentos,
-    alt: "Mago conversando com robô",
-    linkInscricao: "/oficinas/fundamentos-comp",
-  },
-  {
-    id: "fundamentos-dados",
-    titulo: "Fundamentos de Ciência de Dados - Introdução a Python",
-    descricao:
-      "Inicie sua jornada na área de dados utilizando a linguagem Python para manipular informações.",
-    turmas: ["Segunda, Terça e Quinta: 17h30 às 19h"],
-    imagem: imgDados,
-    alt: "Mago jogando dados para cima",
-    linkInscricao: "/oficinas/fundamentos-ciencia-de-dados",
-  },
+
+
   {
     id: "oficina-sql",
     titulo: "Oficina de SQL",
