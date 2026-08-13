@@ -292,20 +292,26 @@ export const oficinasDetalhes = [
     slug: "fundamentos-comp",
     titulo: "Fundamentos da Computação",
     campus: "Campus Asa Norte",
-    horarios: "Segundas, Quartas e Sextas, das 11h às 13h ou 17h às 19h",
+    horarios: "Segunda, Quarta e Quinta, das 11h às 13h ou 17h às 19h",
     imagem: imgFundamentos,
     alt: "Mago conversando com robô de blocos",
-    botoes: [],
+    botoes: [
+      {
+        texto: "Inscreva-se agora!",
+        link: "https://forms.gle/meHsJn7Xbn4UEYXWA",
+        tipo: "primary",
+      },
+    ],
     sobre: [
       {
         titulo: "",
         texto:
-          "A <strong>Oficina de Fundamentos da Computação</strong> foi desenhada para oferecer a base essencial em computação a estudantes que desejam fortalecer seus conhecimentos e construir fundamentos sólidos na área de tecnologia. Ao longo do programa, serão abordados conceitos indispensáveis para a formação em TI, com foco na compreensão prática do funcionamento dos sistemas computacionais e no desenvolvimento progressivo de raciocínio lógico e analítico.<br/><br/>A oficina será realizada entre os dias <strong>02/03 a 13/03</strong>, com encontros às <strong>segundas, quartas e sextas-feiras</strong>, em dois horários disponíveis:<br/>- Turma da manhã: 11h às 13h<br/>- Turma da noite: 17h às 19h<br/><br/>Ao final da oficina, os participantes que cumprirem os requisitos receberão <strong>certificado de conclusão</strong>. A avaliação será baseada na frequência e no desempenho nas atividades propostas ao longo das aulas.",
+          "Esta oficina foi desenvolvida para oferecer a base essencial em computação para estudantes que desejam fortalecer seus conhecimentos e construir fundamentos sólidos na área de tecnologia. Ao longo do programa, serão abordados conceitos fundamentais indispensáveis para a formação em TI, com foco em compreensão prática e desenvolvimento consistente.<br/><br/>A oficina será realizada entre os dias <strong>17/08 e 27/08</strong>, com encontros às <strong>segundas, quartas e quintas-feiras</strong>. Estão disponíveis dois horários:<br/>&bull; Turma da manhã: 11h às 13h<br/>&bull; Turma da noite: 17h às 19h<br/><br/>Ao final da oficina, os participantes que cumprirem os requisitos receberão certificado de conclusão. A avaliação será baseada em frequência nas aulas e desempenho nas atividades propostas ao longo do período.",
       },
       {
         titulo: "O que você vai aprender:",
         texto:
-          "<strong>Desmistificando o computador:</strong> Como o computador realmente funciona por dentro — hardware, memória e sistemas operacionais.<br/><strong>Linguagens de programação e componentes:</strong> Diferença entre linguagens compiladas e interpretadas, primeiros programas e funcionamento dos sistemas.<br/><strong>Como computadores se comunicam:</strong> Noções básicas de redes, comunicação entre sistemas e funcionamento da internet.<br/><strong>Internet e interfaces:</strong> Como aplicações e interfaces são construídas e utilizadas no desenvolvimento moderno.<br/><strong>Bancos de dados:</strong> Conceitos iniciais de armazenamento, organização e uso de dados em sistemas computacionais.<br/><strong>O dia a dia do programador:</strong> Uso de IDEs, terminal, Git/GitHub e práticas reais do ambiente de desenvolvimento.<br/><strong>Prática orientada:</strong> Exercícios guiados e desafios para consolidar os conceitos aprendidos ao longo da oficina.",
+          "<strong>Desmistificando o computador:</strong> Como o computador realmente funciona por dentro - hardware, memória e sistemas operacionais.<br/><strong>Linguagens de programação e componentes:</strong> Diferença entre linguagens compiladas e interpretadas, primeiros programas e funcionamento dos sistemas.<br/><strong>Como computadores se comunicam:</strong> Noções básicas de redes, comunicação entre sistemas e funcionamento da internet.<br/><strong>Internet e interfaces:</strong> Como aplicações e interfaces são construídas e utilizadas no desenvolvimento moderno.<br/><strong>Bancos de dados:</strong> Conceitos iniciais de armazenamento, organização e uso de dados em sistemas computacionais.<br/><strong>O dia a dia do programador:</strong> Uso de IDEs, terminal, Git/GitHub e práticas reais do ambiente de desenvolvimento.<br/><strong>Prática orientada:</strong> Exercícios guiados e desafios para consolidar os conceitos aprendidos ao longo da oficina.",
       },
       {
         titulo: "Para quem é esta oficina:",
@@ -316,7 +322,7 @@ export const oficinasDetalhes = [
           "<li>Iniciantes que querem entender como computadores e programas funcionam no dia a dia;</li>" +
           "<li>Interessados em se preparar para áreas como programação, sistemas, dados, redes e engenharia de software.</li>" +
           "</ul>" +
-          "Preencha o formulário de inscrição para garantir sua participação. <strong>As vagas são limitadas.</strong>",
+          "Preencha o formulário de inscrição para se inscrever e garantir sua participação. <strong>Vagas limitadas.</strong>",
       },
     ],
     monitores: [
@@ -568,5 +574,45 @@ export const oficinasDetalhes = [
       },
     ],
     monitores: [getMonitor("matheus-couto", true)].filter(Boolean),
+  },
+
+  // --- OFICINA DE HARDWARE ---
+  {
+    slug: "oficina-de-hardware",
+    titulo: "Fundamentos de Hardware",
+    campus: "Campus Asa Norte",
+    horarios: "Terça e Sexta, das 11h às 13h ou 17h às 19h",
+    imagem: imgDados,
+    alt: "Mago analisando hardware",
+    botoes: [
+      {
+        texto: "Inscreva-se agora!",
+        link: "https://forms.gle/DDLm5MWhZyrJTbKT9",
+        tipo: "primary",
+      },
+    ],
+    sobre: [
+      {
+        titulo: "",
+        texto:
+          "Esta oficina foi desenvolvida para oferecer uma base sólida em hardware, apresentando os principais componentes de um computador e suas funções. Ao longo do programa, serão abordados conceitos essenciais sobre montagem, funcionamento, manutenção e identificação de componentes, com foco na compreensão prática da arquitetura e do funcionamento dos equipamentos.<br/><br/>A oficina será realizada entre os dias <strong>18/08 e 28/08</strong>, com encontros às <strong>terças e sextas-feiras</strong>. Estão disponíveis dois horários:<br/>&bull; Turma da manhã: 11h às 13h (SUJEITO A REALOCAÇÃO PARA NOITE)<br/>&bull; Turma da noite: 17h às 19h<br/><br/>Ao final da oficina, os participantes que cumprirem os requisitos receberão certificado de conclusão. A avaliação será baseada em frequência nas aulas e desempenho nas atividades propostas ao longo do período.",
+      },
+      {
+        titulo: "O que você vai aprender:",
+        texto:
+          "<strong>Componentes Essenciais:</strong> Identificação e função de cada peça que compõe o computador.<br/><strong>Montagem e Manutenção:</strong> Práticas seguras para manusear e montar equipamentos, além de manutenção preventiva e corretiva.<br/><strong>Arquitetura de Computadores:</strong> Como o hardware processa dados e como os componentes se comunicam.",
+      },
+      {
+        titulo: "Para quem é esta oficina:",
+        texto:
+          "<ul style='margin-left: 20px; margin-bottom: 20px; list-style-type: disc;'>" +
+          "<li>Iniciantes em TI que precisam de uma compreensão sólida de como computadores funcionam fisicamente;</li>" +
+          "<li>Entusiastas e alunos que querem entender sobre montagem de computadores;</li>" +
+          "<li>Qualquer pessoa interessada em consertos e manutenção básica de equipamentos de informática.</li>" +
+          "</ul>" +
+          "Preencha o formulário de inscrição para se inscrever e garantir sua participação. <strong>Vagas limitadas.</strong>",
+      },
+    ],
+    monitores: [],
   },
 ];
