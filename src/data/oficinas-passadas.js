@@ -16,6 +16,17 @@ import imgNuvem from "@assets/mago/oficinas/mago-nuvem.png";
  */
 export const oficinasPassadasData = [
   {
+    id: "fundamentos-dados",
+    titulo: "Fundamentos de Ciência de Dados",
+    descricao:
+      "Inicie sua jornada na área de dados utilizando a linguagem Python para manipular informações.",
+    turmas: [],
+    formato: "Presencial",
+    imagem: imgDados,
+    alt: "Mago jogando dados para cima",
+    linkInscricao: "/oficinas/fundamentos-ciencia-de-dados",
+  },
+  {
     id: "web-hacking",
     titulo: "Estudo Dirigido: Web Hacking (Cibersegurança)",
     descricao:

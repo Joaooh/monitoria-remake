@@ -25,14 +25,17 @@ export const oficinasAtivasData = [
     linkInscricao: "/oficinas/fundamentos-comp",
   },
   {
-    id: "fundamentos-dados",
-    titulo: "Fundamentos de Ciência de Dados",
+    id: "oficina-de-hardware",
+    titulo: "Oficina de Fundamentos de Hardware",
     descricao:
-      "Inicie sua jornada na área de dados utilizando a linguagem Python para manipular informações.",
-    turmas: ["Segunda, Quarta e Quinta: 17h às 19h"],
+      "Aprenda na prática sobre montagem, funcionamento e manutenção dos principais componentes de um computador.",
+    turmas: [
+      "Terça e Sexta: 11h às 13h",
+      "Terça e Sexta: 17h às 19h",
+    ],
     formato: "Presencial",
     imagem: imgDados,
-    alt: "Mago jogando dados para cima",
-    linkInscricao: "/oficinas/fundamentos-ciencia-de-dados",
+    alt: "Mago manipulando componentes",
+    linkInscricao: "/oficinas/oficina-de-hardware",
   },
 ];
