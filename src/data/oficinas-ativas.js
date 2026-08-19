@@ -15,10 +15,7 @@ export const oficinasAtivasData = [
     titulo: "Fundamentos da Computação",
     descricao:
       "Entenda como computadores funcionam por debaixo dos panos, do hardware ao sistema operacional.",
-    turmas: [
-      "Segunda, Quarta e Quinta: 11h às 13h",
-      "Segunda, Quarta e Quinta: 17h às 19h",
-    ],
+    turmas: ["Segunda, Quarta e Quinta: 11h às 13h"],
     formato: "Presencial",
     imagem: imgFundamentos,
     alt: "Mago conversando com robô",
@@ -29,10 +26,7 @@ export const oficinasAtivasData = [
     titulo: "Fundamentos de Hardware",
     descricao:
       "Aprenda na prática sobre montagem, funcionamento e manutenção dos principais componentes de um computador.",
-    turmas: [
-      "Terça e Sexta: 11h às 13h",
-      "Terça e Sexta: 17h às 19h",
-    ],
+    turmas: ["Terça e Sexta: 11h às 13h"],
     formato: "Presencial",
     imagem: imgDados,
     alt: "Mago manipulando componentes",

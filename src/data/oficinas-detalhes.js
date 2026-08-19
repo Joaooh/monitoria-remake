@@ -292,7 +292,7 @@ export const oficinasDetalhes = [
     slug: "fundamentos-comp",
     titulo: "Fundamentos da Computação",
     campus: "Campus Asa Norte",
-    horarios: "Segunda, Quarta e Quinta, das 11h às 13h ou 17h às 19h",
+    horarios: "Segunda, Quarta e Quinta, das 11h às 13h",
     imagem: imgFundamentos,
     alt: "Mago conversando com robô de blocos",
     botoes: [
@@ -306,7 +306,7 @@ export const oficinasDetalhes = [
       {
         titulo: "",
         texto:
-          "Esta oficina foi desenvolvida para oferecer a base essencial em computação para estudantes que desejam fortalecer seus conhecimentos e construir fundamentos sólidos na área de tecnologia. Ao longo do programa, serão abordados conceitos fundamentais indispensáveis para a formação em TI, com foco em compreensão prática e desenvolvimento consistente.<br/><br/>A oficina será realizada entre os dias <strong>17/08 e 27/08</strong>, com encontros às <strong>segundas, quartas e quintas-feiras</strong>. Estão disponíveis dois horários:<br/>&bull; Turma da manhã: 11h às 13h<br/>&bull; Turma da noite: 17h às 19h<br/><br/>Ao final da oficina, os participantes que cumprirem os requisitos receberão certificado de conclusão. A avaliação será baseada em frequência nas aulas e desempenho nas atividades propostas ao longo do período.",
+          "Esta oficina foi desenvolvida para oferecer a base essencial em computação para estudantes que desejam fortalecer seus conhecimentos e construir fundamentos sólidos na área de tecnologia. Ao longo do programa, serão abordados conceitos fundamentais indispensáveis para a formação em TI, com foco em compreensão prática e desenvolvimento consistente.<br/><br/>A oficina será realizada entre os dias <strong>17/08 e 27/08</strong>, com encontros às <strong>segundas, quartas e quintas-feiras</strong>, das <strong>11h às 13h</strong>.<br/><br/>Ao final da oficina, os participantes que cumprirem os requisitos receberão certificado de conclusão. A avaliação será baseada em frequência nas aulas e desempenho nas atividades propostas ao longo do período.",
       },
       {
         titulo: "O que você vai aprender:",
@@ -326,14 +326,11 @@ export const oficinasDetalhes = [
       },
     ],
     monitores: [
-      getMonitor("pedro-calderon", true, "Turma Manhã"),
-      getMonitor("isabella-oliveira", true, "Turma Noite"),
-      getMonitor("lucas-villas", false, "Turma Manhã"),
-      getMonitor("gabriel-caramez", false, "Turma Manhã"),
-      getMonitor("lucas-moura", false, "Turma Manhã"),
-      getMonitor("jess-forster", false, "Turma Noite"),
-      getMonitor("pedro-quartin", false, "Turma Noite"),
-      getMonitor("joao-gabriel", false, "Turma Manhã"),
+      getMonitor("pedro-calderon", true),
+      getMonitor("lucas-villas"),
+      getMonitor("gabriel-caramez"),
+      getMonitor("lucas-moura"),
+      getMonitor("joao-gabriel"),
     ].filter(Boolean),
   },
 
@@ -581,7 +578,7 @@ export const oficinasDetalhes = [
     slug: "oficina-de-hardware",
     titulo: "Fundamentos de Hardware",
     campus: "Campus Asa Norte",
-    horarios: "Terça e Sexta, das 11h às 13h ou 17h às 19h",
+    horarios: "Terça e Sexta, das 11h às 13h",
     imagem: imgDados,
     alt: "Mago analisando hardware",
     botoes: [
@@ -595,7 +592,7 @@ export const oficinasDetalhes = [
       {
         titulo: "",
         texto:
-          "Esta oficina foi desenvolvida para oferecer uma base sólida em hardware, apresentando os principais componentes de um computador e suas funções. Ao longo do programa, serão abordados conceitos essenciais sobre montagem, funcionamento, manutenção e identificação de componentes, com foco na compreensão prática da arquitetura e do funcionamento dos equipamentos.<br/><br/>A oficina será realizada entre os dias <strong>18/08 e 28/08</strong>, com encontros às <strong>terças e sextas-feiras</strong>. Estão disponíveis dois horários:<br/>&bull; Turma da manhã: 11h às 13h (SUJEITO A REALOCAÇÃO PARA NOITE)<br/>&bull; Turma da noite: 17h às 19h<br/><br/>Ao final da oficina, os participantes que cumprirem os requisitos receberão certificado de conclusão. A avaliação será baseada em frequência nas aulas e desempenho nas atividades propostas ao longo do período.",
+          "Esta oficina foi desenvolvida para oferecer uma base sólida em hardware, apresentando os principais componentes de um computador e suas funções. Ao longo do programa, serão abordados conceitos essenciais sobre montagem, funcionamento, manutenção e identificação de componentes, com foco na compreensão prática da arquitetura e do funcionamento dos equipamentos.<br/><br/>A oficina será realizada entre os dias <strong>18/08 e 28/08</strong>, com encontros às <strong>terças e sextas-feiras</strong>, das <strong>11h às 13h</strong>.<br/><br/>Ao final da oficina, os participantes que cumprirem os requisitos receberão certificado de conclusão. A avaliação será baseada em frequência nas aulas e desempenho nas atividades propostas ao longo do período.",
       },
       {
         titulo: "O que você vai aprender:",

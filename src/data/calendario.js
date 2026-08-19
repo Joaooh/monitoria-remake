@@ -18,9 +18,7 @@ export const dadosCalendario = {
       // prettier-ignore
       oficinas: [
         { nome: "Fundamentos da Computação", dias: "Seg, Qua e Qui", hora: "11h às 13h", formato: "Presencial" },
-        { nome: "Fundamentos da Computação (Noite)", dias: "Seg, Qua e Qui", hora: "17h às 19h", formato: "Presencial" },
         { nome: "Fundamentos de Hardware", dias: "Ter e Sex", hora: "11h às 13h", formato: "Presencial" },
-        { nome: "Fundamentos de Hardware (Noite)", dias: "Ter e Sex", hora: "17h às 19h", formato: "Presencial" },
       ],
     },
     {
