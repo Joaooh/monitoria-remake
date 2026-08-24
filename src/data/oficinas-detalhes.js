@@ -327,10 +327,8 @@ export const oficinasDetalhes = [
     ],
     monitores: [
       getMonitor("pedro-calderon", true),
-      getMonitor("lucas-villas"),
-      getMonitor("gabriel-caramez"),
-      getMonitor("lucas-moura"),
-      getMonitor("joao-gabriel"),
+      getMonitor("ryan"),
+      getMonitor("lucas-borges"),
     ].filter(Boolean),
   },
 
@@ -610,6 +608,10 @@ export const oficinasDetalhes = [
           "Preencha o formulário de inscrição para se inscrever e garantir sua participação. <strong>Vagas limitadas.</strong>",
       },
     ],
-    monitores: [],
+    monitores: [
+      getMonitor("jess-forster", true),
+      getMonitor("ryan"),
+      getMonitor("lucas-moura"),
+    ].filter(Boolean),
   },
 ];
