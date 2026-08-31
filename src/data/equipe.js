@@ -36,6 +36,16 @@ import imgJoaoSoupa from "@assets/equipe/joao-soupa.jpg";
 import imgFelipeRios from "@assets/equipe/felipe-rios.jpg";
 import imgRicardoBonna from "@assets/equipe/ricardo-bonna.jpg";
 import imgMatheusCouto from "@assets/equipe/matheus-couto.jpeg";
+import imgIvinVaz from "@assets/equipe/ivin-vaz.jpg";
+import imgPolverari from "@assets/equipe/polverari.jpg";
+import imgGabrielCotts from "@assets/equipe/gabriel-cotts.jpeg";
+import imgErickCardoso from "@assets/equipe/erick-cardoso.jpeg";
+import imgRyanAugusto from "@assets/equipe/ryan-augusto.jpeg";
+import imgMatheusMorais from "@assets/equipe/matheus-morais.jpeg";
+import imgEduardoAlves from "@assets/equipe/eduardo-alves.jpeg";
+import imgThalis from "@assets/equipe/thalis-alexandre.jpeg";
+import imgLucasDelvico from "@assets/equipe/lucas-delvico.jpeg";
+import imgKauanVinicius from "@assets/equipe/kauan-vinicius.jpeg";
 
 /*
  * COMO ADICIONAR UM NOVO MONITOR À EQUIPE:
@@ -97,8 +107,7 @@ export const equipeData = [
       "Full Stack Developer | Python | C | SQL | entusiasta da Computação Quântica.",
     foto: imgPedroCalderon,
     ativo: true,
-    linkedin:
-      "https://www.linkedin.com/in/pedro-calder%C3%B3n-nunes-4a27812b5/",
+    linkedin: "https://www.linkedin.com/in/pedrocalderonn",
     github: "https://github.com/pedrocalderon52",
   },
   {
@@ -342,6 +351,101 @@ export const equipeData = [
     linkedin: "https://www.linkedin.com/in/matheus-couto-nogueira-b37518365/",
     codeberg: "https://codeberg.org/cotheus",
   },
+  {
+    id: "ivin-vaz",
+    nome: "Ivin Vaz",
+    descricao:
+      "Desenvolvedor Backend com interesse em Python, Java e implantação em geral.",
+    foto: imgIvinVaz,
+    ativo: true,
+    linkedin: "https://www.linkedin.com/in/vazivin/",
+    github: "https://github.com/ivinvaz",
+  },
+  {
+    id: "polverari",
+    nome: "João Vitor Polverari",
+    descricao: "Entusiasta de Linux, C e manutenção de sistemas.",
+    foto: imgPolverari,
+    ativo: true,
+    linkedin: "http://linkedin.com/in/polverari/",
+    github: "http://github.com/ayrudev",
+  },
+  {
+    id: "gabriel-cotts",
+    nome: "Gabriel Cotts",
+    descricao: "Desenvolvedor Backend, aspirante a Full Stack | Java | MySQL",
+    foto: imgGabrielCotts,
+    ativo: true,
+    linkedin: "https://www.linkedin.com/in/gabriel-cotts-dos-anjos-a167193b3/",
+    github: "https://github.com/Gabrielcotts",
+  },
+  {
+    id: "erick-cardoso",
+    nome: "Erick Cardoso",
+    descricao:
+      "Cientista de Dados e Pesquisador em Inteligência Artificial aplicada à Genômica.",
+    foto: imgErickCardoso,
+    ativo: true,
+    linkedin: "https://www.linkedin.com/in/erickcardosomendes/",
+    github: "https://github.com/Erick-wilding675",
+  },
+  {
+    id: "ryan-augusto",
+    nome: "Ryan Augusto",
+    descricao:
+      "Desenvolvedor Full Stack | Java | Python | HTML | CSS | JavaScript",
+    foto: imgRyanAugusto,
+    ativo: true,
+    linkedin: "https://www.linkedin.com/in/ryan-a-697175360/",
+    github: "https://github.com/ryan-a-cmd",
+  },
+  {
+    id: "matheus-morais",
+    nome: "Matheus Morais",
+    descricao: "Data Science | Python | SQL | Java",
+    foto: imgMatheusMorais,
+    ativo: true,
+    linkedin: "https://br.linkedin.com/in/matheusmoraiss/",
+    github: "https://github.com/matheusjosems",
+  },
+  {
+    id: "eduardo-alves",
+    nome: "Eduardo ",
+    descricao:
+      "Entusiasta em Python, Ciência de Dados e desenvolvimento de jogos.",
+    foto: imgEduardoAlves,
+    ativo: true,
+    linkedin: "http://www.linkedin.com/in/eduardo-alves-dados/",
+    github: "http://github.com/Dudsz76",
+  },
+  {
+    id: "thalis-alexandre",
+    nome: "Thalis Alexandre",
+    descricao: "Desenvolvedor Web com JS/TS e com interesse em Java e Rust.",
+    foto: imgThalis,
+    ativo: true,
+    linkedin: "https://www.linkedin.com/in/thalis-alexandre-aquinodev/",
+    github: "https://github.com/thalisaquino1",
+  },
+  {
+    id: "lucas-delvico",
+    nome: "Lucas Delvico",
+    descricao:
+      "Experiente em UX/UI, C, banco de dados SQL, marketing, startup e inglês avançado.",
+    foto: imgLucasDelvico,
+    ativo: true,
+    linkedin: "https://www.linkedin.com/in/lucas-delvico-243150257/",
+    github: "https://github.com/Lucasdelvico",
+  },
+  {
+    id: "kauan-vinicius",
+    nome: "Kauan Vinícius",
+    descricao: "Apaixonado por Linux e programação baixo nível.",
+    foto: imgKauanVinicius,
+    ativo: true,
+    linkedin: "https://www.linkedin.com/in/kauan-silva-25009035a/",
+    github: "https://github.com/iseiko",
+  },
 
   // ==========================================
   // EX-MEMBROS
@@ -354,7 +458,7 @@ export const equipeData = [
     foto: imgAngelo,
     ativo: false,
     linkedin: "https://www.linkedin.com/in/angkeller/",
-    github: "https://www.linkedin.com/in/angkeller/",
+    github: "https://github.com/awangelo",
   },
   {
     id: "arthur-arash",
