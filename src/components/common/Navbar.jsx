@@ -14,8 +14,7 @@ const navItems = [
   },
 ];
 
-const CTA_LINK =
-  "https://docs.google.com/forms/d/e/1FAIpQLScsWzuZZUTAKNHRSEt4ukWpXLifTInCh31ot1_XPFNDK9kVMg/viewform?usp=publish-editor";
+const CTA_LINK = "";
 
 export default function Navbar({ currentPath = "/" }) {
   const [scrolled, setScrolled] = useState(false);
@@ -343,7 +342,8 @@ export default function Navbar({ currentPath = "/" }) {
         }
         @media (max-width: 900px) {
           .navbar-links,
-          .navbar-cta {
+          .navbar-cta,
+          .navbar-cta-placeholder {
             display: none !important;
           }
           .navbar-hamburger {
@@ -432,6 +432,7 @@ export default function Navbar({ currentPath = "/" }) {
             </ul>
           </nav>
 
+          {/*
           <a
             href={CTA_LINK}
             target="_blank"
@@ -452,6 +453,8 @@ export default function Navbar({ currentPath = "/" }) {
               <polyline points="12 5 19 12 12 19" />
             </svg>
           </a>
+          */}
+          <div className="navbar-cta-placeholder" style={{ width: "148.5px" }} />
 
           <button
             className="navbar-hamburger"
@@ -570,6 +573,7 @@ export default function Navbar({ currentPath = "/" }) {
                 );
               })}
 
+              {/*
               <motion.a
                 href={CTA_LINK}
                 target="_blank"
@@ -600,6 +604,7 @@ export default function Navbar({ currentPath = "/" }) {
                   <polyline points="12 5 19 12 12 19" />
                 </svg>
               </motion.a>
+              */}
             </motion.div>
           </>
         )}
