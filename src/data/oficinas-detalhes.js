@@ -327,7 +327,7 @@ export const oficinasDetalhes = [
     ],
     monitores: [
       getMonitor("pedro-calderon", true),
-      getMonitor("ryan"),
+      getMonitor("ryan-augusto"),
       getMonitor("lucas-borges"),
     ].filter(Boolean),
   },
@@ -610,8 +610,8 @@ export const oficinasDetalhes = [
     ],
     monitores: [
       getMonitor("jess-forster", true),
-      getMonitor("ryan"),
-      getMonitor("lucas-moura"),
+      getMonitor("ryan-augusto"),
+      getMonitor("sciel-buitrago"),
     ].filter(Boolean),
   },
 ];
